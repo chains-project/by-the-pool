@@ -1155,3 +1155,48 @@ constant pools, attributes, etc.
     However, the decompiled source code is exact same.
     The differences emerge because the same source file is compiled to different target languages.
     Our tool shows exactly that.
+
+3. Diff when `System.out.println` instruction is added.
+   #### With diffoscope 272
+   > Java 22
+
+   ```diff
+   --- /home/aman/Desktop/personal/bytecode-diff/src/test/resources/insertInstruction/old/A.class
+   +++ /home/aman/Desktop/personal/bytecode-diff/src/test/resources/insertInstruction/new/A.class
+   ├── procyon -ec {}
+   │ @@ -2,9 +2,10 @@
+   │  // Decompiled by Procyon v0.6.0
+   │  //
+   │  
+   │  public class A
+   │  {
+   │      public void m() {
+   │          System.out.println("Hello");
+   │ +        System.out.println("Hello");
+   │      }
+   │  }
+   ```
+   
+   #### With our tool
+   ```
+   [===
+   insert-node
+   ---
+   GETSTATIC [0,0]
+   to
+   java.lang.classfile.CodeModel: CodeModel [334,343]
+   at 3, ===
+   insert-node
+   ---
+   LDC [0,0]
+   to
+   java.lang.classfile.CodeModel: CodeModel [334,343]
+   at 4, ===
+   insert-node
+   ---
+   INVOKEVIRTUAL [0,0]
+   to
+   java.lang.classfile.CodeModel: CodeModel [334,343]
+   at 5]
+   ```
+   The diff shows three instructions are added in the new bytecode - `GETSTATIC`, `LDC`, and `INVOKEVIRTUAL`.
