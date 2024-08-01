@@ -100,4 +100,29 @@ public class ClassFileVisitorTest {
         List<Action> rootOperations = diff.getSimplifiedOperations().asList();
         assertThat(rootOperations).size().isEqualTo(12);
     }
+
+    @Test
+    void shouldShowDiff_onlyInClassfileVersion() throws IOException {
+        // arrange
+        Path proxy1 = RESOURCES.resolve("classfileVersion").resolve("ClientMain6.class");
+        Path proxy2 = RESOURCES.resolve("classfileVersion").resolve("ClientMain8.class");
+        byte[] bytes1 = Files.readAllBytes(proxy1);
+        byte[] bytes2 = Files.readAllBytes(proxy2);
+        final Builder scanner = new Builder();
+
+        // act
+        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
+        diff.computeDiff();
+
+        // assert
+        List<Action> rootOperations = diff.getSimplifiedOperations().asList();
+        assertThat(rootOperations).size().isEqualTo(1);
+
+        Update classfileVersion = (Update) rootOperations.get(0);
+        assertThat(classfileVersion.getNode().getType()).isEqualTo(TypeSet.type(DiffTypes.DIFF_IN_MAJOR_VERSION));
+        String oldVersion = classfileVersion.getNode().getLabel();
+        assertThat(oldVersion).isEqualTo("50");
+        String newVersion = classfileVersion.getValue();
+        assertThat(newVersion).isEqualTo("52");
+    }
 }
