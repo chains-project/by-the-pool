@@ -10,12 +10,10 @@ As of writing this README, this feature is JDK 22 as first preview.
 
 ## Goal
 
-Provide minimal diff of the classfiles that can be used to understand the 
-source level changes in the Java source code.
-
-As of now, it does not provide the exact AST diff between two classfiles. We 
-don't focus on it since it could give a lot spurious changes between 
-constant pools, attributes, etc.
+Provide minimal diff of the classfiles in terms of bytecode changes.
+It gives you changes in the classfile at a high level, like what has been added, removed, or updated.
+It ignores changes in the ordering of constant pool as it can add a 
+lot of noise, see example 2.
 
 ## Examples
 
