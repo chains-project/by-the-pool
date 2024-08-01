@@ -16,19 +16,19 @@ As of writing this README, this feature is JDK 22 as first preview.
 ```diff
 --- A45305b1a-3bdc-455f-b22d-96636743c129.class
 +++ A4e6577e8-d1ee-4acd-b38f-1dcd68658a48.class
-├── procyon -ec {}
-│ @@ -1,9 +1,9 @@
-│  
-│  package io.dropwizard.jersey;
-│  
-│ -public class DropwizardResourceConfig$SpecificBindere75da6ac-3201-4073-bd4f-75682c761862 extends DropwizardResourceConfig$SpecificBinder
-│ +public class DropwizardResourceConfig$SpecificBinder1d717258-a234-4322-aa8f-167ac4454443 extends DropwizardResourceConfig$SpecificBinder
-│  {
-│ -    public DropwizardResourceConfig$SpecificBindere75da6ac-3201-4073-bd4f-75682c761862(final Object o, final Class clazz) {
-│ +    public DropwizardResourceConfig$SpecificBinder1d717258-a234-4322-aa8f-167ac4454443(final Object o, final Class clazz) {
-│          super(o, clazz);
-│      }
-│  }
+  ├── procyon -ec {}
+  │ @@ -1,9 +1,9 @@
+  │  
+  │  package io.dropwizard.jersey;
+  │  
+- │ public class DropwizardResourceConfig$SpecificBindere75da6ac-3201-4073-bd4f-75682c761862 extends DropwizardResourceConfig$SpecificBinder
++ │ public class DropwizardResourceConfig$SpecificBinder1d717258-a234-4322-aa8f-167ac4454443 extends DropwizardResourceConfig$SpecificBinder
+  │  {
+- │    public DropwizardResourceConfig$SpecificBindere75da6ac-3201-4073-bd4f-75682c761862(final Object o, final Class clazz) {
++ │    public DropwizardResourceConfig$SpecificBinder1d717258-a234-4322-aa8f-167ac4454443(final Object o, final Class clazz) {
+  │          super(o, clazz);
+  │      }
+  │  }
 ```
 
 #### With gumtree-jvm-bytecode-diff
