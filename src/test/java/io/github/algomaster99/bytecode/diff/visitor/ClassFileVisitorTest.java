@@ -73,7 +73,6 @@ public class ClassFileVisitorTest {
 
     @Test
     void shouldShowDiffIf_orderOfFieldAndMethodsAreFlipped() throws IOException {
-        // it could be better if it shows that field names are replaced in methods
         // arrange
         Path proxy1 = RESOURCES.resolve("orderOfFieldsMethodsClint").resolve("A.class");
         Path proxy2 = RESOURCES.resolve("orderOfFieldsMethodsClint").resolve("B.class");
@@ -81,7 +80,7 @@ public class ClassFileVisitorTest {
 
         // assert
         List<Action> rootOperations = diff.getSimplifiedOperations().asList();
-        assertThat(rootOperations).size().isEqualTo(12);
+        assertThat(rootOperations).size().isEqualTo(6);
     }
 
     @Test
