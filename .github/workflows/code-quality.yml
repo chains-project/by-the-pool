@@ -14,6 +14,6 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'oracle'
-          java-version: '17'
+          java-version: '22'
       - name: Run spotless check
         run: mvn spotless:check
