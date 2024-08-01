@@ -7,6 +7,7 @@ import com.github.gumtreediff.actions.model.Action;
 import com.github.gumtreediff.actions.model.Update;
 import com.github.gumtreediff.tree.TypeSet;
 import java.io.IOException;
+import java.lang.classfile.Opcode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -20,13 +21,7 @@ public class ClassFileVisitorTest {
         // arrange
         Path oldClass = RESOURCES.resolve("majorVersion").resolve("old").resolve("A.class");
         Path newClass = RESOURCES.resolve("majorVersion").resolve("new").resolve("A.class");
-        byte[] bytes1 = Files.readAllBytes(oldClass);
-        byte[] bytes2 = Files.readAllBytes(newClass);
-        final Builder scanner = new Builder();
-
-        // act
-        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
-        diff.computeDiff();
+        DiffImpl diff = getDiff(oldClass, newClass);
 
         // assert
         EditScript allOperations = diff.getAllOperations();
@@ -49,13 +44,7 @@ public class ClassFileVisitorTest {
         Path random2 = RESOURCES
                 .resolve("thisClass_sourceFileAttribute")
                 .resolve("A45305b1a-3bdc-455f-b22d-96636743c129.class");
-        byte[] bytes1 = Files.readAllBytes(random1);
-        byte[] bytes2 = Files.readAllBytes(random2);
-        final Builder scanner = new Builder();
-
-        // act
-        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
-        diff.computeDiff();
+        DiffImpl diff = getDiff(random1, random2);
 
         // assert
         EditScript allOperations = diff.getAllOperations();
@@ -88,13 +77,7 @@ public class ClassFileVisitorTest {
         // arrange
         Path proxy1 = RESOURCES.resolve("orderOfFieldsMethodsClint").resolve("A.class");
         Path proxy2 = RESOURCES.resolve("orderOfFieldsMethodsClint").resolve("B.class");
-        byte[] bytes1 = Files.readAllBytes(proxy1);
-        byte[] bytes2 = Files.readAllBytes(proxy2);
-        final Builder scanner = new Builder();
-
-        // act
-        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
-        diff.computeDiff();
+        DiffImpl diff = getDiff(proxy1, proxy2);
 
         // assert
         List<Action> rootOperations = diff.getSimplifiedOperations().asList();
@@ -106,13 +89,7 @@ public class ClassFileVisitorTest {
         // arrange
         Path proxy1 = RESOURCES.resolve("classfileVersion").resolve("ClientMain6.class");
         Path proxy2 = RESOURCES.resolve("classfileVersion").resolve("ClientMain8.class");
-        byte[] bytes1 = Files.readAllBytes(proxy1);
-        byte[] bytes2 = Files.readAllBytes(proxy2);
-        final Builder scanner = new Builder();
-
-        // act
-        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
-        diff.computeDiff();
+        DiffImpl diff = getDiff(proxy1, proxy2);
 
         // assert
         List<Action> rootOperations = diff.getSimplifiedOperations().asList();
@@ -124,5 +101,30 @@ public class ClassFileVisitorTest {
         assertThat(oldVersion).isEqualTo("50");
         String newVersion = classfileVersion.getValue();
         assertThat(newVersion).isEqualTo("52");
+    }
+
+    @Test
+    void onlyOneInstructionShouldBeInserted() throws IOException {
+        // arrange
+        Path fileA = RESOURCES.resolve("insertInstruction").resolve("old").resolve("A.class");
+        Path fileB = RESOURCES.resolve("insertInstruction").resolve("new").resolve("A.class");
+        DiffImpl diff = getDiff(fileA, fileB);
+
+        // assert
+        List<Action> rootOperations = diff.getRootOperations();
+        assertThat(rootOperations).size().isEqualTo(3);
+
+        assertThat(rootOperations.get(0).getNode().getType().name).isEqualTo(Opcode.GETSTATIC.name());
+        assertThat(rootOperations.get(1).getNode().getType().name).isEqualTo(Opcode.LDC.name());
+        assertThat(rootOperations.get(2).getNode().getType().name).isEqualTo(Opcode.INVOKEVIRTUAL.name());
+    }
+
+    private static DiffImpl getDiff(Path oldClass, Path newClass) throws IOException {
+        byte[] bytes1 = Files.readAllBytes(oldClass);
+        byte[] bytes2 = Files.readAllBytes(newClass);
+        final Builder scanner = new Builder();
+        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
+        diff.computeDiff();
+        return diff;
     }
 }

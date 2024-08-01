@@ -15,8 +15,11 @@ import java.lang.classfile.MethodModel;
 import java.lang.classfile.attribute.SourceFileAttribute;
 import java.lang.classfile.constantpool.ClassEntry;
 import java.lang.classfile.constantpool.Utf8Entry;
+import java.lang.classfile.instruction.ConstantInstruction;
 import java.lang.classfile.instruction.FieldInstruction;
+import java.lang.classfile.instruction.InvokeInstruction;
 import java.lang.classfile.instruction.LoadInstruction;
+import java.lang.classfile.instruction.ReturnInstruction;
 import java.lang.reflect.Field;
 import java.util.Stack;
 
@@ -185,6 +188,46 @@ public class ClassFileVisitor {
                 addLeafNode(fieldNameNode);
                 // remove field instruction node
                 nodes.pop();
+            }
+            case ConstantInstruction constantInstruction -> {
+                Type type = TypeSet.type(constantInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                pushNodeToTree(node);
+
+                Type constantType = TypeSet.type(constantInstruction.typeKind().name());
+                Tree constantNode = treeContext.createTree(
+                        constantType, constantInstruction.constantValue().toString());
+                addLeafNode(constantNode);
+                // remove constant instruction node
+                nodes.pop();
+            }
+            case InvokeInstruction invokeInstruction -> {
+                Type type = TypeSet.type(invokeInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                pushNodeToTree(node);
+
+                Type methodOwnerType = TypeSet.type("METHOD_OWNER");
+                Tree methodOwnerNode = treeContext.createTree(
+                        methodOwnerType, invokeInstruction.method().owner().asInternalName());
+                addLeafNode(methodOwnerNode);
+
+                Type methodInvokedName = TypeSet.type("METHOD_INVOKED_NAME");
+                Tree methodNode = treeContext.createTree(
+                        methodInvokedName, invokeInstruction.method().name().stringValue());
+                addLeafNode(methodNode);
+
+                Type methodInvokedType = TypeSet.type("METHOD_INVOKED_TYPE");
+                Tree methodTypeNode = treeContext.createTree(
+                        methodInvokedType, invokeInstruction.method().type().stringValue());
+                addLeafNode(methodTypeNode);
+
+                // remove invoke instruction node
+                nodes.pop();
+            }
+            case ReturnInstruction returnInstruction -> {
+                Type type = TypeSet.type(returnInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                addLeafNode(node);
             }
             default -> {
                 // todo: to be implemented
