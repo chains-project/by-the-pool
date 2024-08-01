@@ -8,6 +8,15 @@ The tree representation for the bytecode is based on the [`ClassModel`](https://
 API proposed in [JEP 457](https://openjdk.org/jeps/457).
 As of writing this README, this feature is JDK 22 as first preview.
 
+## Goal
+
+Provide minimal diff of the classfiles that can be used to understand the 
+source level changes in the Java source code.
+
+As of now, it does not provide the exact AST diff between two classfiles. We 
+don't focus on it since it could give a lot spurious changes between 
+constant pools, attributes, etc.
+
 ## Examples
 
 1. Simplifying decompiled diff
