@@ -3,12 +3,13 @@ package io.github.algomaster99.bytecode.diff.visitor;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.github.gumtreediff.actions.EditScript;
+import com.github.gumtreediff.actions.model.Action;
 import com.github.gumtreediff.actions.model.Update;
 import com.github.gumtreediff.tree.TypeSet;
 import java.io.IOException;
-import java.lang.classfile.ClassFile;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class ClassFileVisitorTest {
@@ -24,10 +25,7 @@ public class ClassFileVisitorTest {
         final Builder scanner = new Builder();
 
         // act
-        DiffImpl diff = new DiffImpl(
-                scanner.getTreeContext(),
-                scanner.getTree(ClassFile.of().parse(bytes1)),
-                scanner.getTree(ClassFile.of().parse(bytes2)));
+        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
         diff.computeDiff();
 
         // assert
@@ -56,10 +54,7 @@ public class ClassFileVisitorTest {
         final Builder scanner = new Builder();
 
         // act
-        DiffImpl diff = new DiffImpl(
-                scanner.getTreeContext(),
-                scanner.getTree(ClassFile.of().parse(bytes1)),
-                scanner.getTree(ClassFile.of().parse(bytes2)));
+        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
         diff.computeDiff();
 
         // assert
@@ -85,5 +80,24 @@ public class ClassFileVisitorTest {
         String newSourceFile = thisClass.getValue();
         assertThat(newSourceFile)
                 .isEqualTo("DropwizardResourceConfig$SpecificBindere75da6ac-3201-4073-bd4f-75682c761862.java");
+    }
+
+    @Test
+    void shouldShowDiffIf_orderOfFieldAndMethodsAreFlipped() throws IOException {
+        // it could be better if it shows that field names are replaced in methods
+        // arrange
+        Path proxy1 = RESOURCES.resolve("orderOfFieldsMethodsClint").resolve("A.class");
+        Path proxy2 = RESOURCES.resolve("orderOfFieldsMethodsClint").resolve("B.class");
+        byte[] bytes1 = Files.readAllBytes(proxy1);
+        byte[] bytes2 = Files.readAllBytes(proxy2);
+        final Builder scanner = new Builder();
+
+        // act
+        DiffImpl diff = new DiffImpl(scanner.getTreeContext(), scanner.getTree(bytes1), scanner.getTree(bytes2));
+        diff.computeDiff();
+
+        // assert
+        List<Action> rootOperations = diff.getSimplifiedOperations().asList();
+        assertThat(rootOperations).size().isEqualTo(12);
     }
 }
