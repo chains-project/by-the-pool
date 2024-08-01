@@ -5,15 +5,17 @@ import static com.github.gumtreediff.tree.TypeSet.type;
 import com.github.gumtreediff.tree.Tree;
 import com.github.gumtreediff.tree.TreeContext;
 import com.github.gumtreediff.tree.Type;
-import java.lang.classfile.ClassModel;
 
 public class Builder {
     private final TreeContext treeContext = new TreeContext();
 
-    public Tree getTree(ClassModel classModel) {
+    public Tree getTree(byte[] bytes) {
         Type type = type("root");
         final Tree root = treeContext.createTree(type, "");
-        new ClassFileVisitor(treeContext, root).scan(classModel);
+        root.setPos(0);
+        root.setLength(bytes.length - 1);
+        treeContext.setRoot(root);
+        new ClassFileVisitor(treeContext, root, bytes).scan();
         return root;
     }
 
