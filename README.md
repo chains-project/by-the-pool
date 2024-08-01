@@ -57,7 +57,7 @@ As of writing this README, this feature is JDK 22 as first preview.
     <details>
         <summary>
             <h4> With diffoscope 272</h4>
-            <blockquote>Java22</blockquote>
+            <blockquote>Java 22</blockquote>
         </summary>
     <pre>
     --- src/test/resources/classfileVersion/ClientMain6.class
