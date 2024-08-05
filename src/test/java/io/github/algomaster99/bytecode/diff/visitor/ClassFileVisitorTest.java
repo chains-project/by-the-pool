@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.github.gumtreediff.actions.EditScript;
 import com.github.gumtreediff.actions.model.Action;
+import com.github.gumtreediff.actions.model.Delete;
 import com.github.gumtreediff.actions.model.Update;
 import com.github.gumtreediff.tree.TypeSet;
 import java.io.IOException;
@@ -116,6 +117,24 @@ public class ClassFileVisitorTest {
         assertThat(rootOperations.get(0).getNode().getType().name).isEqualTo(Opcode.GETSTATIC.name());
         assertThat(rootOperations.get(1).getNode().getType().name).isEqualTo(Opcode.LDC.name());
         assertThat(rootOperations.get(2).getNode().getType().name).isEqualTo(Opcode.INVOKEVIRTUAL.name());
+    }
+
+    @Test
+    void shouldDetect_removalOfCheckCast_updateOfReturnTypeOfMethodInvoked() throws IOException {
+        // arrange
+        Path fileA = RESOURCES.resolve("infiniteRecursion").resolve("original").resolve("A.class");
+        Path fileB = RESOURCES.resolve("infiniteRecursion").resolve("decompiled").resolve("A.class");
+        DiffImpl diff = getDiff(fileA, fileB);
+
+        // assert
+        List<Action> rootOperations = diff.getRootOperations();
+        assertThat(rootOperations).size().isEqualTo(2);
+
+        assertThat(rootOperations.get(0)).isInstanceOf(Update.class);
+        assertThat(rootOperations.get(0).getNode().getType().name).isEqualTo("METHOD_INVOKED_RETURN_TYPE");
+
+        assertThat(rootOperations.get(1)).isInstanceOf(Delete.class);
+        assertThat(rootOperations.get(1).getNode().getType().name).isEqualTo(Opcode.CHECKCAST.name());
     }
 
     private static DiffImpl getDiff(Path oldClass, Path newClass) throws IOException {

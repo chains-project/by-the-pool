@@ -19,7 +19,11 @@ import java.lang.classfile.instruction.ConstantInstruction;
 import java.lang.classfile.instruction.FieldInstruction;
 import java.lang.classfile.instruction.InvokeInstruction;
 import java.lang.classfile.instruction.LoadInstruction;
+import java.lang.classfile.instruction.NewObjectInstruction;
 import java.lang.classfile.instruction.ReturnInstruction;
+import java.lang.classfile.instruction.StackInstruction;
+import java.lang.classfile.instruction.StoreInstruction;
+import java.lang.classfile.instruction.TypeCheckInstruction;
 import java.lang.reflect.Field;
 import java.util.Stack;
 
@@ -103,7 +107,6 @@ public class ClassFileVisitor {
     public void visit(FieldModel fieldModel) {
         Type rootType = TypeSet.type(FieldModel.class.getName());
         Tree node = treeContext.createTree(rootType);
-        setPositions(node, fieldModel, fieldModel.getClass(), "startPos", "endPos");
         pushNodeToTree(node);
 
         Type fieldName = TypeSet.type("FIELD_NAME");
@@ -125,7 +128,6 @@ public class ClassFileVisitor {
     public void visit(MethodModel methodModel) {
         Type rootType = TypeSet.type(MethodModel.class.getName());
         Tree node = treeContext.createTree(rootType);
-        setPositions(node, methodModel, methodModel.getClass(), "startPos", "endPos");
         pushNodeToTree(node);
 
         Type methodName = TypeSet.type("METHOD_NAME");
@@ -146,7 +148,6 @@ public class ClassFileVisitor {
             CodeModel codeModel = methodModel.code().get();
             Type codeModelType = TypeSet.type(CodeModel.class.getName());
             Tree codeModelNode = treeContext.createTree(codeModelType, "CodeModel");
-            setPositions(codeModelNode, codeModel, codeModel.getClass(), "codeStart", "codeEnd");
             pushNodeToTree(codeModelNode);
 
             codeModel.elementList().forEach(element -> {
@@ -172,6 +173,41 @@ public class ClassFileVisitor {
                 Type type = TypeSet.type(loadInstruction.opcode().name());
                 Tree node = treeContext.createTree(
                         type, loadInstruction.opcode().primaryTypeKind().name());
+                addLeafNode(node);
+            }
+            case StoreInstruction storeInstruction -> {
+                Type type = TypeSet.type(storeInstruction.opcode().name());
+                Tree node = treeContext.createTree(
+                        type, storeInstruction.opcode().primaryTypeKind().name());
+                addLeafNode(node);
+            }
+            case NewObjectInstruction newObjectInstruction -> {
+                Type type = TypeSet.type(newObjectInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                pushNodeToTree(node);
+
+                Type newObjectType = TypeSet.type("CLASS_NAME");
+                Tree newObjectNode = treeContext.createTree(
+                        newObjectType, newObjectInstruction.className().asInternalName());
+                addLeafNode(newObjectNode);
+                // remove new object instruction node
+                nodes.pop();
+            }
+            case TypeCheckInstruction typeCheckInstruction -> {
+                Type type = TypeSet.type(typeCheckInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                pushNodeToTree(node);
+
+                Type typeCheckType = TypeSet.type("TYPE_CHECK");
+                Tree typeCheckNode = treeContext.createTree(
+                        typeCheckType, typeCheckInstruction.type().asInternalName());
+                addLeafNode(typeCheckNode);
+                // remove type check instruction node
+                nodes.pop();
+            }
+            case StackInstruction stackInstruction -> {
+                Type type = TypeSet.type(stackInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
                 addLeafNode(node);
             }
             case FieldInstruction fieldInstruction -> {
@@ -216,7 +252,7 @@ public class ClassFileVisitor {
                         methodInvokedName, invokeInstruction.method().name().stringValue());
                 addLeafNode(methodNode);
 
-                Type methodInvokedType = TypeSet.type("METHOD_INVOKED_TYPE");
+                Type methodInvokedType = TypeSet.type("METHOD_INVOKED_RETURN_TYPE");
                 Tree methodTypeNode = treeContext.createTree(
                         methodInvokedType, invokeInstruction.method().type().stringValue());
                 addLeafNode(methodTypeNode);
@@ -265,6 +301,24 @@ public class ClassFileVisitor {
             // Position information not available for this element
             if (cfe.getClass().getSuperclass() != null) {
                 setPositions(node, cfe, whereFieldLies.getSuperclass(), startField, endField);
+            } else {
+                throw new RuntimeException("Position information not available for this element");
+            }
+        }
+    }
+
+    private static void setPositions(
+            Tree node, ClassFileElement cfe, Class<?> whereFieldLies, String startField, int length) {
+        try {
+            Field startPos = whereFieldLies.getDeclaredField(startField);
+            startPos.setAccessible(true);
+            int startPosValue = (int) startPos.get(cfe);
+            node.setPos(startPosValue);
+            node.setLength(length);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            // Position information not available for this element
+            if (cfe.getClass().getSuperclass() != null) {
+                setPositions(node, cfe, whereFieldLies.getSuperclass(), startField, length);
             } else {
                 throw new RuntimeException("Position information not available for this element");
             }
