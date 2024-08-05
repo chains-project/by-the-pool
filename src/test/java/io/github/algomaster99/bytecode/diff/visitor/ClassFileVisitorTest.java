@@ -123,7 +123,8 @@ public class ClassFileVisitorTest {
     void shouldDetect_removalOfCheckCast_updateOfReturnTypeOfMethodInvoked() throws IOException {
         // arrange
         Path fileA = RESOURCES.resolve("infiniteRecursion").resolve("original").resolve("A.class");
-        Path fileB = RESOURCES.resolve("infiniteRecursion").resolve("decompiled").resolve("A.class");
+        Path fileB =
+                RESOURCES.resolve("infiniteRecursion").resolve("decompiled").resolve("A.class");
         DiffImpl diff = getDiff(fileA, fileB);
 
         // assert
