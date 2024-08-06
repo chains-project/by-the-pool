@@ -1207,12 +1207,12 @@ lot of noise, see example 2.
             <blockquote>Java 22</blockquote>
    </summary>
    <pre>
-   --- /home/aman/Desktop/personal/bytecode-diff/src/test/resources/infiniteRecursion/decompiled/A.class
-   +++ /home/aman/Desktop/personal/bytecode-diff/src/test/resources/infiniteRecursion/original/A.class
+   --- /home/aman/Desktop/personal/bytecode-diff/src/test/resources/infiniteRecursion/original/A.class
+   +++ /home/aman/Desktop/personal/bytecode-diff/src/test/resources/infiniteRecursion/decompiled/A.class
    ├── javap -verbose -constants -s -l -private {}
    │ @@ -1,8 +1,8 @@
-   │ -  SHA-256 checksum 039eb028d004305c9ee56b5429d116f773b75265617153c072ac6eb1d34d83b4
-   │ +  SHA-256 checksum 44a81df8eb39d7819ae5e8f07f5eb483f7a8fd363776f0307ec0ebfb3057ce6c
+   │ -  SHA-256 checksum 44a81df8eb39d7819ae5e8f07f5eb483f7a8fd363776f0307ec0ebfb3057ce6c
+   │ +  SHA-256 checksum 039eb028d004305c9ee56b5429d116f773b75265617153c072ac6eb1d34d83b4
    │    Compiled from "A.java"
    │  public class A
    │    minor version: 0
@@ -1220,7 +1220,7 @@ lot of noise, see example 2.
    │    flags: (0x0021) ACC_PUBLIC, ACC_SUPER
    │    this_class: #13                         // A
    │    super_class: #2                         // java/lang/Object
-   │ @@ -21,34 +21,36 @@
+   │ @@ -21,36 +21,34 @@
    │    #11 = Methodref          #9.#3          // java/lang/StringBuffer."<init>":()V
    │    #12 = Methodref          #13.#14        // A.applyRules:(Ljava/lang/String;Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
    │    #13 = Class              #15            // A
@@ -1228,26 +1228,26 @@ lot of noise, see example 2.
    │    #15 = Utf8               A
    │    #16 = Utf8               applyRules
    │    #17 = Utf8               (Ljava/lang/String;Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
-   │ -  #18 = Utf8               Code
-   │ -  #19 = Utf8               LineNumberTable
-   │ -  #20 = Utf8               main
-   │ -  #21 = Utf8               ([Ljava/lang/String;)V
-   │ -  #22 = Utf8               (Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
-   │ -  #23 = Utf8               Signature
-   │ -  #24 = Utf8               <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
-   │ -  #25 = Utf8               SourceFile
-   │ -  #26 = Utf8               A.java
-   │ +  #18 = Methodref          #13.#19        // A.applyRules:(Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
-   │ +  #19 = NameAndType        #16:#20        // applyRules:(Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
-   │ +  #20 = Utf8               (Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
-   │ +  #21 = Utf8               Code
-   │ +  #22 = Utf8               LineNumberTable
-   │ +  #23 = Utf8               main
-   │ +  #24 = Utf8               ([Ljava/lang/String;)V
-   │ +  #25 = Utf8               Signature
-   │ +  #26 = Utf8               <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
-   │ +  #27 = Utf8               SourceFile
-   │ +  #28 = Utf8               A.java
+   │ -  #18 = Methodref          #13.#19        // A.applyRules:(Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
+   │ -  #19 = NameAndType        #16:#20        // applyRules:(Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
+   │ -  #20 = Utf8               (Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
+   │ -  #21 = Utf8               Code
+   │ -  #22 = Utf8               LineNumberTable
+   │ -  #23 = Utf8               main
+   │ -  #24 = Utf8               ([Ljava/lang/String;)V
+   │ -  #25 = Utf8               Signature
+   │ -  #26 = Utf8               <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
+   │ -  #27 = Utf8               SourceFile
+   │ -  #28 = Utf8               A.java
+   │ +  #18 = Utf8               Code
+   │ +  #19 = Utf8               LineNumberTable
+   │ +  #20 = Utf8               main
+   │ +  #21 = Utf8               ([Ljava/lang/String;)V
+   │ +  #22 = Utf8               (Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
+   │ +  #23 = Utf8               Signature
+   │ +  #24 = Utf8               <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
+   │ +  #25 = Utf8               SourceFile
+   │ +  #26 = Utf8               A.java
    │  {
    │    public A();
    │      descriptor: ()V
@@ -1258,8 +1258,8 @@ lot of noise, see example 2.
    │           1: invokespecial #1                  // Method java/lang/Object."<init>":()V
    │           4: return
    │        LineNumberTable:
-   │ -        line 3: 0
-   │ +        line 4: 0
+   │ -        line 4: 0
+   │ +        line 3: 0
    │  
    │    public static void main(java.lang.String[]);
    │      descriptor: ([Ljava/lang/String;)V
@@ -1267,7 +1267,7 @@ lot of noise, see example 2.
    │      Code:
    │        stack=3, locals=1, args_size=1
    │           0: ldc           #7                  // String Hello, World!
-   │ @@ -67,22 +69,23 @@
+   │ @@ -69,23 +67,22 @@
    │      flags: (0x000a) ACC_PRIVATE, ACC_STATIC
    │      Code:
    │        stack=1, locals=2, args_size=2
@@ -1275,8 +1275,8 @@ lot of noise, see example 2.
    │           1: areturn
    │        LineNumberTable:
    │          line 10: 0
-   │ -    Signature: #24                          // <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
-   │ +    Signature: #26                          // <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
+   │ -    Signature: #26                          // <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
+   │ +    Signature: #24                          // <B::Ljava/lang/Appendable;>(Ljava/lang/String;TB;)TB;
    │  
    │    protected static java.lang.StringBuffer applyRules(java.lang.String, java.lang.StringBuffer);
    │      descriptor: (Ljava/lang/String;Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
@@ -1285,11 +1285,11 @@ lot of noise, see example 2.
    │        stack=2, locals=2, args_size=2
    │           0: aload_0
    │           1: aload_1
-   │ -         2: invokestatic  #12                 // Method applyRules:(Ljava/lang/String;Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
-   │ -         5: areturn
-   │ +         2: invokestatic  #18                 // Method applyRules:(Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
-   │ +         5: checkcast     #9                  // class java/lang/StringBuffer
-   │ +         8: areturn
+   │ -         2: invokestatic  #18                 // Method applyRules:(Ljava/lang/String;Ljava/lang/Appendable;)Ljava/lang/Appendable;
+   │ -         5: checkcast     #9                  // class java/lang/StringBuffer
+   │ -         8: areturn
+   │ +         2: invokestatic  #12                 // Method applyRules:(Ljava/lang/String;Ljava/lang/StringBuffer;)Ljava/lang/StringBuffer;
+   │ +         5: areturn
    │        LineNumberTable:
    │          line 14: 0
    │  }
