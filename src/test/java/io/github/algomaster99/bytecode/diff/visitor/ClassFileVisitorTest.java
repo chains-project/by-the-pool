@@ -146,6 +146,7 @@ public class ClassFileVisitorTest {
     class EQ {
         private static final Path EQ_OPENJDK = EQ.resolve("OpenJDK");
         private static final Path EQ_SAMECOMP = EQ.resolve("SameComp");
+        private static final Path EQ_SAMEMJCOMPVER = EQ.resolve("SameMjCompVer");
 
         @Nested
         class ClassesWithSomeVersionOfOpenJDK {
@@ -301,6 +302,26 @@ public class ClassFileVisitorTest {
                 // assert
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(0);
+            }
+        }
+
+        @Nested
+        class SameMjCompVer {
+            @Test
+            void shouldOnlyShowBytecodeMajorVersionUpdate() throws IOException {
+                Path oldClass = EQ.resolve("SameMjCompVer")
+                        .resolve("161556")
+                        .resolve("ecj-3.15.1_openjdk-11.0.19")
+                        .resolve("LZMAUtils$CachedAvailability.class");
+                Path newClass = EQ.resolve("SameMjCompVer")
+                        .resolve("161556")
+                        .resolve("ecj-3.24.0_openjdk-11.0.19")
+                        .resolve("LZMAUtils$CachedAvailability.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(1);
             }
         }
     }

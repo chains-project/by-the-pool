@@ -1,0 +1,18 @@
+--- ecj-3.15.1_openjdk-11.0.19/LZMAUtils$CachedAvailability.class
++++ ecj-3.24.0_openjdk-11.0.19/LZMAUtils$CachedAvailability.class
+├── javap -verbose -constants -s -l -private {}
+│ @@ -1,12 +1,12 @@
+│ -  SHA-256 checksum 872216e3de2db6bd79f7992687fa8b73afc53f46415eae9eba2879a80314e874
+│ +  SHA-256 checksum 4a72a2cf81367fd74d2480d504dca30aa11ffe0344ea581609ae2c74a0540900
+│    Compiled from "LZMAUtils.java"
+│  final class org.apache.commons.compress.compressors.lzma.LZMAUtils$CachedAvailability extends java.lang.Enum<org.apache.commons.compress.compressors.lzma.LZMAUtils$CachedAvailability>
+│    minor version: 0
+│ -  major version: 52
+│ +  major version: 53
+│    flags: (0x4030) ACC_FINAL, ACC_SUPER, ACC_ENUM
+│    this_class: #1                          // org/apache/commons/compress/compressors/lzma/LZMAUtils$CachedAvailability
+│    super_class: #3                         // java/lang/Enum
+│    interfaces: 0, fields: 4, methods: 4, attributes: 3
+│  Constant pool:
+│     #1 = Class              #2             // org/apache/commons/compress/compressors/lzma/LZMAUtils$CachedAvailability
+│     #2 = Utf8               org/apache/commons/compress/compressors/lzma/LZMAUtils$CachedAvailability
