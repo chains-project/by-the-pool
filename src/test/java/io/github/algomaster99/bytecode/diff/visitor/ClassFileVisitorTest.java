@@ -268,6 +268,23 @@ public class ClassFileVisitorTest {
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(1);
             }
+
+            @Test
+            void shouldShowNoDifferenceInBytecode_3() throws IOException {
+                Path oldClass = EQ.resolve("DiffComp")
+                        .resolve("73882")
+                        .resolve("openjdk-15.0.1")
+                        .resolve("PropertyListParser$JJCalls.class");
+                Path newClass = EQ.resolve("DiffComp")
+                        .resolve("73882")
+                        .resolve("ecj-3.24.0_openjdk-11.0.19")
+                        .resolve("PropertyListParser$JJCalls.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(0);
+            }
         }
     }
 
