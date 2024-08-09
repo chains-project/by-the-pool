@@ -250,6 +250,24 @@ public class ClassFileVisitorTest {
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(1);
             }
+
+            @Disabled("Diff should clearly mention that indy is replaced with an earlier implementation.")
+            @Test
+            void diffShouldIndicateThatInvokeDyanamicIsReplaced() throws IOException {
+                Path oldClass = EQ.resolve("DiffComp")
+                        .resolve("71848")
+                        .resolve("openjdk-15.0.1")
+                        .resolve("AttributeLayout.class");
+                Path newClass = EQ.resolve("DiffComp")
+                        .resolve("71848")
+                        .resolve("ecj-3.24.0_openjdk-11.0.19")
+                        .resolve("AttributeLayout.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(1);
+            }
         }
     }
 

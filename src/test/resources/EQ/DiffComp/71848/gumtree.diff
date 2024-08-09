@@ -1,0 +1,278 @@
+[===
+delete-node
+---
+INVOKEDYNAMIC [0,0]
+===, ===
+delete-node
+---
+INVOKEDYNAMIC [0,0]
+===, ===
+delete-node
+---
+INVOKEDYNAMIC [0,0]
+===, ===
+delete-node
+---
+INVOKEDYNAMIC [0,0]
+===, ===
+delete-node
+---
+LDC [0,0]
+===, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 61, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 62, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 63, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 64, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 66, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 67, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 25, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 26, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 27, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 28, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 30, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 31, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 20, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 21, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 22, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 23, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 25, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 30, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 31, ===
+insert-node
+---
+IRETURN [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 7, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 0, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 1, ===
+insert-node
+---
+INVOKESTATIC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 5, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 6, ===
+insert-node
+---
+LDC_W [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 7, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 8, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 11, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 12, ===
+insert-node
+---
+LDC_W [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 2, ===
+move-tree
+---
+java.lang.classfile.MethodModel [0,0]
+    METHOD_NAME: <clinit> [2,4]
+    RETURN_TYPE: ()V [4,6]
+    java.lang.classfile.CodeModel: CodeModel [0,0]
+        ICONST_4 [0,0]
+            IntType: 4 [0,0]
+        DUP [0,0]
+        ICONST_0 [0,0]
+            IntType: 0 [0,0]
+        LDC [0,0]
+            ReferenceType: Class [0,0]
+        DUP [0,0]
+        ICONST_1 [0,0]
+            IntType: 1 [0,0]
+        LDC [0,0]
+            ReferenceType: Field [0,0]
+        DUP [0,0]
+        ICONST_2 [0,0]
+            IntType: 2 [0,0]
+        LDC [0,0]
+            ReferenceType: Method [0,0]
+        DUP [0,0]
+        ICONST_3 [0,0]
+            IntType: 3 [0,0]
+        LDC [0,0]
+            ReferenceType: Code [0,0]
+        PUTSTATIC [0,0]
+            fieldType: [Ljava/lang/String; [0,0]
+            fieldName: contextNames [0,0]
+        RETURN [0,0]
+to
+root [0,7253]
+at 46, ===
+move-tree
+---
+INVOKESPECIAL [0,0]
+    METHOD_OWNER: org/apache/commons/compress/harmony/pack200/Pack200Exception [0,0]
+    METHOD_INVOKED_NAME: <init> [0,0]
+    METHOD_INVOKED_RETURN_TYPE: (Ljava/lang/String;)V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 26, ===
+move-tree
+---
+NEW [0,0]
+    CLASS_NAME: org/apache/commons/compress/harmony/pack200/Pack200Exception [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 30, ===
+move-tree
+---
+INVOKESPECIAL [0,0]
+    METHOD_OWNER: org/apache/commons/compress/harmony/pack200/Pack200Exception [0,0]
+    METHOD_INVOKED_NAME: <init> [0,0]
+    METHOD_INVOKED_RETURN_TYPE: (Ljava/lang/String;)V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 34, ===
+move-tree
+---
+NEW [0,0]
+    CLASS_NAME: org/apache/commons/compress/harmony/pack200/Pack200Exception [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 37, ===
+move-tree
+---
+INVOKESPECIAL [0,0]
+    METHOD_OWNER: org/apache/commons/compress/harmony/pack200/Pack200Exception [0,0]
+    METHOD_INVOKED_NAME: <init> [0,0]
+    METHOD_INVOKED_RETURN_TYPE: (Ljava/lang/String;)V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 39, ===
+move-tree
+---
+ICONST_0 [0,0]
+    IntType: 0 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 6]

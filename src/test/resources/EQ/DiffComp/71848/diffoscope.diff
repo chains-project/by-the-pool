@@ -1,0 +1,52 @@
+--- openjdk-15.0.1/AttributeLayout.class
++++ ecj-3.24.0_openjdk-11.0.19/AttributeLayout.class
+├── procyon -ec {}
+│ @@ -51,14 +51,18 @@
+│      private final int index;
+│      private final String layout;
+│      private long mask;
+│      private final String name;
+│      private final boolean isDefault;
+│      private int backwardsCallCount;
+│
+│ +    static {
+│ +        contextNames = new String[] { "Class", "Field", "Method", "Code" };
+│ +    }
+│ +
+│      private static ClassFileEntry getValue(final String layout, long value, final SegmentConstantPool pool) throws Pack200Exception {
+│          if (layout.startsWith("R")) {
+│              if (layout.indexOf(78) != -1) {
+│                  --value;
+│              }
+│              if (layout.startsWith("RU")) {
+│                  return pool.getValue(1, value);
+│ @@ -170,15 +174,15 @@
+│
+│      public boolean matches(final long value) {
+│          return (value & this.mask) != 0x0L;
+│      }
+│
+│      @Override
+│      public String toString() {
+│ -        return AttributeLayout.contextNames[this.context] + ": " + this.name;
+│ +        return String.valueOf(AttributeLayout.contextNames[this.context]) + ": " + this.name;
+│      }
+│
+│      public int getContext() {
+│          return this.context;
+│      }
+│
+│      public int getIndex() {
+│ @@ -199,12 +203,8 @@
+│      public boolean isDefaultLayout() {
+│          return this.isDefault;
+│      }
+│
+│      public void setBackwardsCallCount(final int backwardsCallCount) {
+│          this.backwardsCallCount = backwardsCallCount;
+│      }
+│ -
+│ -    static {
+│ -        contextNames = new String[] { "Class", "Field", "Method", "Code" };
+│ -    }
+│  }
