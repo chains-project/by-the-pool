@@ -1,0 +1,101 @@
+[===
+delete-node
+---
+ACONST_NULL [0,0]
+===, ===
+delete-node
+---
+ASTORE: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ASTORE: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ALOAD: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ALOAD_2: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ALOAD: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ASTORE: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ALOAD: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ALOAD: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ASTORE: ReferenceType [0,0]
+===, ===
+delete-node
+---
+ALOAD_3: ReferenceType [0,0]
+===, ===
+delete-node
+---
+INVOKEVIRTUAL [0,0]
+===, ===
+delete-node
+---
+INVOKEVIRTUAL [0,0]
+===, ===
+delete-node
+---
+ALOAD_2: ReferenceType [0,0]
+===, ===
+delete-node
+---
+INVOKEVIRTUAL [0,0]
+===, ===
+delete-node
+---
+ALOAD: ReferenceType [0,0]
+===, ===
+move-tree
+---
+ASTORE_3: ReferenceType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 12, ===
+move-tree
+---
+ALOAD_3: ReferenceType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 22, ===
+move-tree
+---
+INVOKEVIRTUAL [0,0]
+    METHOD_OWNER: java/io/BufferedInputStream [0,0]
+    METHOD_INVOKED_NAME: close [0,0]
+    METHOD_INVOKED_RETURN_TYPE: ()V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 31, ===
+move-tree
+---
+INVOKEVIRTUAL [0,0]
+    METHOD_OWNER: java/lang/Throwable [0,0]
+    METHOD_INVOKED_NAME: addSuppressed [0,0]
+    METHOD_INVOKED_RETURN_TYPE: (Ljava/lang/Throwable;)V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 35, ===
+move-tree
+---
+ALOAD_3: ReferenceType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 35]

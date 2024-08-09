@@ -1,0 +1,40 @@
+--- openjdk-10.0.2/HmacUtils.class
++++ openjdk-11.0.12/HmacUtils.class
+├── procyon -ec {}
+│ @@ -321,35 +321,16 @@
+│      }
+│
+│      public String hmacHex(final InputStream valueToDigest) throws IOException {
+│          return Hex.encodeHexString(this.hmac(valueToDigest));
+│      }
+│
+│      public byte[] hmac(final File valueToDigest) throws IOException {
+│ -        final BufferedInputStream stream = new BufferedInputStream(new FileInputStream(valueToDigest));
+│ -        Throwable t = null;
+│ -        try {
+│ +        try (final BufferedInputStream stream = new BufferedInputStream(new FileInputStream(valueToDigest))) {
+│              return this.hmac(stream);
+│          }
+│ -        catch (final Throwable t2) {
+│ -            t = t2;
+│ -            throw t2;
+│ -        }
+│ -        finally {
+│ -            if (t != null) {
+│ -                try {
+│ -                    stream.close();
+│ -                }
+│ -                catch (final Throwable exception) {
+│ -                    t.addSuppressed(exception);
+│ -                }
+│ -            }
+│ -            else {
+│ -                stream.close();
+│ -            }
+│ -        }
+│      }
+│
+│      public String hmacHex(final File valueToDigest) throws IOException {
+│          return Hex.encodeHexString(this.hmac(valueToDigest));
+│      }
+│  }

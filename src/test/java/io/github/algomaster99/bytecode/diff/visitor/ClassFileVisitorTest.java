@@ -12,10 +12,13 @@ import java.lang.classfile.Opcode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class ClassFileVisitorTest {
     private static final Path RESOURCES = Path.of("src/test/resources");
+
+    private static final Path EQ = RESOURCES.resolve("EQ");
 
     @Test
     void shouldShowDiffIn_majorVersion() throws IOException {
@@ -136,6 +139,38 @@ public class ClassFileVisitorTest {
 
         assertThat(rootOperations.get(1)).isInstanceOf(Delete.class);
         assertThat(rootOperations.get(1).getNode().getType().name).isEqualTo(Opcode.CHECKCAST.name());
+    }
+
+    @Nested
+    class EQ {
+        private static final Path EQ_OPENJDK = EQ.resolve("OpenJDK");
+        private static final Path EQ_SAMECOMP = EQ.resolve("SameComp");
+
+        @Test
+        void recordsWithBothClassesCompiledWithSomeVersion() throws IOException {
+            // arrange
+            Path oldClass = EQ_OPENJDK.resolve("1").resolve("8.0.372").resolve("AbstractTestCase.class");
+            Path newClass = EQ_OPENJDK.resolve("1").resolve("9.0.1").resolve("AbstractTestCase.class");
+            DiffImpl diff = getDiff(oldClass, newClass);
+
+            // assert
+            List<Action> rootOperations = diff.getRootOperations();
+            assertThat(rootOperations).size().isEqualTo(0);
+        }
+
+        @Test
+        void recordsWithBothClassesCompiledWithSameCompiler() throws IOException {
+            // arrange
+            Path oldClass =
+                    EQ_SAMECOMP.resolve("8909").resolve("openjdk-10.0.2").resolve("HmacUtils.class");
+            Path newClass =
+                    EQ_SAMECOMP.resolve("8909").resolve("openjdk-11.0.12").resolve("HmacUtils.class");
+            DiffImpl diff = getDiff(oldClass, newClass);
+
+            // assert
+            List<Action> rootOperations = diff.getRootOperations();
+            assertThat(rootOperations).size().isEqualTo(0);
+        }
     }
 
     private static DiffImpl getDiff(Path oldClass, Path newClass) throws IOException {
