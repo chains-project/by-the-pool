@@ -1,0 +1,77 @@
+--- openjdk-20.0.1/AnnClass.class
++++ openjdk-nodebug-20.0.1/AnnClass.class
+├── javap -verbose -constants -s -l -private {}
+│ @@ -1,8 +1,8 @@
+│ -  SHA-256 checksum 969ee50cdcaa76dc910bfa7d0d9940d9e99db26151eafc54bb39beeb92d6567b
+│ +  SHA-256 checksum 55701ca9864ff74afa5b2b7367fb19b122a40baddf30226804d48c59839cd3b0
+│    Compiled from "InputMissingJavadocTypeMultipleQualifiedAnnotation.java"
+│  class com.puppycrawl.tools.checkstyle.checks.javadoc.missingjavadoctype.AnnClass
+│    minor version: 0
+│    major version: 55
+│    flags: (0x0020) ACC_SUPER
+│    this_class: #7                          // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│    super_class: #2                         // java/lang/Object
+│ @@ -14,47 +14,41 @@
+│     #4 = Utf8               java/lang/Object
+│     #5 = Utf8               <init>
+│     #6 = Utf8               ()V
+│     #7 = Class              #8             // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│     #8 = Utf8               com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│     #9 = Utf8               Code
+│    #10 = Utf8               LineNumberTable
+│ -  #11 = Utf8               LocalVariableTable
+│ -  #12 = Utf8               this
+│ -  #13 = Utf8               Lcom/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass;
+│ -  #14 = Utf8               SourceFile
+│ -  #15 = Utf8               InputMissingJavadocTypeMultipleQualifiedAnnotation.java
+│ -  #16 = Utf8               NestMembers
+│ -  #17 = Class              #18            // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann3
+│ -  #18 = Utf8               com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann3
+│ -  #19 = Class              #20            // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann2
+│ -  #20 = Utf8               com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann2
+│ -  #21 = Class              #22            // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann1
+│ -  #22 = Utf8               com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann1
+│ -  #23 = Utf8               InnerClasses
+│ -  #24 = Utf8               Ann3
+│ -  #25 = Utf8               Ann2
+│ -  #26 = Utf8               Ann1
+│ +  #11 = Utf8               SourceFile
+│ +  #12 = Utf8               InputMissingJavadocTypeMultipleQualifiedAnnotation.java
+│ +  #13 = Utf8               NestMembers
+│ +  #14 = Class              #15            // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann3
+│ +  #15 = Utf8               com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann3
+│ +  #16 = Class              #17            // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann2
+│ +  #17 = Utf8               com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann2
+│ +  #18 = Class              #19            // com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann1
+│ +  #19 = Utf8               com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann1
+│ +  #20 = Utf8               InnerClasses
+│ +  #21 = Utf8               Ann3
+│ +  #22 = Utf8               Ann2
+│ +  #23 = Utf8               Ann1
+│  {
+│    com.puppycrawl.tools.checkstyle.checks.javadoc.missingjavadoctype.AnnClass();
+│      descriptor: ()V
+│      flags: (0x0000)
+│      Code:
+│        stack=1, locals=1, args_size=1
+│           0: aload_0
+│           1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+│           4: return
+│        LineNumberTable:
+│          line 17: 0
+│ -      LocalVariableTable:
+│ -        Start  Length  Slot  Name   Signature
+│ -            0       5     0  this   Lcom/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass;
+│  }
+│  SourceFile: "InputMissingJavadocTypeMultipleQualifiedAnnotation.java"
+│  NestMembers:
+│    com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann3
+│    com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann2
+│    com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann1
+│  InnerClasses:
+│ -  public static #24= #17 of #7;           // Ann3=class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann3 of class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│ -  public static #25= #19 of #7;           // Ann2=class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann2 of class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│ -  public static #26= #21 of #7;           // Ann1=class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann1 of class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│ +  public static #21= #14 of #7;           // Ann3=class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann3 of class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│ +  public static #22= #16 of #7;           // Ann2=class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann2 of class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass
+│ +  public static #23= #18 of #7;           // Ann1=class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass$Ann1 of class com/puppycrawl/tools/checkstyle/checks/javadoc/missingjavadoctype/AnnClass

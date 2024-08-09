@@ -285,6 +285,23 @@ public class ClassFileVisitorTest {
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(0);
             }
+
+            @Test
+            void shouldShowDifferenceInLocalVariableTable() throws IOException {
+                Path oldClass = EQ.resolve("DiffComp")
+                        .resolve("274831")
+                        .resolve("openjdk-20.0.1")
+                        .resolve("AnnClass.class");
+                Path newClass = EQ.resolve("DiffComp")
+                        .resolve("274831")
+                        .resolve("openjdk-nodebug-20.0.1")
+                        .resolve("AnnClass.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(0);
+            }
         }
     }
 
