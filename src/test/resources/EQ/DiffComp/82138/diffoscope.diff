@@ -1,0 +1,396 @@
+--- openjdk-17.0.1/DumpArchiveUtil.class
++++ ecj-3.28.0_openjdk-11.0.19/DumpArchiveUtil.class
+├── javap -verbose -constants -s -l -private {}
+│ @@ -1,145 +1,142 @@
+│ -  SHA-256 checksum 4625c673d14c86110af08a01f05b82d6773fcc645a83db301c04ed22cf0f7c70
+│ +  SHA-256 checksum ffb0ebd171263478c20c37e821434714fe0b6b13dc3057afc0dd888500d2c0bc
+│    Compiled from "DumpArchiveUtil.java"
+│  class org.apache.commons.compress.archivers.dump.DumpArchiveUtil
+│    minor version: 0
+│    major version: 52
+│    flags: (0x0020) ACC_SUPER
+│ -  this_class: #2                          // org/apache/commons/compress/archivers/dump/DumpArchiveUtil
+│ -  super_class: #34                        // java/lang/Object
+│ +  this_class: #1                          // org/apache/commons/compress/archivers/dump/DumpArchiveUtil
+│ +  super_class: #3                         // java/lang/Object
+│    interfaces: 0, fields: 0, methods: 8, attributes: 1
+│  Constant pool:
+│ -   #1 = Methodref          #2.#3          // org/apache/commons/compress/archivers/dump/DumpArchiveUtil.convert32:([BI)I
+│ -   #2 = Class              #4             // org/apache/commons/compress/archivers/dump/DumpArchiveUtil
+│ -   #3 = NameAndType        #5:#6          // convert32:([BI)I
+│ -   #4 = Utf8               org/apache/commons/compress/archivers/dump/DumpArchiveUtil
+│ -   #5 = Utf8               convert32
+│ -   #6 = Utf8               ([BI)I
+│ -   #7 = Class              #8             // org/apache/commons/compress/archivers/dump/DumpArchiveConstants
+│ -   #8 = Utf8               org/apache/commons/compress/archivers/dump/DumpArchiveConstants
+│ -   #9 = Integer            84446
+│ -  #10 = Methodref          #11.#12        // org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│ -  #11 = Class              #13            // org/apache/commons/compress/utils/ByteUtils
+│ -  #12 = NameAndType        #14:#15        // fromLittleEndian:([BII)J
+│ -  #13 = Utf8               org/apache/commons/compress/utils/ByteUtils
+│ -  #14 = Utf8               fromLittleEndian
+│ -  #15 = Utf8               ([BII)J
+│ -  #16 = Methodref          #17.#18        // java/util/Arrays.copyOfRange:([BII)[B
+│ -  #17 = Class              #19            // java/util/Arrays
+│ -  #18 = NameAndType        #20:#21        // copyOfRange:([BII)[B
+│ -  #19 = Utf8               java/util/Arrays
+│ -  #20 = Utf8               copyOfRange
+│ -  #21 = Utf8               ([BII)[B
+│ -  #22 = InterfaceMethodref #23.#24        // org/apache/commons/compress/archivers/zip/ZipEncoding.decode:([B)Ljava/lang/String;
+│ -  #23 = Class              #25            // org/apache/commons/compress/archivers/zip/ZipEncoding
+│ -  #24 = NameAndType        #26:#27        // decode:([B)Ljava/lang/String;
+│ -  #25 = Utf8               org/apache/commons/compress/archivers/zip/ZipEncoding
+│ -  #26 = Utf8               decode
+│ -  #27 = Utf8               ([B)Ljava/lang/String;
+│ -  #28 = Integer            60012
+│ -  #29 = Methodref          #2.#30         // org/apache/commons/compress/archivers/dump/DumpArchiveUtil.calculateChecksum:([B)I
+│ -  #30 = NameAndType        #31:#32        // calculateChecksum:([B)I
+│ -  #31 = Utf8               calculateChecksum
+│ -  #32 = Utf8               ([B)I
+│ -  #33 = Methodref          #34.#35        // java/lang/Object."<init>":()V
+│ -  #34 = Class              #36            // java/lang/Object
+│ -  #35 = NameAndType        #37:#38        // "<init>":()V
+│ -  #36 = Utf8               java/lang/Object
+│ -  #37 = Utf8               <init>
+│ -  #38 = Utf8               ()V
+│ -  #39 = Utf8               Code
+│ -  #40 = Utf8               LineNumberTable
+│ -  #41 = Utf8               LocalVariableTable
+│ -  #42 = Utf8               i
+│ -  #43 = Utf8               I
+│ -  #44 = Utf8               buffer
+│ -  #45 = Utf8               [B
+│ -  #46 = Utf8               calc
+│ -  #47 = Utf8               StackMapTable
+│ -  #48 = Utf8               convert16
+│ -  #49 = Utf8               offset
+│ -  #50 = Utf8               convert64
+│ -  #51 = Utf8               ([BI)J
+│ -  #52 = Utf8               (Lorg/apache/commons/compress/archivers/zip/ZipEncoding;[BII)Ljava/lang/String;
+│ -  #53 = Utf8               encoding
+│ -  #54 = Utf8               Lorg/apache/commons/compress/archivers/zip/ZipEncoding;
+│ -  #55 = Utf8               b
+│ -  #56 = Utf8               len
+│ -  #57 = Utf8               Exceptions
+│ -  #58 = Class              #59            // java/io/IOException
+│ -  #59 = Utf8               java/io/IOException
+│ -  #60 = Utf8               getIno
+│ -  #61 = Utf8               verify
+│ -  #62 = Utf8               ([B)Z
+│ -  #63 = Utf8               magic
+│ -  #64 = Utf8               checksum
+│ -  #65 = Utf8               this
+│ -  #66 = Utf8               Lorg/apache/commons/compress/archivers/dump/DumpArchiveUtil;
+│ -  #67 = Utf8               SourceFile
+│ -  #68 = Utf8               DumpArchiveUtil.java
+│ +   #1 = Class              #2             // org/apache/commons/compress/archivers/dump/DumpArchiveUtil
+│ +   #2 = Utf8               org/apache/commons/compress/archivers/dump/DumpArchiveUtil
+│ +   #3 = Class              #4             // java/lang/Object
+│ +   #4 = Utf8               java/lang/Object
+│ +   #5 = Utf8               calculateChecksum
+│ +   #6 = Utf8               ([B)I
+│ +   #7 = Utf8               Code
+│ +   #8 = Methodref          #1.#9          // org/apache/commons/compress/archivers/dump/DumpArchiveUtil.convert32:([BI)I
+│ +   #9 = NameAndType        #10:#11        // convert32:([BI)I
+│ +  #10 = Utf8               convert32
+│ +  #11 = Utf8               ([BI)I
+│ +  #12 = Integer            84446
+│ +  #13 = Utf8               LineNumberTable
+│ +  #14 = Utf8               LocalVariableTable
+│ +  #15 = Utf8               buffer
+│ +  #16 = Utf8               [B
+│ +  #17 = Utf8               calc
+│ +  #18 = Utf8               I
+│ +  #19 = Utf8               i
+│ +  #20 = Utf8               StackMapTable
+│ +  #21 = Utf8               convert16
+│ +  #22 = Methodref          #23.#25        // org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│ +  #23 = Class              #24            // org/apache/commons/compress/utils/ByteUtils
+│ +  #24 = Utf8               org/apache/commons/compress/utils/ByteUtils
+│ +  #25 = NameAndType        #26:#27        // fromLittleEndian:([BII)J
+│ +  #26 = Utf8               fromLittleEndian
+│ +  #27 = Utf8               ([BII)J
+│ +  #28 = Utf8               offset
+│ +  #29 = Utf8               convert64
+│ +  #30 = Utf8               ([BI)J
+│ +  #31 = Utf8               decode
+│ +  #32 = Utf8               (Lorg/apache/commons/compress/archivers/zip/ZipEncoding;[BII)Ljava/lang/String;
+│ +  #33 = Utf8               Exceptions
+│ +  #34 = Class              #35            // java/io/IOException
+│ +  #35 = Utf8               java/io/IOException
+│ +  #36 = Methodref          #37.#39        // java/util/Arrays.copyOfRange:([BII)[B
+│ +  #37 = Class              #38            // java/util/Arrays
+│ +  #38 = Utf8               java/util/Arrays
+│ +  #39 = NameAndType        #40:#41        // copyOfRange:([BII)[B
+│ +  #40 = Utf8               copyOfRange
+│ +  #41 = Utf8               ([BII)[B
+│ +  #42 = InterfaceMethodref #43.#45        // org/apache/commons/compress/archivers/zip/ZipEncoding.decode:([B)Ljava/lang/String;
+│ +  #43 = Class              #44            // org/apache/commons/compress/archivers/zip/ZipEncoding
+│ +  #44 = Utf8               org/apache/commons/compress/archivers/zip/ZipEncoding
+│ +  #45 = NameAndType        #31:#46        // decode:([B)Ljava/lang/String;
+│ +  #46 = Utf8               ([B)Ljava/lang/String;
+│ +  #47 = Utf8               encoding
+│ +  #48 = Utf8               Lorg/apache/commons/compress/archivers/zip/ZipEncoding;
+│ +  #49 = Utf8               b
+│ +  #50 = Utf8               len
+│ +  #51 = Utf8               getIno
+│ +  #52 = Utf8               verify
+│ +  #53 = Utf8               ([B)Z
+│ +  #54 = Integer            60012
+│ +  #55 = Methodref          #1.#56         // org/apache/commons/compress/archivers/dump/DumpArchiveUtil.calculateChecksum:([B)I
+│ +  #56 = NameAndType        #5:#6          // calculateChecksum:([B)I
+│ +  #57 = Utf8               magic
+│ +  #58 = Utf8               checksum
+│ +  #59 = Utf8               <init>
+│ +  #60 = Utf8               ()V
+│ +  #61 = Methodref          #3.#62         // java/lang/Object."<init>":()V
+│ +  #62 = NameAndType        #59:#60        // "<init>":()V
+│ +  #63 = Utf8               this
+│ +  #64 = Utf8               Lorg/apache/commons/compress/archivers/dump/DumpArchiveUtil;
+│ +  #65 = Utf8               SourceFile
+│ +  #66 = Utf8               DumpArchiveUtil.java
+│  {
+│    public static int calculateChecksum(byte[]);
+│      descriptor: ([B)I
+│      flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+│      Code:
+│        stack=4, locals=3, args_size=1
+│           0: iconst_0
+│           1: istore_1
+│           2: iconst_0
+│           3: istore_2
+│ -         4: iload_2
+│ -         5: sipush        256
+│ -         8: if_icmpge     27
+│ -        11: iload_1
+│ -        12: aload_0
+│ -        13: iconst_4
+│ -        14: iload_2
+│ -        15: imul
+│ -        16: invokestatic  #1                  // Method convert32:([BI)I
+│ -        19: iadd
+│ -        20: istore_1
+│ -        21: iinc          2, 1
+│ -        24: goto          4
+│ -        27: ldc           #9                  // int 84446
+│ +         4: goto          20
+│ +         7: iload_1
+│ +         8: aload_0
+│ +         9: iconst_4
+│ +        10: iload_2
+│ +        11: imul
+│ +        12: invokestatic  #8                  // Method convert32:([BI)I
+│ +        15: iadd
+│ +        16: istore_1
+│ +        17: iinc          2, 1
+│ +        20: iload_2
+│ +        21: sipush        256
+│ +        24: if_icmplt     7
+│ +        27: ldc           #12                 // int 84446
+│          29: iload_1
+│          30: aload_0
+│          31: bipush        28
+│ -        33: invokestatic  #1                  // Method convert32:([BI)I
+│ +        33: invokestatic  #8                  // Method convert32:([BI)I
+│          36: isub
+│          37: isub
+│          38: ireturn
+│        LineNumberTable:
+│          line 38: 0
+│          line 40: 2
+│ -        line 41: 11
+│ -        line 40: 21
+│ +        line 41: 7
+│ +        line 40: 17
+│          line 44: 27
+│ -        line 45: 33
+│ -        line 44: 38
+│ +        line 45: 29
+│ +        line 44: 37
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│ -            4      23     2     i   I
+│              0      39     0 buffer   [B
+│              2      37     1  calc   I
+│ +            4      23     2     i   I
+│        StackMapTable: number_of_entries = 2
+│          frame_type = 253 /* append */
+│ -          offset_delta = 4
+│ +          offset_delta = 7
+│            locals = [ int, int ]
+│ -        frame_type = 250 /* chop */
+│ -          offset_delta = 22
+│ +        frame_type = 12 /* same */
+│  
+│    public static final int convert16(byte[], int);
+│      descriptor: ([BI)I
+│      flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+│      Code:
+│        stack=3, locals=2, args_size=2
+│           0: aload_0
+│           1: iload_1
+│           2: iconst_2
+│ -         3: invokestatic  #10                 // Method org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│ +         3: invokestatic  #22                 // Method org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│           6: l2i
+│           7: ireturn
+│        LineNumberTable:
+│          line 56: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0       8     0 buffer   [B
+│ @@ -149,15 +146,15 @@
+│      descriptor: ([BI)I
+│      flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+│      Code:
+│        stack=3, locals=2, args_size=2
+│           0: aload_0
+│           1: iload_1
+│           2: iconst_4
+│ -         3: invokestatic  #10                 // Method org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│ +         3: invokestatic  #22                 // Method org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│           6: l2i
+│           7: ireturn
+│        LineNumberTable:
+│          line 67: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0       8     0 buffer   [B
+│ @@ -167,117 +164,115 @@
+│      descriptor: ([BI)J
+│      flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+│      Code:
+│        stack=3, locals=2, args_size=2
+│           0: aload_0
+│           1: iload_1
+│           2: bipush        8
+│ -         4: invokestatic  #10                 // Method org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│ +         4: invokestatic  #22                 // Method org/apache/commons/compress/utils/ByteUtils.fromLittleEndian:([BII)J
+│           7: lreturn
+│        LineNumberTable:
+│          line 78: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0       8     0 buffer   [B
+│              0       8     1 offset   I
+│  
+│    static java.lang.String decode(org.apache.commons.compress.archivers.zip.ZipEncoding, byte[], int, int) throws java.io.IOException;
+│      descriptor: (Lorg/apache/commons/compress/archivers/zip/ZipEncoding;[BII)Ljava/lang/String;
+│      flags: (0x0008) ACC_STATIC
+│ +    Exceptions:
+│ +      throws java.io.IOException
+│      Code:
+│        stack=5, locals=4, args_size=4
+│           0: aload_0
+│           1: aload_1
+│           2: iload_2
+│           3: iload_2
+│           4: iload_3
+│           5: iadd
+│ -         6: invokestatic  #16                 // Method java/util/Arrays.copyOfRange:([BII)[B
+│ -         9: invokeinterface #22,  2           // InterfaceMethod org/apache/commons/compress/archivers/zip/ZipEncoding.decode:([B)Ljava/lang/String;
+│ +         6: invokestatic  #36                 // Method java/util/Arrays.copyOfRange:([BII)[B
+│ +         9: invokeinterface #42,  2           // InterfaceMethod org/apache/commons/compress/archivers/zip/ZipEncoding.decode:([B)Ljava/lang/String;
+│          14: areturn
+│        LineNumberTable:
+│          line 86: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      15     0 encoding   Lorg/apache/commons/compress/archivers/zip/ZipEncoding;
+│              0      15     1     b   [B
+│              0      15     2 offset   I
+│              0      15     3   len   I
+│ -    Exceptions:
+│ -      throws java.io.IOException
+│  
+│    public static final int getIno(byte[]);
+│      descriptor: ([B)I
+│      flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+│      Code:
+│        stack=2, locals=1, args_size=1
+│           0: aload_0
+│           1: bipush        20
+│ -         3: invokestatic  #1                  // Method convert32:([BI)I
+│ +         3: invokestatic  #8                  // Method convert32:([BI)I
+│           6: ireturn
+│        LineNumberTable:
+│          line 96: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0       7     0 buffer   [B
+│  
+│    public static final boolean verify(byte[]);
+│      descriptor: ([B)Z
+│      flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+│      Code:
+│        stack=2, locals=3, args_size=1
+│           0: aload_0
+│           1: bipush        24
+│ -         3: invokestatic  #1                  // Method convert32:([BI)I
+│ +         3: invokestatic  #8                  // Method convert32:([BI)I
+│           6: istore_1
+│           7: iload_1
+│ -         8: ldc           #28                 // int 60012
+│ +         8: ldc           #54                 // int 60012
+│          10: if_icmpeq     15
+│          13: iconst_0
+│          14: ireturn
+│          15: aload_0
+│          16: bipush        28
+│ -        18: invokestatic  #1                  // Method convert32:([BI)I
+│ +        18: invokestatic  #8                  // Method convert32:([BI)I
+│          21: istore_2
+│          22: iload_2
+│          23: aload_0
+│ -        24: invokestatic  #29                 // Method calculateChecksum:([B)I
+│ -        27: if_icmpne     34
+│ +        24: invokestatic  #55                 // Method calculateChecksum:([B)I
+│ +        27: if_icmpne     32
+│          30: iconst_1
+│ -        31: goto          35
+│ -        34: iconst_0
+│ -        35: ireturn
+│ +        31: ireturn
+│ +        32: iconst_0
+│ +        33: ireturn
+│        LineNumberTable:
+│          line 107: 0
+│          line 109: 7
+│          line 110: 13
+│          line 114: 15
+│          line 116: 22
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│ -            0      36     0 buffer   [B
+│ -            7      29     1 magic   I
+│ -           22      14     2 checksum   I
+│ -      StackMapTable: number_of_entries = 3
+│ +            0      34     0 buffer   [B
+│ +            7      27     1 magic   I
+│ +           22      12     2 checksum   I
+│ +      StackMapTable: number_of_entries = 2
+│          frame_type = 252 /* append */
+│            offset_delta = 15
+│            locals = [ int ]
+│          frame_type = 252 /* append */
+│ -          offset_delta = 18
+│ +          offset_delta = 16
+│            locals = [ int ]
+│ -        frame_type = 64 /* same_locals_1_stack_item */
+│ -          stack = [ int ]
+│  
+│    private org.apache.commons.compress.archivers.dump.DumpArchiveUtil();
+│      descriptor: ()V
+│      flags: (0x0002) ACC_PRIVATE
+│      Code:
+│        stack=1, locals=1, args_size=1
+│           0: aload_0
+│ -         1: invokespecial #33                 // Method java/lang/Object."<init>":()V
+│ +         1: invokespecial #61                 // Method java/lang/Object."<init>":()V
+│           4: return
+│        LineNumberTable:
+│          line 122: 0
+│          line 123: 4
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0       5     0  this   Lorg/apache/commons/compress/archivers/dump/DumpArchiveUtil;

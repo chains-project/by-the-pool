@@ -1,0 +1,27 @@
+[===
+insert-node
+---
+IRETURN [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 18, ===
+move-tree
+---
+ILOAD_2: IntType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 11, ===
+move-tree
+---
+SIPUSH [0,0]
+    ShortType: 256 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 11, ===
+move-tree
+---
+ICONST_0 [0,0]
+    IntType: 0 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 17]

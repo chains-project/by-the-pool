@@ -1,0 +1,45 @@
+--- openjdk-17.0.1/TapeInputStream.class
++++ ecj-3.28.0_openjdk-11.0.19/TapeInputStream.class
+├── procyon -ec {}
+│ @@ -123,36 +123,37 @@
+│                  int length = h >> 4 & 0xFFFFFFF;
+│                  final byte[] compBuffer = this.readRange(length);
+│                  this.bytesRead += length;
+│                  if (!decompress) {
+│                      Arrays.fill(this.blockBuffer, (byte)0);
+│                  }
+│                  else {
+│ -                    switch (TapeInputStream.TapeInputStream$1.$SwitchMap$org$apache$commons$compress$archivers$dump$DumpArchiveConstants$COMPRESSION_TYPE[DumpArchiveConstants.COMPRESSION_TYPE.find(flags & 0x3).ordinal()]) {
+│ -                        case 1: {
+│ +                    switch (DumpArchiveConstants.COMPRESSION_TYPE.find(flags & 0x3)) {
+│ +                        case ZLIB: {
+│                              final Inflater inflator = new Inflater();
+│                              try {
+│                                  inflator.setInput(compBuffer, 0, compBuffer.length);
+│                                  length = inflator.inflate(this.blockBuffer);
+│                                  if (length != this.blockSize) {
+│                                      throw new ShortFileException();
+│                                  }
+│                              }
+│                              catch (final DataFormatException e) {
+│                                  throw new DumpArchiveException("Bad data", (Throwable)e);
+│                              }
+│                              finally {
+│                                  inflator.end();
+│                              }
+│ +                            inflator.end();
+│                              break;
+│                          }
+│ -                        case 2: {
+│ +                        case BZLIB: {
+│                              throw new UnsupportedCompressionAlgorithmException("BZLIB2");
+│                          }
+│ -                        case 3: {
+│ +                        case LZO: {
+│                              throw new UnsupportedCompressionAlgorithmException("LZO");
+│                          }
+│                          default: {
+│                              throw new UnsupportedCompressionAlgorithmException();
+│                          }
+│                      }
+│                  }

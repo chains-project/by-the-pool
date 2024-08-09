@@ -1,0 +1,88 @@
+[===
+update-node
+---
+METHOD_INVOKED_RETURN_TYPE: ()V [0,0]
+replace ()V by (Ljava/lang/String;)V, ===
+delete-node
+---
+GETSTATIC [0,0]
+===, ===
+delete-node
+---
+INVOKEVIRTUAL [0,0]
+===, ===
+insert-node
+---
+java.lang.classfile.FieldModel [0,0]
+to
+root [0,5945]
+at 9, ===
+insert-node
+---
+java.lang.classfile.MethodModel [0,0]
+to
+root [0,5945]
+at 23, ===
+insert-node
+---
+INVOKESTATIC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 82, ===
+move-tree
+---
+ILOAD_3: IntType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 58, ===
+move-tree
+---
+ILOAD: IntType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 58, ===
+move-tree
+---
+INVOKEVIRTUAL [0,0]
+    METHOD_OWNER: java/util/zip/Inflater [0,0]
+    METHOD_INVOKED_NAME: end [0,0]
+    METHOD_INVOKED_RETURN_TYPE: ()V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 116, ===
+move-tree
+---
+ALOAD: ReferenceType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 118, ===
+move-tree
+---
+INVOKEVIRTUAL [0,0]
+    METHOD_OWNER: java/util/zip/Inflater [0,0]
+    METHOD_INVOKED_NAME: end [0,0]
+    METHOD_INVOKED_RETURN_TYPE: ()V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 118, ===
+move-tree
+---
+INVOKESPECIAL [0,0]
+    METHOD_OWNER: java/lang/StringBuilder [0,0]
+    METHOD_INVOKED_NAME: <init> [0,0]
+    METHOD_INVOKED_RETURN_TYPE: ()V [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 10, ===
+move-tree
+---
+LLOAD_1: LongType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 51, ===
+move-tree
+---
+LLOAD_3: LongType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 51]

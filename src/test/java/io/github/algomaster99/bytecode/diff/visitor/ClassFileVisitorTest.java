@@ -12,6 +12,7 @@ import java.lang.classfile.Opcode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -207,6 +208,47 @@ public class ClassFileVisitorTest {
                 // assert
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(0);
+            }
+        }
+
+        @Nested
+        class DiffComp {
+            @Disabled(
+                    "This test is disabled because I have to check why gumtree gives so many changes even though the bytecode should be equivalent.")
+            @Test
+            void shouldShowNoDifferenceInBytecode_1() throws IOException {
+                // arrange
+                Path oldClass = EQ.resolve("DiffComp")
+                        .resolve("82141")
+                        .resolve("openjdk-17.0.1")
+                        .resolve("TapeInputStream.class");
+                Path newClass = EQ.resolve("DiffComp")
+                        .resolve("82141")
+                        .resolve("ecj-3.28.0_openjdk-11.0.19")
+                        .resolve("TapeInputStream.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(1);
+            }
+
+            @Disabled("Unclear why there is a difference.")
+            @Test
+            void shouldShowNoDifferenceInBytecode_2() throws IOException {
+                Path oldClass = EQ.resolve("DiffComp")
+                        .resolve("82138")
+                        .resolve("openjdk-17.0.1")
+                        .resolve("DumpArchiveUtil.class");
+                Path newClass = EQ.resolve("DiffComp")
+                        .resolve("82138")
+                        .resolve("ecj-3.28.0_openjdk-11.0.19")
+                        .resolve("DumpArchiveUtil.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(1);
             }
         }
     }
