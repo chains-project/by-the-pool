@@ -190,6 +190,24 @@ public class ClassFileVisitorTest {
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(21);
             }
+
+            @Test
+            void shouldShowNoDifferenceInBytecode() throws IOException {
+                // arrange
+                Path oldClass = EQ_SAMECOMP
+                        .resolve("176701")
+                        .resolve("oraclejdk-11.0.19")
+                        .resolve("JavaLanguageParser$AnnotationConstantRestContext.class");
+                Path newClass = EQ_SAMECOMP
+                        .resolve("176701")
+                        .resolve("oraclejdk-17.0.7")
+                        .resolve("JavaLanguageParser$AnnotationConstantRestContext.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(0);
+            }
         }
     }
 

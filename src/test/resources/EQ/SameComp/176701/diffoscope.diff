@@ -1,0 +1,302 @@
+--- oraclejdk-11.0.19/JavaLanguageParser$AnnotationConstantRestContext.class
++++ oraclejdk-17.0.7/JavaLanguageParser$AnnotationConstantRestContext.class
+├── javap -verbose -constants -s -l -private {}
+│ @@ -1,110 +1,110 @@
+│ -  SHA-256 checksum fb295c854de590c91177559274692fb16903f7df0013d6ca84399ea7b897293f
+│ +  SHA-256 checksum ebeda21d3aa394e067bb9788bace1ac395146373d0818e425d253cc342cd808f
+│    Compiled from "JavaLanguageParser.java"
+│  public class com.puppycrawl.tools.checkstyle.grammar.java.JavaLanguageParser$AnnotationConstantRestContext extends org.antlr.v4.runtime.ParserRuleContext
+│    minor version: 0
+│    major version: 55
+│    flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+│ -  this_class: #10                         // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext
+│ -  super_class: #11                        // org/antlr/v4/runtime/ParserRuleContext
+│ +  this_class: #6                          // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext
+│ +  super_class: #12                        // org/antlr/v4/runtime/ParserRuleContext
+│    interfaces: 0, fields: 2, methods: 5, attributes: 3
+│  Constant pool:
+│ -   #1 = Class              #53            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ -   #2 = Class              #54            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│ -   #3 = Methodref          #10.#55        // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext.getRuleContext:(Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ -   #4 = Methodref          #11.#56        // org/antlr/v4/runtime/ParserRuleContext."<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ -   #5 = Fieldref           #10.#57        // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext.mods:Ljava/util/List;
+│ -   #6 = Fieldref           #10.#58        // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext.type:Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│ -   #7 = Class              #59            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│ -   #8 = InterfaceMethodref #7.#60         // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor.visitAnnotationConstantRest:(Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│ -   #9 = InterfaceMethodref #61.#62        // org/antlr/v4/runtime/tree/ParseTreeVisitor.visitChildren:(Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│ -  #10 = Class              #63            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext
+│ -  #11 = Class              #64            // org/antlr/v4/runtime/ParserRuleContext
+│ -  #12 = Utf8               mods
+│ -  #13 = Utf8               Ljava/util/List;
+│ -  #14 = Utf8               Signature
+│ -  #15 = Class              #65            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext
+│ -  #16 = Utf8               ModifierContext
+│ -  #17 = Utf8               InnerClasses
+│ -  #18 = Utf8               Ljava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;
+│ -  #19 = Utf8               type
+│ -  #20 = Class              #66            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext
+│ -  #21 = Utf8               TypeTypeContext
+│ -  #22 = Utf8               Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│ -  #23 = Utf8               variableDeclarators
+│ -  #24 = Utf8               VariableDeclaratorsContext
+│ -  #25 = Utf8               ()Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext;
+│ -  #26 = Utf8               Code
+│ -  #27 = Utf8               LineNumberTable
+│ -  #28 = Utf8               LocalVariableTable
+│ -  #29 = Utf8               this
+│ -  #30 = Utf8               AnnotationConstantRestContext
+│ -  #31 = Utf8               Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;
+│ -  #32 = Utf8               <init>
+│ -  #33 = Utf8               (Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ -  #34 = Utf8               parent
+│ -  #35 = Utf8               Lorg/antlr/v4/runtime/ParserRuleContext;
+│ -  #36 = Utf8               invokingState
+│ -  #37 = Utf8               I
+│ -  #38 = Utf8               (Lorg/antlr/v4/runtime/ParserRuleContext;ILjava/util/List;Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;)V
+│ -  #39 = Utf8               LocalVariableTypeTable
+│ -  #40 = Utf8               (Lorg/antlr/v4/runtime/ParserRuleContext;ILjava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;)V
+│ -  #41 = Utf8               getRuleIndex
+│ -  #42 = Utf8               ()I
+│ -  #43 = Utf8               accept
+│ -  #44 = Utf8               (Lorg/antlr/v4/runtime/tree/ParseTreeVisitor;)Ljava/lang/Object;
+│ -  #45 = Utf8               visitor
+│ -  #46 = Utf8               Lorg/antlr/v4/runtime/tree/ParseTreeVisitor;
+│ -  #47 = Utf8               Lorg/antlr/v4/runtime/tree/ParseTreeVisitor<+TT;>;
+│ -  #48 = Utf8               StackMapTable
+│ -  #49 = Utf8               <T:Ljava/lang/Object;>(Lorg/antlr/v4/runtime/tree/ParseTreeVisitor<+TT;>;)TT;
+│ -  #50 = Utf8               SourceFile
+│ -  #51 = Utf8               JavaLanguageParser.java
+│ -  #52 = Utf8               NestHost
+│ -  #53 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ -  #54 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│ -  #55 = NameAndType        #67:#68        // getRuleContext:(Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ -  #56 = NameAndType        #32:#33        // "<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ -  #57 = NameAndType        #12:#13        // mods:Ljava/util/List;
+│ -  #58 = NameAndType        #19:#22        // type:Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│ -  #59 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│ -  #60 = NameAndType        #69:#70        // visitAnnotationConstantRest:(Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│ -  #61 = Class              #71            // org/antlr/v4/runtime/tree/ParseTreeVisitor
+│ -  #62 = NameAndType        #72:#73        // visitChildren:(Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│ -  #63 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext
+│ -  #64 = Utf8               org/antlr/v4/runtime/ParserRuleContext
+│ -  #65 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext
+│ -  #66 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext
+│ -  #67 = Utf8               getRuleContext
+│ -  #68 = Utf8               (Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ -  #69 = Utf8               visitAnnotationConstantRest
+│ -  #70 = Utf8               (Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│ -  #71 = Utf8               org/antlr/v4/runtime/tree/ParseTreeVisitor
+│ -  #72 = Utf8               visitChildren
+│ -  #73 = Utf8               (Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│ +   #1 = Class              #2             // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ +   #2 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ +   #3 = Class              #4             // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│ +   #4 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│ +   #5 = Methodref          #6.#7          // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext.getRuleContext:(Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ +   #6 = Class              #8             // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext
+│ +   #7 = NameAndType        #9:#10         // getRuleContext:(Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ +   #8 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext
+│ +   #9 = Utf8               getRuleContext
+│ +  #10 = Utf8               (Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ +  #11 = Methodref          #12.#13        // org/antlr/v4/runtime/ParserRuleContext."<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ +  #12 = Class              #14            // org/antlr/v4/runtime/ParserRuleContext
+│ +  #13 = NameAndType        #15:#16        // "<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ +  #14 = Utf8               org/antlr/v4/runtime/ParserRuleContext
+│ +  #15 = Utf8               <init>
+│ +  #16 = Utf8               (Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ +  #17 = Fieldref           #6.#18         // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext.mods:Ljava/util/List;
+│ +  #18 = NameAndType        #19:#20        // mods:Ljava/util/List;
+│ +  #19 = Utf8               mods
+│ +  #20 = Utf8               Ljava/util/List;
+│ +  #21 = Fieldref           #6.#22         // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext.type:Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│ +  #22 = NameAndType        #23:#24        // type:Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│ +  #23 = Utf8               type
+│ +  #24 = Utf8               Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│ +  #25 = Class              #26            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│ +  #26 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│ +  #27 = InterfaceMethodref #25.#28        // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor.visitAnnotationConstantRest:(Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│ +  #28 = NameAndType        #29:#30        // visitAnnotationConstantRest:(Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│ +  #29 = Utf8               visitAnnotationConstantRest
+│ +  #30 = Utf8               (Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│ +  #31 = InterfaceMethodref #32.#33        // org/antlr/v4/runtime/tree/ParseTreeVisitor.visitChildren:(Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│ +  #32 = Class              #34            // org/antlr/v4/runtime/tree/ParseTreeVisitor
+│ +  #33 = NameAndType        #35:#36        // visitChildren:(Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│ +  #34 = Utf8               org/antlr/v4/runtime/tree/ParseTreeVisitor
+│ +  #35 = Utf8               visitChildren
+│ +  #36 = Utf8               (Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│ +  #37 = Utf8               Signature
+│ +  #38 = Utf8               Ljava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;
+│ +  #39 = Utf8               variableDeclarators
+│ +  #40 = Utf8               ()Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext;
+│ +  #41 = Utf8               Code
+│ +  #42 = Utf8               LineNumberTable
+│ +  #43 = Utf8               LocalVariableTable
+│ +  #44 = Utf8               this
+│ +  #45 = Utf8               Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;
+│ +  #46 = Utf8               parent
+│ +  #47 = Utf8               Lorg/antlr/v4/runtime/ParserRuleContext;
+│ +  #48 = Utf8               invokingState
+│ +  #49 = Utf8               I
+│ +  #50 = Utf8               (Lorg/antlr/v4/runtime/ParserRuleContext;ILjava/util/List;Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;)V
+│ +  #51 = Utf8               LocalVariableTypeTable
+│ +  #52 = Utf8               (Lorg/antlr/v4/runtime/ParserRuleContext;ILjava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;)V
+│ +  #53 = Utf8               getRuleIndex
+│ +  #54 = Utf8               ()I
+│ +  #55 = Utf8               accept
+│ +  #56 = Utf8               (Lorg/antlr/v4/runtime/tree/ParseTreeVisitor;)Ljava/lang/Object;
+│ +  #57 = Utf8               visitor
+│ +  #58 = Utf8               Lorg/antlr/v4/runtime/tree/ParseTreeVisitor;
+│ +  #59 = Utf8               Lorg/antlr/v4/runtime/tree/ParseTreeVisitor<+TT;>;
+│ +  #60 = Utf8               StackMapTable
+│ +  #61 = Utf8               <T:Ljava/lang/Object;>(Lorg/antlr/v4/runtime/tree/ParseTreeVisitor<+TT;>;)TT;
+│ +  #62 = Utf8               SourceFile
+│ +  #63 = Utf8               JavaLanguageParser.java
+│ +  #64 = Utf8               NestHost
+│ +  #65 = Utf8               InnerClasses
+│ +  #66 = Utf8               VariableDeclaratorsContext
+│ +  #67 = Utf8               AnnotationConstantRestContext
+│ +  #68 = Class              #69            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext
+│ +  #69 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext
+│ +  #70 = Utf8               TypeTypeContext
+│ +  #71 = Class              #72            // com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext
+│ +  #72 = Utf8               com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext
+│ +  #73 = Utf8               ModifierContext
+│  {
+│    public java.util.List<com.puppycrawl.tools.checkstyle.grammar.java.JavaLanguageParser$ModifierContext> mods;
+│      descriptor: Ljava/util/List;
+│      flags: (0x0001) ACC_PUBLIC
+│ -    Signature: #18                          // Ljava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;
+│ +    Signature: #38                          // Ljava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;
+│  
+│    public com.puppycrawl.tools.checkstyle.grammar.java.JavaLanguageParser$TypeTypeContext type;
+│      descriptor: Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│      flags: (0x0001) ACC_PUBLIC
+│  
+│    public com.puppycrawl.tools.checkstyle.grammar.java.JavaLanguageParser$VariableDeclaratorsContext variableDeclarators();
+│      descriptor: ()Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=3, locals=1, args_size=1
+│           0: aload_0
+│ -         1: ldc           #2                  // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│ +         1: ldc           #3                  // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│           3: iconst_0
+│ -         4: invokevirtual #3                  // Method getRuleContext:(Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ -         7: checkcast     #2                  // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│ +         4: invokevirtual #5                  // Method getRuleContext:(Ljava/lang/Class;I)Lorg/antlr/v4/runtime/ParserRuleContext;
+│ +         7: checkcast     #3                  // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext
+│          10: areturn
+│        LineNumberTable:
+│          line 5782: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      11     0  this   Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;
+│  
+│ @@ -112,15 +112,15 @@
+│      descriptor: (Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=3, locals=3, args_size=3
+│           0: aload_0
+│           1: aload_1
+│           2: iload_2
+│ -         3: invokespecial #4                  // Method org/antlr/v4/runtime/ParserRuleContext."<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ +         3: invokespecial #11                 // Method org/antlr/v4/runtime/ParserRuleContext."<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│           6: return
+│        LineNumberTable:
+│          line 5784: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0       7     0  this   Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;
+│              0       7     1 parent   Lorg/antlr/v4/runtime/ParserRuleContext;
+│ @@ -130,21 +130,21 @@
+│      descriptor: (Lorg/antlr/v4/runtime/ParserRuleContext;ILjava/util/List;Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;)V
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=3, locals=5, args_size=5
+│           0: aload_0
+│           1: aload_1
+│           2: iload_2
+│ -         3: invokespecial #4                  // Method org/antlr/v4/runtime/ParserRuleContext."<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│ +         3: invokespecial #11                 // Method org/antlr/v4/runtime/ParserRuleContext."<init>":(Lorg/antlr/v4/runtime/ParserRuleContext;I)V
+│           6: aload_0
+│           7: aload_3
+│ -         8: putfield      #5                  // Field mods:Ljava/util/List;
+│ +         8: putfield      #17                 // Field mods:Ljava/util/List;
+│          11: aload_0
+│          12: aload         4
+│ -        14: putfield      #6                  // Field type:Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│ +        14: putfield      #21                 // Field type:Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│          17: return
+│        LineNumberTable:
+│          line 5786: 0
+│          line 5787: 6
+│          line 5788: 11
+│          line 5789: 17
+│        LocalVariableTable:
+│ @@ -153,15 +153,15 @@
+│              0      18     1 parent   Lorg/antlr/v4/runtime/ParserRuleContext;
+│              0      18     2 invokingState   I
+│              0      18     3  mods   Ljava/util/List;
+│              0      18     4  type   Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;
+│        LocalVariableTypeTable:
+│          Start  Length  Slot  Name   Signature
+│              0      18     3  mods   Ljava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;
+│ -    Signature: #40                          // (Lorg/antlr/v4/runtime/ParserRuleContext;ILjava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;)V
+│ +    Signature: #52                          // (Lorg/antlr/v4/runtime/ParserRuleContext;ILjava/util/List<Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext;>;Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext;)V
+│  
+│    public int getRuleIndex();
+│      descriptor: ()I
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=1, locals=1, args_size=1
+│           0: bipush        72
+│ @@ -174,39 +174,39 @@
+│  
+│    public <T extends java.lang.Object> T accept(org.antlr.v4.runtime.tree.ParseTreeVisitor<? extends T>);
+│      descriptor: (Lorg/antlr/v4/runtime/tree/ParseTreeVisitor;)Ljava/lang/Object;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=2, locals=2, args_size=2
+│           0: aload_1
+│ -         1: instanceof    #7                  // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│ +         1: instanceof    #25                 // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│           4: ifeq          18
+│           7: aload_1
+│ -         8: checkcast     #7                  // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│ +         8: checkcast     #25                 // class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor
+│          11: aload_0
+│ -        12: invokeinterface #8,  2            // InterfaceMethod com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor.visitAnnotationConstantRest:(Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│ +        12: invokeinterface #27,  2           // InterfaceMethod com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParserVisitor.visitAnnotationConstantRest:(Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;)Ljava/lang/Object;
+│          17: areturn
+│          18: aload_1
+│          19: aload_0
+│ -        20: invokeinterface #9,  2            // InterfaceMethod org/antlr/v4/runtime/tree/ParseTreeVisitor.visitChildren:(Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│ +        20: invokeinterface #31,  2           // InterfaceMethod org/antlr/v4/runtime/tree/ParseTreeVisitor.visitChildren:(Lorg/antlr/v4/runtime/tree/RuleNode;)Ljava/lang/Object;
+│          25: areturn
+│        LineNumberTable:
+│          line 5793: 0
+│          line 5794: 18
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      26     0  this   Lcom/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext;
+│              0      26     1 visitor   Lorg/antlr/v4/runtime/tree/ParseTreeVisitor;
+│        LocalVariableTypeTable:
+│          Start  Length  Slot  Name   Signature
+│              0      26     1 visitor   Lorg/antlr/v4/runtime/tree/ParseTreeVisitor<+TT;>;
+│        StackMapTable: number_of_entries = 1
+│          frame_type = 18 /* same */
+│ -    Signature: #49                          // <T:Ljava/lang/Object;>(Lorg/antlr/v4/runtime/tree/ParseTreeVisitor<+TT;>;)TT;
+│ +    Signature: #61                          // <T:Ljava/lang/Object;>(Lorg/antlr/v4/runtime/tree/ParseTreeVisitor<+TT;>;)TT;
+│  }
+│  SourceFile: "JavaLanguageParser.java"
+│  NestHost: class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│  InnerClasses:
+│ -  public static #16= #15 of #1;           // ModifierContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ -  public static #21= #20 of #1;           // TypeTypeContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ -  public static #24= #2 of #1;            // VariableDeclaratorsContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ -  public static #30= #10 of #1;           // AnnotationConstantRestContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ +  public static #66= #3 of #1;            // VariableDeclaratorsContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$VariableDeclaratorsContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ +  public static #67= #6 of #1;            // AnnotationConstantRestContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$AnnotationConstantRestContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ +  public static #70= #68 of #1;           // TypeTypeContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$TypeTypeContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
+│ +  public static #73= #71 of #1;           // ModifierContext=class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser$ModifierContext of class com/puppycrawl/tools/checkstyle/grammar/java/JavaLanguageParser
