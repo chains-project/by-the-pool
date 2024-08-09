@@ -1,0 +1,47 @@
+--- ecj-3.15.1_openjdk-11.0.19/SimpleCharStream.class
++++ ecj-3.24.0_openjdk-11.0.19/SimpleCharStream.class
+├── javap -verbose -constants -s -l -private {}
+│ @@ -1,8 +1,8 @@
+│ -  SHA-256 checksum 23939ef0f2da4a74ecf589194401750a02b00a0c51eed6c67895f9483ba4a343
+│ +  SHA-256 checksum 8a868c0faef291598791f7f2be7141509cd353ee3b26e9bf9ef5e57cbc8035e7
+│    Compiled from "SimpleCharStream.java"
+│  public class org.apache.commons.configuration2.plist.SimpleCharStream
+│    minor version: 0
+│    major version: 52
+│    flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+│    this_class: #1                          // org/apache/commons/configuration2/plist/SimpleCharStream
+│    super_class: #3                         // java/lang/Object
+│ @@ -1433,15 +1433,15 @@
+│              0      34     5 buffersize   I
+│        StackMapTable: number_of_entries = 2
+│          frame_type = 80 /* same_locals_1_stack_item */
+│            stack = [ this ]
+│          frame_type = 255 /* full_frame */
+│            offset_delta = 8
+│            locals = [ this, class java/io/InputStream, class java/lang/String, int, int, int ]
+│ -          stack = [ this, class java/io/Reader ]
+│ +          stack = [ this, class java/io/InputStreamReader ]
+│  
+│    public org.apache.commons.configuration2.plist.SimpleCharStream(java.io.InputStream, int, int, int);
+│      descriptor: (Ljava/io/InputStream;III)V
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=5, locals=5, args_size=5
+│           0: aload_0
+│ @@ -1595,15 +1595,15 @@
+│              0      34     5 buffersize   I
+│        StackMapTable: number_of_entries = 2
+│          frame_type = 80 /* same_locals_1_stack_item */
+│            stack = [ class org/apache/commons/configuration2/plist/SimpleCharStream ]
+│          frame_type = 255 /* full_frame */
+│            offset_delta = 8
+│            locals = [ class org/apache/commons/configuration2/plist/SimpleCharStream, class java/io/InputStream, class java/lang/String, int, int, int ]
+│ -          stack = [ class org/apache/commons/configuration2/plist/SimpleCharStream, class java/io/Reader ]
+│ +          stack = [ class org/apache/commons/configuration2/plist/SimpleCharStream, class java/io/InputStreamReader ]
+│  
+│    public void ReInit(java.io.InputStream, int, int, int);
+│      descriptor: (Ljava/io/InputStream;III)V
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=5, locals=5, args_size=5
+│           0: aload_0

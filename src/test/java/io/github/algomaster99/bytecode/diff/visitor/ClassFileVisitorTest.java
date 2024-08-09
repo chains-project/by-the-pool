@@ -323,6 +323,23 @@ public class ClassFileVisitorTest {
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(1);
             }
+
+            @Test
+            void shouldShowDiffInStackMapTable() throws IOException {
+                Path oldClass = EQ.resolve("SameMjCompVer")
+                        .resolve("161860")
+                        .resolve("ecj-3.15.1_openjdk-11.0.19")
+                        .resolve("SimpleCharStream.class");
+                Path newClass = EQ.resolve("SameMjCompVer")
+                        .resolve("161860")
+                        .resolve("ecj-3.24.0_openjdk-11.0.19")
+                        .resolve("SimpleCharStream.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(1);
+            }
         }
     }
 
