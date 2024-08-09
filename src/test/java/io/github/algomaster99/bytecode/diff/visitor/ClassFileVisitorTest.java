@@ -340,6 +340,23 @@ public class ClassFileVisitorTest {
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(1);
             }
+
+            @Test
+            void shouldShowNotDiffInInvokeInterfaceInstruction() throws IOException {
+                Path oldClass = EQ.resolve("SameMjCompVer")
+                        .resolve("161875")
+                        .resolve("ecj-3.15.1_openjdk-11.0.19")
+                        .resolve("JsonFactory.class");
+                Path newClass = EQ.resolve("SameMjCompVer")
+                        .resolve("161875")
+                        .resolve("ecj-3.24.0_openjdk-11.0.19")
+                        .resolve("JsonFactory.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(1);
+            }
         }
     }
 

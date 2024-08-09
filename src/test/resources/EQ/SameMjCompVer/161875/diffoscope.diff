@@ -1,0 +1,68 @@
+--- ecj-3.15.1_openjdk-11.0.19/JsonFactory.class
++++ ecj-3.24.0_openjdk-11.0.19/JsonFactory.class
+├── javap -verbose -constants -s -l -private {}
+│ @@ -1,8 +1,8 @@
+│ -  SHA-256 checksum 5ad3d88ecc88f93b24f2c4abc555060f0acddd438bf671447c4336f5f2e05592
+│ +  SHA-256 checksum 94e5c798e948d2c5670cfa44006721587874662fdf6eb8de2cddf5ac7838c430
+│    Compiled from "JsonFactory.java"
+│  public class com.fasterxml.jackson.core.JsonFactory extends com.fasterxml.jackson.core.TokenStreamFactory implements com.fasterxml.jackson.core.Versioned,java.io.Serializable
+│    minor version: 0
+│    major version: 52
+│    flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+│    this_class: #1                          // com/fasterxml/jackson/core/JsonFactory
+│    super_class: #3                         // com/fasterxml/jackson/core/TokenStreamFactory
+│ @@ -352,18 +352,18 @@
+│    #343 = Utf8               (Lcom/fasterxml/jackson/core/io/OutputDecorator;)Lcom/fasterxml/jackson/core/JsonFactory;
+│    #344 = Utf8               setRootValueSeparator
+│    #345 = Utf8               (Ljava/lang/String;)Lcom/fasterxml/jackson/core/JsonFactory;
+│    #346 = Class              #347          // com/fasterxml/jackson/core/io/SerializedString
+│    #347 = Utf8               com/fasterxml/jackson/core/io/SerializedString
+│    #348 = Methodref          #346.#191     // com/fasterxml/jackson/core/io/SerializedString."<init>":(Ljava/lang/String;)V
+│    #349 = Utf8               sep
+│ -  #350 = Class              #351          // com/fasterxml/jackson/core/SerializableString
+│ -  #351 = Utf8               com/fasterxml/jackson/core/SerializableString
+│ -  #352 = Utf8               getRootValueSeparator
+│ -  #353 = InterfaceMethodref #350.#354     // com/fasterxml/jackson/core/SerializableString.getValue:()Ljava/lang/String;
+│ +  #350 = Utf8               getRootValueSeparator
+│ +  #351 = InterfaceMethodref #352.#354     // com/fasterxml/jackson/core/SerializableString.getValue:()Ljava/lang/String;
+│ +  #352 = Class              #353          // com/fasterxml/jackson/core/SerializableString
+│ +  #353 = Utf8               com/fasterxml/jackson/core/SerializableString
+│    #354 = NameAndType        #355:#197     // getValue:()Ljava/lang/String;
+│    #355 = Utf8               getValue
+│    #356 = Utf8               setCodec
+│    #357 = Utf8               (Lcom/fasterxml/jackson/core/ObjectCodec;)Lcom/fasterxml/jackson/core/JsonFactory;
+│    #358 = Utf8               getCodec
+│    #359 = Utf8               ()Lcom/fasterxml/jackson/core/ObjectCodec;
+│    #360 = Utf8               createParser
+│ @@ -2056,29 +2056,29 @@
+│              0      22     1   sep   Ljava/lang/String;
+│        StackMapTable: number_of_entries = 2
+│          frame_type = 73 /* same_locals_1_stack_item */
+│            stack = [ class com/fasterxml/jackson/core/JsonFactory ]
+│          frame_type = 255 /* full_frame */
+│            offset_delta = 7
+│            locals = [ class com/fasterxml/jackson/core/JsonFactory, class java/lang/String ]
+│ -          stack = [ class com/fasterxml/jackson/core/JsonFactory, class com/fasterxml/jackson/core/SerializableString ]
+│ +          stack = [ class com/fasterxml/jackson/core/JsonFactory, class com/fasterxml/jackson/core/io/SerializedString ]
+│  
+│    public java.lang.String getRootValueSeparator();
+│      descriptor: ()Ljava/lang/String;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=1, locals=1, args_size=1
+│           0: aload_0
+│           1: getfield      #104                // Field _rootValueSeparator:Lcom/fasterxml/jackson/core/SerializableString;
+│           4: ifnonnull     11
+│           7: aconst_null
+│           8: goto          20
+│          11: aload_0
+│          12: getfield      #104                // Field _rootValueSeparator:Lcom/fasterxml/jackson/core/SerializableString;
+│ -        15: invokeinterface #353,  1          // InterfaceMethod com/fasterxml/jackson/core/SerializableString.getValue:()Ljava/lang/String;
+│ +        15: invokeinterface #351,  1          // InterfaceMethod com/fasterxml/jackson/core/SerializableString.getValue:()Ljava/lang/String;
+│          20: areturn
+│        LineNumberTable:
+│          line 973: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      21     0  this   Lcom/fasterxml/jackson/core/JsonFactory;
+│        StackMapTable: number_of_entries = 2
