@@ -146,30 +146,50 @@ public class ClassFileVisitorTest {
         private static final Path EQ_OPENJDK = EQ.resolve("OpenJDK");
         private static final Path EQ_SAMECOMP = EQ.resolve("SameComp");
 
-        @Test
-        void recordsWithBothClassesCompiledWithSomeVersion() throws IOException {
-            // arrange
-            Path oldClass = EQ_OPENJDK.resolve("1").resolve("8.0.372").resolve("AbstractTestCase.class");
-            Path newClass = EQ_OPENJDK.resolve("1").resolve("9.0.1").resolve("AbstractTestCase.class");
-            DiffImpl diff = getDiff(oldClass, newClass);
+        @Nested
+        class ClassesWithSomeVersionOfOpenJDK {
+            @Test
+            void gumtreeShouldShowNoDifference() throws IOException {
+                // arrange
+                Path oldClass = EQ_OPENJDK.resolve("1").resolve("8.0.372").resolve("AbstractTestCase.class");
+                Path newClass = EQ_OPENJDK.resolve("1").resolve("9.0.1").resolve("AbstractTestCase.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
 
-            // assert
-            List<Action> rootOperations = diff.getRootOperations();
-            assertThat(rootOperations).size().isEqualTo(0);
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(0);
+            }
         }
 
-        @Test
-        void recordsWithBothClassesCompiledWithSameCompiler() throws IOException {
-            // arrange
-            Path oldClass =
-                    EQ_SAMECOMP.resolve("8909").resolve("openjdk-10.0.2").resolve("HmacUtils.class");
-            Path newClass =
-                    EQ_SAMECOMP.resolve("8909").resolve("openjdk-11.0.12").resolve("HmacUtils.class");
-            DiffImpl diff = getDiff(oldClass, newClass);
+        @Nested
+        class SameComp {
+            @Test
+            void gumtreeShowsDifferenceBetween_tryCatchFinally_and_tryWithResource() throws IOException {
+                // arrange
+                Path oldClass =
+                        EQ_SAMECOMP.resolve("8909").resolve("openjdk-10.0.2").resolve("HmacUtils.class");
+                Path newClass =
+                        EQ_SAMECOMP.resolve("8909").resolve("openjdk-11.0.12").resolve("HmacUtils.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
 
-            // assert
-            List<Action> rootOperations = diff.getRootOperations();
-            assertThat(rootOperations).size().isEqualTo(0);
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(21);
+            }
+
+            @Test
+            void gumtreeShowsDifferenceBetween_stringConcatenationJEP280() throws IOException {
+                // arrange
+                Path oldClass =
+                        EQ_SAMECOMP.resolve("7896").resolve("openjdk-9.0.1").resolve("ArchiveStreamFactory.class");
+                Path newClass =
+                        EQ_SAMECOMP.resolve("7896").resolve("openjdk-10.0.2").resolve("ArchiveStreamFactory.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(21);
+            }
         }
     }
 

@@ -1,0 +1,121 @@
+[===
+update-node
+---
+majorVersion: 53 [6,8]
+replace 53 by 51, ===
+delete-node
+---
+INVOKEDYNAMIC [0,0]
+===, ===
+delete-node
+---
+INVOKEDYNAMIC [0,0]
+===, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 131, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 132, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 133, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 134, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 135, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 137, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 138, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 139, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 140, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 100, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 101, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 102, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 103, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 104, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 106, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 107, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 108, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 109]

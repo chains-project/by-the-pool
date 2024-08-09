@@ -1,0 +1,1608 @@
+--- openjdk-9.0.1/ArchiveStreamFactory.class
++++ openjdk-10.0.2/ArchiveStreamFactory.class
+├── javap -verbose -constants -s -l -private {}
+│ @@ -1,425 +1,422 @@
+│ -  SHA-256 checksum 3ffc356457b2a7866902de697c4fa409a1e2831af0a89963ee37c478f3d5075e
+│ +  SHA-256 checksum 5ff8f08c4be612e179e4490b311ab5dc6ea3d6486f23e89fe807d49f5e23591f
+│    Compiled from "ArchiveStreamFactory.java"
+│  public class org.apache.commons.compress.archivers.ArchiveStreamFactory implements org.apache.commons.compress.archivers.ArchiveStreamProvider
+│    minor version: 0
+│ -  major version: 53
+│ +  major version: 51
+│    flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+│    this_class: #34                         // org/apache/commons/compress/archivers/ArchiveStreamFactory
+│ -  super_class: #125                       // java/lang/Object
+│ -  interfaces: 1, fields: 16, methods: 23, attributes: 3
+│ +  super_class: #130                       // java/lang/Object
+│ +  interfaces: 1, fields: 16, methods: 23, attributes: 2
+│  Constant pool:
+│ -    #1 = Methodref          #34.#236      // org/apache/commons/compress/archivers/ArchiveStreamFactory.findArchiveStreamProviders:()Ljava/util/ArrayList;
+│ -    #2 = Fieldref           #34.#237      // org/apache/commons/compress/archivers/ArchiveStreamFactory.SINGLETON:Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -    #3 = Methodref          #34.#238      // org/apache/commons/compress/archivers/ArchiveStreamFactory.serviceLoaderIterator:()Ljava/util/Iterator;
+│ -    #4 = Methodref          #239.#240     // org/apache/commons/compress/utils/Lists.newArrayList:(Ljava/util/Iterator;)Ljava/util/ArrayList;
+│ -    #5 = InterfaceMethodref #241.#242     // java/util/Set.iterator:()Ljava/util/Iterator;
+│ -    #6 = InterfaceMethodref #172.#243     // java/util/Iterator.hasNext:()Z
+│ -    #7 = InterfaceMethodref #172.#244     // java/util/Iterator.next:()Ljava/lang/Object;
+│ -    #8 = Class              #245          // java/lang/String
+│ -    #9 = Methodref          #34.#246      // org/apache/commons/compress/archivers/ArchiveStreamFactory.toKey:(Ljava/lang/String;)Ljava/lang/String;
+│ -   #10 = Methodref          #247.#248     // java/util/TreeMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+│ -   #11 = Class              #249          // org/apache/commons/compress/utils/ServiceLoaderIterator
+│ -   #12 = Class              #250          // org/apache/commons/compress/archivers/ArchiveStreamProvider
+│ -   #13 = Methodref          #11.#251      // org/apache/commons/compress/utils/ServiceLoaderIterator."<init>":(Ljava/lang/Class;)V
+│ -   #14 = Fieldref           #252.#253     // java/util/Locale.ROOT:Ljava/util/Locale;
+│ -   #15 = Methodref          #8.#254       // java/lang/String.toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
+│ -   #16 = Class              #255          // org/apache/commons/compress/archivers/ArchiveStreamFactory$1
+│ -   #17 = Methodref          #16.#256      // org/apache/commons/compress/archivers/ArchiveStreamFactory$1."<init>":()V
+│ -   #18 = Methodref          #257.#258     // java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│ -   #19 = Class              #259          // java/util/SortedMap
+│ -   #20 = Class              #260          // org/apache/commons/compress/archivers/ArchiveStreamFactory$2
+│ -   #21 = Methodref          #20.#256      // org/apache/commons/compress/archivers/ArchiveStreamFactory$2."<init>":()V
+│ -   #22 = Methodref          #34.#261      // org/apache/commons/compress/archivers/ArchiveStreamFactory."<init>":(Ljava/lang/String;)V
+│ -   #23 = Methodref          #125.#256     // java/lang/Object."<init>":()V
+│ -   #24 = Fieldref           #34.#262      // org/apache/commons/compress/archivers/ArchiveStreamFactory.encoding:Ljava/lang/String;
+│ -   #25 = Fieldref           #34.#263      // org/apache/commons/compress/archivers/ArchiveStreamFactory.entryEncoding:Ljava/lang/String;
+│ -   #26 = Class              #264          // java/lang/IllegalStateException
+│ -   #27 = String             #265          // Cannot overide encoding set by the constructor
+│ -   #28 = Methodref          #26.#261      // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+│ -   #29 = Methodref          #34.#266      // org/apache/commons/compress/archivers/ArchiveStreamFactory.createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -   #30 = Class              #267          // java/lang/IllegalArgumentException
+│ -   #31 = String             #268          // Archivername must not be null.
+│ -   #32 = Methodref          #30.#261      // java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+│ -   #33 = String             #269          // InputStream must not be null.
+│ -   #34 = Class              #270          // org/apache/commons/compress/archivers/ArchiveStreamFactory
+│ -   #35 = String             #271          // ar
+│ -   #36 = Methodref          #8.#272       // java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│ -   #37 = Class              #273          // org/apache/commons/compress/archivers/ar/ArArchiveInputStream
+│ -   #38 = Methodref          #37.#274      // org/apache/commons/compress/archivers/ar/ArArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ -   #39 = String             #275          // arj
+│ -   #40 = Class              #276          // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream
+│ -   #41 = Methodref          #40.#277      // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ -   #42 = Methodref          #40.#274      // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ -   #43 = String             #207          // zip
+│ -   #44 = Class              #278          // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream
+│ -   #45 = Methodref          #44.#277      // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ -   #46 = Methodref          #44.#274      // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ -   #47 = String             #279          // tar
+│ -   #48 = Class              #280          // org/apache/commons/compress/archivers/tar/TarArchiveInputStream
+│ -   #49 = Methodref          #48.#277      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ -   #50 = Methodref          #48.#274      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ -   #51 = String             #281          // jar
+│ -   #52 = Class              #282          // org/apache/commons/compress/archivers/jar/JarArchiveInputStream
+│ -   #53 = Methodref          #52.#277      // org/apache/commons/compress/archivers/jar/JarArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ -   #54 = Methodref          #52.#274      // org/apache/commons/compress/archivers/jar/JarArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ -   #55 = String             #283          // cpio
+│ -   #56 = Class              #284          // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream
+│ -   #57 = Methodref          #56.#277      // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ -   #58 = Methodref          #56.#274      // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ -   #59 = String             #285          // dump
+│ -   #60 = Class              #286          // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream
+│ -   #61 = Methodref          #60.#277      // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ -   #62 = Methodref          #60.#274      // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ -   #63 = String             #287          // 7z
+│ -   #64 = Class              #288          // org/apache/commons/compress/archivers/StreamingNotSupportedException
+│ -   #65 = Methodref          #64.#261      // org/apache/commons/compress/archivers/StreamingNotSupportedException."<init>":(Ljava/lang/String;)V
+│ -   #66 = Methodref          #34.#289      // org/apache/commons/compress/archivers/ArchiveStreamFactory.getArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ -   #67 = InterfaceMethodref #19.#290      // java/util/SortedMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+│ -   #68 = InterfaceMethodref #12.#266      // org/apache/commons/compress/archivers/ArchiveStreamProvider.createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -   #69 = Class              #291          // org/apache/commons/compress/archivers/ArchiveException
+│ -   #70 = InvokeDynamic      #0:#295       // #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+│ -   #71 = Methodref          #69.#261      // org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│ -   #72 = Methodref          #34.#296      // org/apache/commons/compress/archivers/ArchiveStreamFactory.createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ -   #73 = String             #297          // OutputStream must not be null.
+│ -   #74 = Class              #298          // org/apache/commons/compress/archivers/ar/ArArchiveOutputStream
+│ -   #75 = Methodref          #74.#299      // org/apache/commons/compress/archivers/ar/ArArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ -   #76 = Class              #300          // org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream
+│ -   #77 = Methodref          #76.#299      // org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ -   #78 = Methodref          #76.#301      // org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.setEncoding:(Ljava/lang/String;)V
+│ -   #79 = Class              #302          // org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│ -   #80 = Methodref          #79.#303      // org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ -   #81 = Methodref          #79.#299      // org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ -   #82 = Class              #304          // org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│ -   #83 = Methodref          #82.#303      // org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ -   #84 = Methodref          #82.#299      // org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ -   #85 = Class              #305          // org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│ -   #86 = Methodref          #85.#303      // org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ -   #87 = Methodref          #85.#299      // org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ -   #88 = Methodref          #34.#306      // org/apache/commons/compress/archivers/ArchiveStreamFactory.getArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ -   #89 = InterfaceMethodref #12.#296      // org/apache/commons/compress/archivers/ArchiveStreamProvider.createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ -   #90 = Methodref          #34.#307      // org/apache/commons/compress/archivers/ArchiveStreamFactory.detect:(Ljava/io/InputStream;)Ljava/lang/String;
+│ -   #91 = Methodref          #34.#308      // org/apache/commons/compress/archivers/ArchiveStreamFactory.createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -   #92 = String             #309          // Stream must not be null.
+│ -   #93 = Methodref          #221.#310     // java/io/InputStream.markSupported:()Z
+│ -   #94 = String             #311          // Mark is not supported.
+│ -   #95 = Methodref          #221.#312     // java/io/InputStream.mark:(I)V
+│ -   #96 = Methodref          #313.#314     // org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│ -   #97 = Methodref          #221.#315     // java/io/InputStream.reset:()V
+│ -   #98 = Class              #316          // java/io/IOException
+│ -   #99 = String             #317          // IOException while reading signature.
+│ -  #100 = Methodref          #69.#318      // org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│ -  #101 = Methodref          #44.#319      // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.matches:([BI)Z
+│ -  #102 = Methodref          #52.#319      // org/apache/commons/compress/archivers/jar/JarArchiveInputStream.matches:([BI)Z
+│ -  #103 = Methodref          #37.#319      // org/apache/commons/compress/archivers/ar/ArArchiveInputStream.matches:([BI)Z
+│ -  #104 = Methodref          #56.#319      // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.matches:([BI)Z
+│ -  #105 = Methodref          #40.#319      // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream.matches:([BI)Z
+│ -  #106 = Methodref          #320.#319     // org/apache/commons/compress/archivers/sevenz/SevenZFile.matches:([BI)Z
+│ -  #107 = String             #321          // IOException while reading dump signature
+│ -  #108 = Methodref          #60.#319      // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream.matches:([BI)Z
+│ -  #109 = String             #322          // IOException while reading tar signature
+│ -  #110 = Methodref          #48.#319      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream.matches:([BI)Z
+│ -  #111 = Class              #323          // java/io/ByteArrayInputStream
+│ -  #112 = Methodref          #111.#324     // java/io/ByteArrayInputStream."<init>":([B)V
+│ -  #113 = Methodref          #48.#325      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream.getNextTarEntry:()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ -  #114 = Methodref          #326.#327     // org/apache/commons/compress/archivers/tar/TarArchiveEntry.isCheckSumOK:()Z
+│ -  #115 = Methodref          #313.#328     // org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│ -  #116 = Class              #329          // java/lang/Exception
+│ -  #117 = String             #330          // No Archiver found for the stream signature
+│ -  #118 = Fieldref           #34.#331      // org/apache/commons/compress/archivers/ArchiveStreamFactory.archiveInputStreamProviders:Ljava/util/SortedMap;
+│ -  #119 = Methodref          #34.#332      // org/apache/commons/compress/archivers/ArchiveStreamFactory.findAvailableArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ -  #120 = Methodref          #333.#334     // java/util/Collections.unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ -  #121 = Fieldref           #34.#335      // org/apache/commons/compress/archivers/ArchiveStreamFactory.archiveOutputStreamProviders:Ljava/util/SortedMap;
+│ -  #122 = Methodref          #34.#336      // org/apache/commons/compress/archivers/ArchiveStreamFactory.findAvailableArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ -  #123 = Methodref          #337.#338     // org/apache/commons/compress/utils/Sets.newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│ -  #124 = Methodref          #34.#256      // org/apache/commons/compress/archivers/ArchiveStreamFactory."<init>":()V
+│ -  #125 = Class              #339          // java/lang/Object
+│ -  #126 = Utf8               InnerClasses
+│ -  #127 = Utf8               TAR_HEADER_SIZE
+│ -  #128 = Utf8               I
+│ -  #129 = Utf8               ConstantValue
+│ -  #130 = Integer            512
+│ -  #131 = Utf8               DUMP_SIGNATURE_SIZE
+│ -  #132 = Integer            32
+│ -  #133 = Utf8               SIGNATURE_SIZE
+│ -  #134 = Integer            12
+│ -  #135 = Utf8               SINGLETON
+│ -  #136 = Utf8               Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -  #137 = Utf8               AR
+│ -  #138 = Utf8               Ljava/lang/String;
+│ -  #139 = Utf8               ARJ
+│ -  #140 = Utf8               CPIO
+│ -  #141 = Utf8               DUMP
+│ -  #142 = Utf8               JAR
+│ -  #143 = Utf8               TAR
+│ -  #144 = Utf8               ZIP
+│ -  #145 = Utf8               SEVEN_Z
+│ -  #146 = Utf8               encoding
+│ -  #147 = Utf8               entryEncoding
+│ -  #148 = Utf8               archiveInputStreamProviders
+│ -  #149 = Utf8               Ljava/util/SortedMap;
+│ -  #150 = Utf8               Signature
+│ -  #151 = Utf8               Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ -  #152 = Utf8               archiveOutputStreamProviders
+│ -  #153 = Utf8               findArchiveStreamProviders
+│ -  #154 = Utf8               ()Ljava/util/ArrayList;
+│ -  #155 = Utf8               Code
+│ -  #156 = Utf8               LineNumberTable
+│ -  #157 = Utf8               ()Ljava/util/ArrayList<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ -  #158 = Utf8               putAll
+│ -  #159 = Utf8               (Ljava/util/Set;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;Ljava/util/TreeMap;)V
+│ -  #160 = Utf8               LocalVariableTable
+│ -  #161 = Utf8               name
+│ -  #162 = Utf8               names
+│ -  #163 = Utf8               Ljava/util/Set;
+│ -  #164 = Utf8               provider
+│ -  #165 = Utf8               Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;
+│ -  #166 = Utf8               map
+│ -  #167 = Utf8               Ljava/util/TreeMap;
+│ -  #168 = Utf8               LocalVariableTypeTable
+│ -  #169 = Utf8               Ljava/util/Set<Ljava/lang/String;>;
+│ -  #170 = Utf8               Ljava/util/TreeMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ -  #171 = Utf8               StackMapTable
+│ -  #172 = Class              #340          // java/util/Iterator
+│ -  #173 = Utf8               (Ljava/util/Set<Ljava/lang/String;>;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;Ljava/util/TreeMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;)V
+│ -  #174 = Utf8               serviceLoaderIterator
+│ -  #175 = Utf8               ()Ljava/util/Iterator;
+│ -  #176 = Utf8               ()Ljava/util/Iterator<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ -  #177 = Utf8               toKey
+│ -  #178 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+│ -  #179 = Utf8               findAvailableArchiveInputStreamProviders
+│ -  #180 = Utf8               ()Ljava/util/SortedMap;
+│ -  #181 = Utf8               ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ -  #182 = Utf8               findAvailableArchiveOutputStreamProviders
+│ -  #183 = Utf8               <init>
+│ -  #184 = Utf8               ()V
+│ -  #185 = Utf8               this
+│ -  #186 = Utf8               (Ljava/lang/String;)V
+│ -  #187 = Utf8               getEntryEncoding
+│ -  #188 = Utf8               ()Ljava/lang/String;
+│ -  #189 = Utf8               setEntryEncoding
+│ -  #190 = Utf8               Deprecated
+│ -  #191 = Utf8               RuntimeVisibleAnnotations
+│ -  #192 = Utf8               Ljava/lang/Deprecated;
+│ -  #193 = Utf8               createArchiveInputStream
+│ -  #194 = Utf8               (Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -  #195 = Utf8               archiverName
+│ -  #196 = Utf8               in
+│ -  #197 = Utf8               Ljava/io/InputStream;
+│ -  #198 = Utf8               Exceptions
+│ -  #199 = Utf8               (Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -  #200 = Utf8               actualEncoding
+│ -  #201 = Utf8               archiveStreamProvider
+│ -  #202 = Utf8               createArchiveOutputStream
+│ -  #203 = Utf8               (Ljava/lang/String;Ljava/io/OutputStream;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ -  #204 = Utf8               out
+│ -  #205 = Utf8               Ljava/io/OutputStream;
+│ -  #206 = Utf8               (Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ -  #207 = Utf8               zip
+│ -  #208 = Utf8               Lorg/apache/commons/compress/archivers/zip/ZipArchiveOutputStream;
+│ -  #209 = Utf8               (Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -  #210 = Utf8               detect
+│ -  #211 = Utf8               (Ljava/io/InputStream;)Ljava/lang/String;
+│ -  #212 = Utf8               e
+│ -  #213 = Utf8               Ljava/io/IOException;
+│ -  #214 = Utf8               tais
+│ -  #215 = Utf8               Lorg/apache/commons/compress/archivers/tar/TarArchiveInputStream;
+│ -  #216 = Utf8               signature
+│ -  #217 = Utf8               [B
+│ -  #218 = Utf8               signatureLength
+│ -  #219 = Utf8               dumpsig
+│ -  #220 = Utf8               tarHeader
+│ -  #221 = Class              #341          // java/io/InputStream
+│ -  #222 = Class              #217          // "[B"
+│ -  #223 = Class              #342          // java/lang/Throwable
+│ -  #224 = Utf8               getArchiveInputStreamProviders
+│ -  #225 = Utf8               getArchiveOutputStreamProviders
+│ -  #226 = Utf8               getInputStreamArchiveNames
+│ -  #227 = Utf8               ()Ljava/util/Set;
+│ -  #228 = Utf8               ()Ljava/util/Set<Ljava/lang/String;>;
+│ -  #229 = Utf8               getOutputStreamArchiveNames
+│ -  #230 = Utf8               access$000
+│ -  #231 = Utf8               ()Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -  #232 = Utf8               access$100
+│ -  #233 = Utf8               <clinit>
+│ -  #234 = Utf8               SourceFile
+│ -  #235 = Utf8               ArchiveStreamFactory.java
+│ -  #236 = NameAndType        #153:#154     // findArchiveStreamProviders:()Ljava/util/ArrayList;
+│ -  #237 = NameAndType        #135:#136     // SINGLETON:Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -  #238 = NameAndType        #174:#175     // serviceLoaderIterator:()Ljava/util/Iterator;
+│ -  #239 = Class              #343          // org/apache/commons/compress/utils/Lists
+│ -  #240 = NameAndType        #344:#345     // newArrayList:(Ljava/util/Iterator;)Ljava/util/ArrayList;
+│ -  #241 = Class              #346          // java/util/Set
+│ -  #242 = NameAndType        #347:#175     // iterator:()Ljava/util/Iterator;
+│ -  #243 = NameAndType        #348:#349     // hasNext:()Z
+│ -  #244 = NameAndType        #350:#351     // next:()Ljava/lang/Object;
+│ -  #245 = Utf8               java/lang/String
+│ -  #246 = NameAndType        #177:#178     // toKey:(Ljava/lang/String;)Ljava/lang/String;
+│ -  #247 = Class              #352          // java/util/TreeMap
+│ -  #248 = NameAndType        #353:#354     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+│ -  #249 = Utf8               org/apache/commons/compress/utils/ServiceLoaderIterator
+│ -  #250 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamProvider
+│ -  #251 = NameAndType        #183:#355     // "<init>":(Ljava/lang/Class;)V
+│ -  #252 = Class              #356          // java/util/Locale
+│ -  #253 = NameAndType        #357:#358     // ROOT:Ljava/util/Locale;
+│ -  #254 = NameAndType        #359:#360     // toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
+│ -  #255 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamFactory$1
+│ -  #256 = NameAndType        #183:#184     // "<init>":()V
+│ -  #257 = Class              #361          // java/security/AccessController
+│ -  #258 = NameAndType        #362:#363     // doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│ -  #259 = Utf8               java/util/SortedMap
+│ -  #260 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamFactory$2
+│ -  #261 = NameAndType        #183:#186     // "<init>":(Ljava/lang/String;)V
+│ -  #262 = NameAndType        #146:#138     // encoding:Ljava/lang/String;
+│ -  #263 = NameAndType        #147:#138     // entryEncoding:Ljava/lang/String;
+│ -  #264 = Utf8               java/lang/IllegalStateException
+│ -  #265 = Utf8               Cannot overide encoding set by the constructor
+│ -  #266 = NameAndType        #193:#199     // createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -  #267 = Utf8               java/lang/IllegalArgumentException
+│ -  #268 = Utf8               Archivername must not be null.
+│ -  #269 = Utf8               InputStream must not be null.
+│ -  #270 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamFactory
+│ -  #271 = Utf8               ar
+│ -  #272 = NameAndType        #364:#365     // equalsIgnoreCase:(Ljava/lang/String;)Z
+│ -  #273 = Utf8               org/apache/commons/compress/archivers/ar/ArArchiveInputStream
+│ -  #274 = NameAndType        #183:#366     // "<init>":(Ljava/io/InputStream;)V
+│ -  #275 = Utf8               arj
+│ -  #276 = Utf8               org/apache/commons/compress/archivers/arj/ArjArchiveInputStream
+│ -  #277 = NameAndType        #183:#367     // "<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ -  #278 = Utf8               org/apache/commons/compress/archivers/zip/ZipArchiveInputStream
+│ -  #279 = Utf8               tar
+│ -  #280 = Utf8               org/apache/commons/compress/archivers/tar/TarArchiveInputStream
+│ -  #281 = Utf8               jar
+│ -  #282 = Utf8               org/apache/commons/compress/archivers/jar/JarArchiveInputStream
+│ -  #283 = Utf8               cpio
+│ -  #284 = Utf8               org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream
+│ -  #285 = Utf8               dump
+│ -  #286 = Utf8               org/apache/commons/compress/archivers/dump/DumpArchiveInputStream
+│ -  #287 = Utf8               7z
+│ -  #288 = Utf8               org/apache/commons/compress/archivers/StreamingNotSupportedException
+│ -  #289 = NameAndType        #224:#180     // getArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ -  #290 = NameAndType        #368:#369     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+│ -  #291 = Utf8               org/apache/commons/compress/archivers/ArchiveException
+│ -  #292 = Utf8               BootstrapMethods
+│ -  #293 = MethodHandle       6:#370        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+│ -  #294 = String             #371          // Archiver: \u0001 not found.
+│ -  #295 = NameAndType        #372:#178     // makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+│ -  #296 = NameAndType        #202:#206     // createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ -  #297 = Utf8               OutputStream must not be null.
+│ -  #298 = Utf8               org/apache/commons/compress/archivers/ar/ArArchiveOutputStream
+│ -  #299 = NameAndType        #183:#373     // "<init>":(Ljava/io/OutputStream;)V
+│ -  #300 = Utf8               org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream
+│ -  #301 = NameAndType        #374:#186     // setEncoding:(Ljava/lang/String;)V
+│ -  #302 = Utf8               org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│ -  #303 = NameAndType        #183:#375     // "<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ -  #304 = Utf8               org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│ -  #305 = Utf8               org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│ -  #306 = NameAndType        #225:#180     // getArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ -  #307 = NameAndType        #210:#211     // detect:(Ljava/io/InputStream;)Ljava/lang/String;
+│ -  #308 = NameAndType        #193:#194     // createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ -  #309 = Utf8               Stream must not be null.
+│ -  #310 = NameAndType        #376:#349     // markSupported:()Z
+│ -  #311 = Utf8               Mark is not supported.
+│ -  #312 = NameAndType        #377:#378     // mark:(I)V
+│ -  #313 = Class              #379          // org/apache/commons/compress/utils/IOUtils
+│ -  #314 = NameAndType        #380:#381     // readFully:(Ljava/io/InputStream;[B)I
+│ -  #315 = NameAndType        #382:#184     // reset:()V
+│ -  #316 = Utf8               java/io/IOException
+│ -  #317 = Utf8               IOException while reading signature.
+│ -  #318 = NameAndType        #183:#383     // "<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│ -  #319 = NameAndType        #384:#385     // matches:([BI)Z
+│ -  #320 = Class              #386          // org/apache/commons/compress/archivers/sevenz/SevenZFile
+│ -  #321 = Utf8               IOException while reading dump signature
+│ -  #322 = Utf8               IOException while reading tar signature
+│ -  #323 = Utf8               java/io/ByteArrayInputStream
+│ -  #324 = NameAndType        #183:#387     // "<init>":([B)V
+│ -  #325 = NameAndType        #388:#389     // getNextTarEntry:()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ -  #326 = Class              #390          // org/apache/commons/compress/archivers/tar/TarArchiveEntry
+│ -  #327 = NameAndType        #391:#349     // isCheckSumOK:()Z
+│ -  #328 = NameAndType        #392:#393     // closeQuietly:(Ljava/io/Closeable;)V
+│ -  #329 = Utf8               java/lang/Exception
+│ -  #330 = Utf8               No Archiver found for the stream signature
+│ -  #331 = NameAndType        #148:#149     // archiveInputStreamProviders:Ljava/util/SortedMap;
+│ -  #332 = NameAndType        #179:#180     // findAvailableArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ -  #333 = Class              #394          // java/util/Collections
+│ -  #334 = NameAndType        #395:#396     // unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ -  #335 = NameAndType        #152:#149     // archiveOutputStreamProviders:Ljava/util/SortedMap;
+│ -  #336 = NameAndType        #182:#180     // findAvailableArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ -  #337 = Class              #397          // org/apache/commons/compress/utils/Sets
+│ -  #338 = NameAndType        #398:#399     // newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│ -  #339 = Utf8               java/lang/Object
+│ -  #340 = Utf8               java/util/Iterator
+│ -  #341 = Utf8               java/io/InputStream
+│ -  #342 = Utf8               java/lang/Throwable
+│ -  #343 = Utf8               org/apache/commons/compress/utils/Lists
+│ -  #344 = Utf8               newArrayList
+│ -  #345 = Utf8               (Ljava/util/Iterator;)Ljava/util/ArrayList;
+│ -  #346 = Utf8               java/util/Set
+│ -  #347 = Utf8               iterator
+│ -  #348 = Utf8               hasNext
+│ -  #349 = Utf8               ()Z
+│ -  #350 = Utf8               next
+│ -  #351 = Utf8               ()Ljava/lang/Object;
+│ -  #352 = Utf8               java/util/TreeMap
+│ -  #353 = Utf8               put
+│ -  #354 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+│ -  #355 = Utf8               (Ljava/lang/Class;)V
+│ -  #356 = Utf8               java/util/Locale
+│ -  #357 = Utf8               ROOT
+│ -  #358 = Utf8               Ljava/util/Locale;
+│ -  #359 = Utf8               toUpperCase
+│ -  #360 = Utf8               (Ljava/util/Locale;)Ljava/lang/String;
+│ -  #361 = Utf8               java/security/AccessController
+│ -  #362 = Utf8               doPrivileged
+│ -  #363 = Utf8               (Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│ -  #364 = Utf8               equalsIgnoreCase
+│ -  #365 = Utf8               (Ljava/lang/String;)Z
+│ -  #366 = Utf8               (Ljava/io/InputStream;)V
+│ -  #367 = Utf8               (Ljava/io/InputStream;Ljava/lang/String;)V
+│ -  #368 = Utf8               get
+│ -  #369 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+│ -  #370 = Methodref          #400.#401     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+│ -  #371 = Utf8               Archiver: \u0001 not found.
+│ -  #372 = Utf8               makeConcatWithConstants
+│ -  #373 = Utf8               (Ljava/io/OutputStream;)V
+│ -  #374 = Utf8               setEncoding
+│ -  #375 = Utf8               (Ljava/io/OutputStream;Ljava/lang/String;)V
+│ -  #376 = Utf8               markSupported
+│ -  #377 = Utf8               mark
+│ -  #378 = Utf8               (I)V
+│ -  #379 = Utf8               org/apache/commons/compress/utils/IOUtils
+│ -  #380 = Utf8               readFully
+│ -  #381 = Utf8               (Ljava/io/InputStream;[B)I
+│ -  #382 = Utf8               reset
+│ -  #383 = Utf8               (Ljava/lang/String;Ljava/lang/Exception;)V
+│ -  #384 = Utf8               matches
+│ -  #385 = Utf8               ([BI)Z
+│ -  #386 = Utf8               org/apache/commons/compress/archivers/sevenz/SevenZFile
+│ -  #387 = Utf8               ([B)V
+│ -  #388 = Utf8               getNextTarEntry
+│ -  #389 = Utf8               ()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ -  #390 = Utf8               org/apache/commons/compress/archivers/tar/TarArchiveEntry
+│ -  #391 = Utf8               isCheckSumOK
+│ -  #392 = Utf8               closeQuietly
+│ -  #393 = Utf8               (Ljava/io/Closeable;)V
+│ -  #394 = Utf8               java/util/Collections
+│ -  #395 = Utf8               unmodifiableSortedMap
+│ -  #396 = Utf8               (Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ -  #397 = Utf8               org/apache/commons/compress/utils/Sets
+│ -  #398 = Utf8               newHashSet
+│ -  #399 = Utf8               ([Ljava/lang/Object;)Ljava/util/HashSet;
+│ -  #400 = Class              #402          // java/lang/invoke/StringConcatFactory
+│ -  #401 = NameAndType        #372:#405     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+│ -  #402 = Utf8               java/lang/invoke/StringConcatFactory
+│ -  #403 = Class              #407          // java/lang/invoke/MethodHandles$Lookup
+│ -  #404 = Utf8               Lookup
+│ -  #405 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+│ -  #406 = Class              #408          // java/lang/invoke/MethodHandles
+│ -  #407 = Utf8               java/lang/invoke/MethodHandles$Lookup
+│ -  #408 = Utf8               java/lang/invoke/MethodHandles
+│ +    #1 = Methodref          #34.#241      // org/apache/commons/compress/archivers/ArchiveStreamFactory.findArchiveStreamProviders:()Ljava/util/ArrayList;
+│ +    #2 = Fieldref           #34.#242      // org/apache/commons/compress/archivers/ArchiveStreamFactory.SINGLETON:Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ +    #3 = Methodref          #34.#243      // org/apache/commons/compress/archivers/ArchiveStreamFactory.serviceLoaderIterator:()Ljava/util/Iterator;
+│ +    #4 = Methodref          #244.#245     // org/apache/commons/compress/utils/Lists.newArrayList:(Ljava/util/Iterator;)Ljava/util/ArrayList;
+│ +    #5 = InterfaceMethodref #246.#247     // java/util/Set.iterator:()Ljava/util/Iterator;
+│ +    #6 = InterfaceMethodref #177.#248     // java/util/Iterator.hasNext:()Z
+│ +    #7 = InterfaceMethodref #177.#249     // java/util/Iterator.next:()Ljava/lang/Object;
+│ +    #8 = Class              #250          // java/lang/String
+│ +    #9 = Methodref          #34.#251      // org/apache/commons/compress/archivers/ArchiveStreamFactory.toKey:(Ljava/lang/String;)Ljava/lang/String;
+│ +   #10 = Methodref          #252.#253     // java/util/TreeMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+│ +   #11 = Class              #254          // org/apache/commons/compress/utils/ServiceLoaderIterator
+│ +   #12 = Class              #255          // org/apache/commons/compress/archivers/ArchiveStreamProvider
+│ +   #13 = Methodref          #11.#256      // org/apache/commons/compress/utils/ServiceLoaderIterator."<init>":(Ljava/lang/Class;)V
+│ +   #14 = Fieldref           #257.#258     // java/util/Locale.ROOT:Ljava/util/Locale;
+│ +   #15 = Methodref          #8.#259       // java/lang/String.toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
+│ +   #16 = Class              #260          // org/apache/commons/compress/archivers/ArchiveStreamFactory$1
+│ +   #17 = Methodref          #16.#261      // org/apache/commons/compress/archivers/ArchiveStreamFactory$1."<init>":()V
+│ +   #18 = Methodref          #262.#263     // java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│ +   #19 = Class              #264          // java/util/SortedMap
+│ +   #20 = Class              #265          // org/apache/commons/compress/archivers/ArchiveStreamFactory$2
+│ +   #21 = Methodref          #20.#261      // org/apache/commons/compress/archivers/ArchiveStreamFactory$2."<init>":()V
+│ +   #22 = Methodref          #34.#266      // org/apache/commons/compress/archivers/ArchiveStreamFactory."<init>":(Ljava/lang/String;)V
+│ +   #23 = Methodref          #130.#261     // java/lang/Object."<init>":()V
+│ +   #24 = Fieldref           #34.#267      // org/apache/commons/compress/archivers/ArchiveStreamFactory.encoding:Ljava/lang/String;
+│ +   #25 = Fieldref           #34.#268      // org/apache/commons/compress/archivers/ArchiveStreamFactory.entryEncoding:Ljava/lang/String;
+│ +   #26 = Class              #269          // java/lang/IllegalStateException
+│ +   #27 = String             #270          // Cannot overide encoding set by the constructor
+│ +   #28 = Methodref          #26.#266      // java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+│ +   #29 = Methodref          #34.#271      // org/apache/commons/compress/archivers/ArchiveStreamFactory.createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +   #30 = Class              #272          // java/lang/IllegalArgumentException
+│ +   #31 = String             #273          // Archivername must not be null.
+│ +   #32 = Methodref          #30.#266      // java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+│ +   #33 = String             #274          // InputStream must not be null.
+│ +   #34 = Class              #275          // org/apache/commons/compress/archivers/ArchiveStreamFactory
+│ +   #35 = String             #276          // ar
+│ +   #36 = Methodref          #8.#277       // java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│ +   #37 = Class              #278          // org/apache/commons/compress/archivers/ar/ArArchiveInputStream
+│ +   #38 = Methodref          #37.#279      // org/apache/commons/compress/archivers/ar/ArArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ +   #39 = String             #280          // arj
+│ +   #40 = Class              #281          // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream
+│ +   #41 = Methodref          #40.#282      // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ +   #42 = Methodref          #40.#279      // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ +   #43 = String             #212          // zip
+│ +   #44 = Class              #283          // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream
+│ +   #45 = Methodref          #44.#282      // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ +   #46 = Methodref          #44.#279      // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ +   #47 = String             #284          // tar
+│ +   #48 = Class              #285          // org/apache/commons/compress/archivers/tar/TarArchiveInputStream
+│ +   #49 = Methodref          #48.#282      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ +   #50 = Methodref          #48.#279      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ +   #51 = String             #286          // jar
+│ +   #52 = Class              #287          // org/apache/commons/compress/archivers/jar/JarArchiveInputStream
+│ +   #53 = Methodref          #52.#282      // org/apache/commons/compress/archivers/jar/JarArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ +   #54 = Methodref          #52.#279      // org/apache/commons/compress/archivers/jar/JarArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ +   #55 = String             #288          // cpio
+│ +   #56 = Class              #289          // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream
+│ +   #57 = Methodref          #56.#282      // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ +   #58 = Methodref          #56.#279      // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ +   #59 = String             #290          // dump
+│ +   #60 = Class              #291          // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream
+│ +   #61 = Methodref          #60.#282      // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ +   #62 = Methodref          #60.#279      // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│ +   #63 = String             #292          // 7z
+│ +   #64 = Class              #293          // org/apache/commons/compress/archivers/StreamingNotSupportedException
+│ +   #65 = Methodref          #64.#266      // org/apache/commons/compress/archivers/StreamingNotSupportedException."<init>":(Ljava/lang/String;)V
+│ +   #66 = Methodref          #34.#294      // org/apache/commons/compress/archivers/ArchiveStreamFactory.getArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ +   #67 = InterfaceMethodref #19.#295      // java/util/SortedMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+│ +   #68 = InterfaceMethodref #12.#271      // org/apache/commons/compress/archivers/ArchiveStreamProvider.createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +   #69 = Class              #296          // org/apache/commons/compress/archivers/ArchiveException
+│ +   #70 = Class              #297          // java/lang/StringBuilder
+│ +   #71 = Methodref          #70.#261      // java/lang/StringBuilder."<init>":()V
+│ +   #72 = String             #298          // Archiver:
+│ +   #73 = Methodref          #70.#299      // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +   #74 = String             #300          //  not found.
+│ +   #75 = Methodref          #70.#301      // java/lang/StringBuilder.toString:()Ljava/lang/String;
+│ +   #76 = Methodref          #69.#266      // org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│ +   #77 = Methodref          #34.#302      // org/apache/commons/compress/archivers/ArchiveStreamFactory.createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ +   #78 = String             #303          // OutputStream must not be null.
+│ +   #79 = Class              #304          // org/apache/commons/compress/archivers/ar/ArArchiveOutputStream
+│ +   #80 = Methodref          #79.#305      // org/apache/commons/compress/archivers/ar/ArArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +   #81 = Class              #306          // org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream
+│ +   #82 = Methodref          #81.#305      // org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +   #83 = Methodref          #81.#307      // org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.setEncoding:(Ljava/lang/String;)V
+│ +   #84 = Class              #308          // org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│ +   #85 = Methodref          #84.#309      // org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +   #86 = Methodref          #84.#305      // org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +   #87 = Class              #310          // org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│ +   #88 = Methodref          #87.#309      // org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +   #89 = Methodref          #87.#305      // org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +   #90 = Class              #311          // org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│ +   #91 = Methodref          #90.#309      // org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +   #92 = Methodref          #90.#305      // org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +   #93 = Methodref          #34.#312      // org/apache/commons/compress/archivers/ArchiveStreamFactory.getArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ +   #94 = InterfaceMethodref #12.#302      // org/apache/commons/compress/archivers/ArchiveStreamProvider.createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ +   #95 = Methodref          #34.#313      // org/apache/commons/compress/archivers/ArchiveStreamFactory.detect:(Ljava/io/InputStream;)Ljava/lang/String;
+│ +   #96 = Methodref          #34.#314      // org/apache/commons/compress/archivers/ArchiveStreamFactory.createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +   #97 = String             #315          // Stream must not be null.
+│ +   #98 = Methodref          #226.#316     // java/io/InputStream.markSupported:()Z
+│ +   #99 = String             #317          // Mark is not supported.
+│ +  #100 = Methodref          #226.#318     // java/io/InputStream.mark:(I)V
+│ +  #101 = Methodref          #319.#320     // org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│ +  #102 = Methodref          #226.#321     // java/io/InputStream.reset:()V
+│ +  #103 = Class              #322          // java/io/IOException
+│ +  #104 = String             #323          // IOException while reading signature.
+│ +  #105 = Methodref          #69.#324      // org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│ +  #106 = Methodref          #44.#325      // org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.matches:([BI)Z
+│ +  #107 = Methodref          #52.#325      // org/apache/commons/compress/archivers/jar/JarArchiveInputStream.matches:([BI)Z
+│ +  #108 = Methodref          #37.#325      // org/apache/commons/compress/archivers/ar/ArArchiveInputStream.matches:([BI)Z
+│ +  #109 = Methodref          #56.#325      // org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.matches:([BI)Z
+│ +  #110 = Methodref          #40.#325      // org/apache/commons/compress/archivers/arj/ArjArchiveInputStream.matches:([BI)Z
+│ +  #111 = Methodref          #326.#325     // org/apache/commons/compress/archivers/sevenz/SevenZFile.matches:([BI)Z
+│ +  #112 = String             #327          // IOException while reading dump signature
+│ +  #113 = Methodref          #60.#325      // org/apache/commons/compress/archivers/dump/DumpArchiveInputStream.matches:([BI)Z
+│ +  #114 = String             #328          // IOException while reading tar signature
+│ +  #115 = Methodref          #48.#325      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream.matches:([BI)Z
+│ +  #116 = Class              #329          // java/io/ByteArrayInputStream
+│ +  #117 = Methodref          #116.#330     // java/io/ByteArrayInputStream."<init>":([B)V
+│ +  #118 = Methodref          #48.#331      // org/apache/commons/compress/archivers/tar/TarArchiveInputStream.getNextTarEntry:()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ +  #119 = Methodref          #332.#333     // org/apache/commons/compress/archivers/tar/TarArchiveEntry.isCheckSumOK:()Z
+│ +  #120 = Methodref          #319.#334     // org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│ +  #121 = Class              #335          // java/lang/Exception
+│ +  #122 = String             #336          // No Archiver found for the stream signature
+│ +  #123 = Fieldref           #34.#337      // org/apache/commons/compress/archivers/ArchiveStreamFactory.archiveInputStreamProviders:Ljava/util/SortedMap;
+│ +  #124 = Methodref          #34.#338      // org/apache/commons/compress/archivers/ArchiveStreamFactory.findAvailableArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ +  #125 = Methodref          #339.#340     // java/util/Collections.unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ +  #126 = Fieldref           #34.#341      // org/apache/commons/compress/archivers/ArchiveStreamFactory.archiveOutputStreamProviders:Ljava/util/SortedMap;
+│ +  #127 = Methodref          #34.#342      // org/apache/commons/compress/archivers/ArchiveStreamFactory.findAvailableArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ +  #128 = Methodref          #343.#344     // org/apache/commons/compress/utils/Sets.newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│ +  #129 = Methodref          #34.#261      // org/apache/commons/compress/archivers/ArchiveStreamFactory."<init>":()V
+│ +  #130 = Class              #345          // java/lang/Object
+│ +  #131 = Utf8               InnerClasses
+│ +  #132 = Utf8               TAR_HEADER_SIZE
+│ +  #133 = Utf8               I
+│ +  #134 = Utf8               ConstantValue
+│ +  #135 = Integer            512
+│ +  #136 = Utf8               DUMP_SIGNATURE_SIZE
+│ +  #137 = Integer            32
+│ +  #138 = Utf8               SIGNATURE_SIZE
+│ +  #139 = Integer            12
+│ +  #140 = Utf8               SINGLETON
+│ +  #141 = Utf8               Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ +  #142 = Utf8               AR
+│ +  #143 = Utf8               Ljava/lang/String;
+│ +  #144 = Utf8               ARJ
+│ +  #145 = Utf8               CPIO
+│ +  #146 = Utf8               DUMP
+│ +  #147 = Utf8               JAR
+│ +  #148 = Utf8               TAR
+│ +  #149 = Utf8               ZIP
+│ +  #150 = Utf8               SEVEN_Z
+│ +  #151 = Utf8               encoding
+│ +  #152 = Utf8               entryEncoding
+│ +  #153 = Utf8               archiveInputStreamProviders
+│ +  #154 = Utf8               Ljava/util/SortedMap;
+│ +  #155 = Utf8               Signature
+│ +  #156 = Utf8               Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +  #157 = Utf8               archiveOutputStreamProviders
+│ +  #158 = Utf8               findArchiveStreamProviders
+│ +  #159 = Utf8               ()Ljava/util/ArrayList;
+│ +  #160 = Utf8               Code
+│ +  #161 = Utf8               LineNumberTable
+│ +  #162 = Utf8               ()Ljava/util/ArrayList<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +  #163 = Utf8               putAll
+│ +  #164 = Utf8               (Ljava/util/Set;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;Ljava/util/TreeMap;)V
+│ +  #165 = Utf8               LocalVariableTable
+│ +  #166 = Utf8               name
+│ +  #167 = Utf8               names
+│ +  #168 = Utf8               Ljava/util/Set;
+│ +  #169 = Utf8               provider
+│ +  #170 = Utf8               Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;
+│ +  #171 = Utf8               map
+│ +  #172 = Utf8               Ljava/util/TreeMap;
+│ +  #173 = Utf8               LocalVariableTypeTable
+│ +  #174 = Utf8               Ljava/util/Set<Ljava/lang/String;>;
+│ +  #175 = Utf8               Ljava/util/TreeMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +  #176 = Utf8               StackMapTable
+│ +  #177 = Class              #346          // java/util/Iterator
+│ +  #178 = Utf8               (Ljava/util/Set<Ljava/lang/String;>;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;Ljava/util/TreeMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;)V
+│ +  #179 = Utf8               serviceLoaderIterator
+│ +  #180 = Utf8               ()Ljava/util/Iterator;
+│ +  #181 = Utf8               ()Ljava/util/Iterator<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +  #182 = Utf8               toKey
+│ +  #183 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+│ +  #184 = Utf8               findAvailableArchiveInputStreamProviders
+│ +  #185 = Utf8               ()Ljava/util/SortedMap;
+│ +  #186 = Utf8               ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +  #187 = Utf8               findAvailableArchiveOutputStreamProviders
+│ +  #188 = Utf8               <init>
+│ +  #189 = Utf8               ()V
+│ +  #190 = Utf8               this
+│ +  #191 = Utf8               (Ljava/lang/String;)V
+│ +  #192 = Utf8               getEntryEncoding
+│ +  #193 = Utf8               ()Ljava/lang/String;
+│ +  #194 = Utf8               setEntryEncoding
+│ +  #195 = Utf8               Deprecated
+│ +  #196 = Utf8               RuntimeVisibleAnnotations
+│ +  #197 = Utf8               Ljava/lang/Deprecated;
+│ +  #198 = Utf8               createArchiveInputStream
+│ +  #199 = Utf8               (Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +  #200 = Utf8               archiverName
+│ +  #201 = Utf8               in
+│ +  #202 = Utf8               Ljava/io/InputStream;
+│ +  #203 = Utf8               Exceptions
+│ +  #204 = Utf8               (Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +  #205 = Utf8               actualEncoding
+│ +  #206 = Utf8               archiveStreamProvider
+│ +  #207 = Utf8               createArchiveOutputStream
+│ +  #208 = Utf8               (Ljava/lang/String;Ljava/io/OutputStream;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ +  #209 = Utf8               out
+│ +  #210 = Utf8               Ljava/io/OutputStream;
+│ +  #211 = Utf8               (Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ +  #212 = Utf8               zip
+│ +  #213 = Utf8               Lorg/apache/commons/compress/archivers/zip/ZipArchiveOutputStream;
+│ +  #214 = Utf8               (Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +  #215 = Utf8               detect
+│ +  #216 = Utf8               (Ljava/io/InputStream;)Ljava/lang/String;
+│ +  #217 = Utf8               e
+│ +  #218 = Utf8               Ljava/io/IOException;
+│ +  #219 = Utf8               tais
+│ +  #220 = Utf8               Lorg/apache/commons/compress/archivers/tar/TarArchiveInputStream;
+│ +  #221 = Utf8               signature
+│ +  #222 = Utf8               [B
+│ +  #223 = Utf8               signatureLength
+│ +  #224 = Utf8               dumpsig
+│ +  #225 = Utf8               tarHeader
+│ +  #226 = Class              #347          // java/io/InputStream
+│ +  #227 = Class              #222          // "[B"
+│ +  #228 = Class              #348          // java/lang/Throwable
+│ +  #229 = Utf8               getArchiveInputStreamProviders
+│ +  #230 = Utf8               getArchiveOutputStreamProviders
+│ +  #231 = Utf8               getInputStreamArchiveNames
+│ +  #232 = Utf8               ()Ljava/util/Set;
+│ +  #233 = Utf8               ()Ljava/util/Set<Ljava/lang/String;>;
+│ +  #234 = Utf8               getOutputStreamArchiveNames
+│ +  #235 = Utf8               access$000
+│ +  #236 = Utf8               ()Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ +  #237 = Utf8               access$100
+│ +  #238 = Utf8               <clinit>
+│ +  #239 = Utf8               SourceFile
+│ +  #240 = Utf8               ArchiveStreamFactory.java
+│ +  #241 = NameAndType        #158:#159     // findArchiveStreamProviders:()Ljava/util/ArrayList;
+│ +  #242 = NameAndType        #140:#141     // SINGLETON:Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ +  #243 = NameAndType        #179:#180     // serviceLoaderIterator:()Ljava/util/Iterator;
+│ +  #244 = Class              #349          // org/apache/commons/compress/utils/Lists
+│ +  #245 = NameAndType        #350:#351     // newArrayList:(Ljava/util/Iterator;)Ljava/util/ArrayList;
+│ +  #246 = Class              #352          // java/util/Set
+│ +  #247 = NameAndType        #353:#180     // iterator:()Ljava/util/Iterator;
+│ +  #248 = NameAndType        #354:#355     // hasNext:()Z
+│ +  #249 = NameAndType        #356:#357     // next:()Ljava/lang/Object;
+│ +  #250 = Utf8               java/lang/String
+│ +  #251 = NameAndType        #182:#183     // toKey:(Ljava/lang/String;)Ljava/lang/String;
+│ +  #252 = Class              #358          // java/util/TreeMap
+│ +  #253 = NameAndType        #359:#360     // put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+│ +  #254 = Utf8               org/apache/commons/compress/utils/ServiceLoaderIterator
+│ +  #255 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamProvider
+│ +  #256 = NameAndType        #188:#361     // "<init>":(Ljava/lang/Class;)V
+│ +  #257 = Class              #362          // java/util/Locale
+│ +  #258 = NameAndType        #363:#364     // ROOT:Ljava/util/Locale;
+│ +  #259 = NameAndType        #365:#366     // toUpperCase:(Ljava/util/Locale;)Ljava/lang/String;
+│ +  #260 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamFactory$1
+│ +  #261 = NameAndType        #188:#189     // "<init>":()V
+│ +  #262 = Class              #367          // java/security/AccessController
+│ +  #263 = NameAndType        #368:#369     // doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│ +  #264 = Utf8               java/util/SortedMap
+│ +  #265 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamFactory$2
+│ +  #266 = NameAndType        #188:#191     // "<init>":(Ljava/lang/String;)V
+│ +  #267 = NameAndType        #151:#143     // encoding:Ljava/lang/String;
+│ +  #268 = NameAndType        #152:#143     // entryEncoding:Ljava/lang/String;
+│ +  #269 = Utf8               java/lang/IllegalStateException
+│ +  #270 = Utf8               Cannot overide encoding set by the constructor
+│ +  #271 = NameAndType        #198:#204     // createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +  #272 = Utf8               java/lang/IllegalArgumentException
+│ +  #273 = Utf8               Archivername must not be null.
+│ +  #274 = Utf8               InputStream must not be null.
+│ +  #275 = Utf8               org/apache/commons/compress/archivers/ArchiveStreamFactory
+│ +  #276 = Utf8               ar
+│ +  #277 = NameAndType        #370:#371     // equalsIgnoreCase:(Ljava/lang/String;)Z
+│ +  #278 = Utf8               org/apache/commons/compress/archivers/ar/ArArchiveInputStream
+│ +  #279 = NameAndType        #188:#372     // "<init>":(Ljava/io/InputStream;)V
+│ +  #280 = Utf8               arj
+│ +  #281 = Utf8               org/apache/commons/compress/archivers/arj/ArjArchiveInputStream
+│ +  #282 = NameAndType        #188:#373     // "<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+│ +  #283 = Utf8               org/apache/commons/compress/archivers/zip/ZipArchiveInputStream
+│ +  #284 = Utf8               tar
+│ +  #285 = Utf8               org/apache/commons/compress/archivers/tar/TarArchiveInputStream
+│ +  #286 = Utf8               jar
+│ +  #287 = Utf8               org/apache/commons/compress/archivers/jar/JarArchiveInputStream
+│ +  #288 = Utf8               cpio
+│ +  #289 = Utf8               org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream
+│ +  #290 = Utf8               dump
+│ +  #291 = Utf8               org/apache/commons/compress/archivers/dump/DumpArchiveInputStream
+│ +  #292 = Utf8               7z
+│ +  #293 = Utf8               org/apache/commons/compress/archivers/StreamingNotSupportedException
+│ +  #294 = NameAndType        #229:#185     // getArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ +  #295 = NameAndType        #374:#375     // get:(Ljava/lang/Object;)Ljava/lang/Object;
+│ +  #296 = Utf8               org/apache/commons/compress/archivers/ArchiveException
+│ +  #297 = Utf8               java/lang/StringBuilder
+│ +  #298 = Utf8               Archiver:
+│ +  #299 = NameAndType        #376:#377     // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +  #300 = Utf8                not found.
+│ +  #301 = NameAndType        #378:#193     // toString:()Ljava/lang/String;
+│ +  #302 = NameAndType        #207:#211     // createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ +  #303 = Utf8               OutputStream must not be null.
+│ +  #304 = Utf8               org/apache/commons/compress/archivers/ar/ArArchiveOutputStream
+│ +  #305 = NameAndType        #188:#379     // "<init>":(Ljava/io/OutputStream;)V
+│ +  #306 = Utf8               org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream
+│ +  #307 = NameAndType        #380:#191     // setEncoding:(Ljava/lang/String;)V
+│ +  #308 = Utf8               org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│ +  #309 = NameAndType        #188:#381     // "<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +  #310 = Utf8               org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│ +  #311 = Utf8               org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│ +  #312 = NameAndType        #230:#185     // getArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ +  #313 = NameAndType        #215:#216     // detect:(Ljava/io/InputStream;)Ljava/lang/String;
+│ +  #314 = NameAndType        #198:#199     // createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +  #315 = Utf8               Stream must not be null.
+│ +  #316 = NameAndType        #382:#355     // markSupported:()Z
+│ +  #317 = Utf8               Mark is not supported.
+│ +  #318 = NameAndType        #383:#384     // mark:(I)V
+│ +  #319 = Class              #385          // org/apache/commons/compress/utils/IOUtils
+│ +  #320 = NameAndType        #386:#387     // readFully:(Ljava/io/InputStream;[B)I
+│ +  #321 = NameAndType        #388:#189     // reset:()V
+│ +  #322 = Utf8               java/io/IOException
+│ +  #323 = Utf8               IOException while reading signature.
+│ +  #324 = NameAndType        #188:#389     // "<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│ +  #325 = NameAndType        #390:#391     // matches:([BI)Z
+│ +  #326 = Class              #392          // org/apache/commons/compress/archivers/sevenz/SevenZFile
+│ +  #327 = Utf8               IOException while reading dump signature
+│ +  #328 = Utf8               IOException while reading tar signature
+│ +  #329 = Utf8               java/io/ByteArrayInputStream
+│ +  #330 = NameAndType        #188:#393     // "<init>":([B)V
+│ +  #331 = NameAndType        #394:#395     // getNextTarEntry:()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ +  #332 = Class              #396          // org/apache/commons/compress/archivers/tar/TarArchiveEntry
+│ +  #333 = NameAndType        #397:#355     // isCheckSumOK:()Z
+│ +  #334 = NameAndType        #398:#399     // closeQuietly:(Ljava/io/Closeable;)V
+│ +  #335 = Utf8               java/lang/Exception
+│ +  #336 = Utf8               No Archiver found for the stream signature
+│ +  #337 = NameAndType        #153:#154     // archiveInputStreamProviders:Ljava/util/SortedMap;
+│ +  #338 = NameAndType        #184:#185     // findAvailableArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ +  #339 = Class              #400          // java/util/Collections
+│ +  #340 = NameAndType        #401:#402     // unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ +  #341 = NameAndType        #157:#154     // archiveOutputStreamProviders:Ljava/util/SortedMap;
+│ +  #342 = NameAndType        #187:#185     // findAvailableArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ +  #343 = Class              #403          // org/apache/commons/compress/utils/Sets
+│ +  #344 = NameAndType        #404:#405     // newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│ +  #345 = Utf8               java/lang/Object
+│ +  #346 = Utf8               java/util/Iterator
+│ +  #347 = Utf8               java/io/InputStream
+│ +  #348 = Utf8               java/lang/Throwable
+│ +  #349 = Utf8               org/apache/commons/compress/utils/Lists
+│ +  #350 = Utf8               newArrayList
+│ +  #351 = Utf8               (Ljava/util/Iterator;)Ljava/util/ArrayList;
+│ +  #352 = Utf8               java/util/Set
+│ +  #353 = Utf8               iterator
+│ +  #354 = Utf8               hasNext
+│ +  #355 = Utf8               ()Z
+│ +  #356 = Utf8               next
+│ +  #357 = Utf8               ()Ljava/lang/Object;
+│ +  #358 = Utf8               java/util/TreeMap
+│ +  #359 = Utf8               put
+│ +  #360 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+│ +  #361 = Utf8               (Ljava/lang/Class;)V
+│ +  #362 = Utf8               java/util/Locale
+│ +  #363 = Utf8               ROOT
+│ +  #364 = Utf8               Ljava/util/Locale;
+│ +  #365 = Utf8               toUpperCase
+│ +  #366 = Utf8               (Ljava/util/Locale;)Ljava/lang/String;
+│ +  #367 = Utf8               java/security/AccessController
+│ +  #368 = Utf8               doPrivileged
+│ +  #369 = Utf8               (Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│ +  #370 = Utf8               equalsIgnoreCase
+│ +  #371 = Utf8               (Ljava/lang/String;)Z
+│ +  #372 = Utf8               (Ljava/io/InputStream;)V
+│ +  #373 = Utf8               (Ljava/io/InputStream;Ljava/lang/String;)V
+│ +  #374 = Utf8               get
+│ +  #375 = Utf8               (Ljava/lang/Object;)Ljava/lang/Object;
+│ +  #376 = Utf8               append
+│ +  #377 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +  #378 = Utf8               toString
+│ +  #379 = Utf8               (Ljava/io/OutputStream;)V
+│ +  #380 = Utf8               setEncoding
+│ +  #381 = Utf8               (Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +  #382 = Utf8               markSupported
+│ +  #383 = Utf8               mark
+│ +  #384 = Utf8               (I)V
+│ +  #385 = Utf8               org/apache/commons/compress/utils/IOUtils
+│ +  #386 = Utf8               readFully
+│ +  #387 = Utf8               (Ljava/io/InputStream;[B)I
+│ +  #388 = Utf8               reset
+│ +  #389 = Utf8               (Ljava/lang/String;Ljava/lang/Exception;)V
+│ +  #390 = Utf8               matches
+│ +  #391 = Utf8               ([BI)Z
+│ +  #392 = Utf8               org/apache/commons/compress/archivers/sevenz/SevenZFile
+│ +  #393 = Utf8               ([B)V
+│ +  #394 = Utf8               getNextTarEntry
+│ +  #395 = Utf8               ()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ +  #396 = Utf8               org/apache/commons/compress/archivers/tar/TarArchiveEntry
+│ +  #397 = Utf8               isCheckSumOK
+│ +  #398 = Utf8               closeQuietly
+│ +  #399 = Utf8               (Ljava/io/Closeable;)V
+│ +  #400 = Utf8               java/util/Collections
+│ +  #401 = Utf8               unmodifiableSortedMap
+│ +  #402 = Utf8               (Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ +  #403 = Utf8               org/apache/commons/compress/utils/Sets
+│ +  #404 = Utf8               newHashSet
+│ +  #405 = Utf8               ([Ljava/lang/Object;)Ljava/util/HashSet;
+│  {
+│    private static final int TAR_HEADER_SIZE = 512;
+│      descriptor: I
+│      flags: (0x001a) ACC_PRIVATE, ACC_STATIC, ACC_FINAL
+│      ConstantValue: int 512
+│  
+│    private static final int DUMP_SIGNATURE_SIZE = 32;
+│ @@ -483,32 +480,32 @@
+│    private volatile java.lang.String entryEncoding;
+│      descriptor: Ljava/lang/String;
+│      flags: (0x0042) ACC_PRIVATE, ACC_VOLATILE
+│  
+│    private java.util.SortedMap<java.lang.String, org.apache.commons.compress.archivers.ArchiveStreamProvider> archiveInputStreamProviders;
+│      descriptor: Ljava/util/SortedMap;
+│      flags: (0x0002) ACC_PRIVATE
+│ -    Signature: #151                         // Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #156                         // Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    private java.util.SortedMap<java.lang.String, org.apache.commons.compress.archivers.ArchiveStreamProvider> archiveOutputStreamProviders;
+│      descriptor: Ljava/util/SortedMap;
+│      flags: (0x0002) ACC_PRIVATE
+│ -    Signature: #151                         // Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #156                         // Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    private static java.util.ArrayList<org.apache.commons.compress.archivers.ArchiveStreamProvider> findArchiveStreamProviders();
+│      descriptor: ()Ljava/util/ArrayList;
+│      flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+│      Code:
+│        stack=1, locals=0, args_size=0
+│           0: invokestatic  #3                  // Method serviceLoaderIterator:()Ljava/util/Iterator;
+│           3: invokestatic  #4                  // Method org/apache/commons/compress/utils/Lists.newArrayList:(Ljava/util/Iterator;)Ljava/util/ArrayList;
+│           6: areturn
+│        LineNumberTable:
+│          line 164: 0
+│ -    Signature: #157                         // ()Ljava/util/ArrayList<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #162                         // ()Ljava/util/ArrayList<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    static void putAll(java.util.Set<java.lang.String>, org.apache.commons.compress.archivers.ArchiveStreamProvider, java.util.TreeMap<java.lang.String, org.apache.commons.compress.archivers.ArchiveStreamProvider>);
+│      descriptor: (Ljava/util/Set;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;Ljava/util/TreeMap;)V
+│      flags: (0x0008) ACC_STATIC
+│      Code:
+│        stack=3, locals=5, args_size=3
+│           0: aload_0
+│ @@ -546,29 +543,29 @@
+│              0      42     2   map   Ljava/util/TreeMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│        StackMapTable: number_of_entries = 2
+│          frame_type = 252 /* append */
+│            offset_delta = 7
+│            locals = [ class java/util/Iterator ]
+│          frame_type = 250 /* chop */
+│            offset_delta = 33
+│ -    Signature: #173                         // (Ljava/util/Set<Ljava/lang/String;>;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;Ljava/util/TreeMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;)V
+│ +    Signature: #178                         // (Ljava/util/Set<Ljava/lang/String;>;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;Ljava/util/TreeMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;)V
+│  
+│    private static java.util.Iterator<org.apache.commons.compress.archivers.ArchiveStreamProvider> serviceLoaderIterator();
+│      descriptor: ()Ljava/util/Iterator;
+│      flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+│      Code:
+│        stack=3, locals=0, args_size=0
+│           0: new           #11                 // class org/apache/commons/compress/utils/ServiceLoaderIterator
+│           3: dup
+│           4: ldc           #12                 // class org/apache/commons/compress/archivers/ArchiveStreamProvider
+│           6: invokespecial #13                 // Method org/apache/commons/compress/utils/ServiceLoaderIterator."<init>":(Ljava/lang/Class;)V
+│           9: areturn
+│        LineNumberTable:
+│          line 175: 0
+│ -    Signature: #176                         // ()Ljava/util/Iterator<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #181                         // ()Ljava/util/Iterator<Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    private static java.lang.String toKey(java.lang.String);
+│      descriptor: (Ljava/lang/String;)Ljava/lang/String;
+│      flags: (0x000a) ACC_PRIVATE, ACC_STATIC
+│      Code:
+│        stack=2, locals=1, args_size=1
+│           0: aload_0
+│ @@ -590,30 +587,30 @@
+│           3: dup
+│           4: invokespecial #17                 // Method org/apache/commons/compress/archivers/ArchiveStreamFactory$1."<init>":()V
+│           7: invokestatic  #18                 // Method java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│          10: checkcast     #19                 // class java/util/SortedMap
+│          13: areturn
+│        LineNumberTable:
+│          line 210: 0
+│ -    Signature: #181                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #186                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    public static java.util.SortedMap<java.lang.String, org.apache.commons.compress.archivers.ArchiveStreamProvider> findAvailableArchiveOutputStreamProviders();
+│      descriptor: ()Ljava/util/SortedMap;
+│      flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+│      Code:
+│        stack=2, locals=0, args_size=0
+│           0: new           #20                 // class org/apache/commons/compress/archivers/ArchiveStreamFactory$2
+│           3: dup
+│           4: invokespecial #21                 // Method org/apache/commons/compress/archivers/ArchiveStreamFactory$2."<init>":()V
+│           7: invokestatic  #18                 // Method java/security/AccessController.doPrivileged:(Ljava/security/PrivilegedAction;)Ljava/lang/Object;
+│          10: checkcast     #19                 // class java/util/SortedMap
+│          13: areturn
+│        LineNumberTable:
+│          line 251: 0
+│ -    Signature: #181                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #186                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    public org.apache.commons.compress.archivers.ArchiveStreamFactory();
+│      descriptor: ()V
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=2, locals=1, args_size=1
+│           0: aload_0
+│ @@ -691,15 +688,15 @@
+│          Start  Length  Slot  Name   Signature
+│              0      23     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│              0      23     1 entryEncoding   Ljava/lang/String;
+│        StackMapTable: number_of_entries = 1
+│          frame_type = 17 /* same */
+│      Deprecated: true
+│      RuntimeVisibleAnnotations:
+│ -      0: #192()
+│ +      0: #197()
+│          java.lang.Deprecated
+│  
+│    public org.apache.commons.compress.archivers.ArchiveInputStream createArchiveInputStream(java.lang.String, java.io.InputStream) throws org.apache.commons.compress.archivers.ArchiveException;
+│      descriptor: (Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=4, locals=3, args_size=3
+│ @@ -872,18 +869,26 @@
+│         282: aload_1
+│         283: aload_2
+│         284: aload_3
+│         285: invokeinterface #68,  4           // InterfaceMethod org/apache/commons/compress/archivers/ArchiveStreamProvider.createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│         290: areturn
+│         291: new           #69                 // class org/apache/commons/compress/archivers/ArchiveException
+│         294: dup
+│ -       295: aload_1
+│ -       296: invokedynamic #70,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+│ -       301: invokespecial #71                 // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│ -       304: athrow
+│ +       295: new           #70                 // class java/lang/StringBuilder
+│ +       298: dup
+│ +       299: invokespecial #71                 // Method java/lang/StringBuilder."<init>":()V
+│ +       302: ldc           #72                 // String Archiver:
+│ +       304: invokevirtual #73                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +       307: aload_1
+│ +       308: invokevirtual #73                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +       311: ldc           #74                 // String  not found.
+│ +       313: invokevirtual #73                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +       316: invokevirtual #75                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+│ +       319: invokespecial #76                 // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│ +       322: athrow
+│        LineNumberTable:
+│          line 335: 0
+│          line 336: 4
+│          line 339: 14
+│          line 340: 18
+│          line 343: 28
+│          line 344: 37
+│ @@ -915,19 +920,19 @@
+│          line 383: 247
+│          line 386: 257
+│          line 387: 275
+│          line 388: 280
+│          line 391: 291
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│ -            0     305     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -            0     305     1 archiverName   Ljava/lang/String;
+│ -            0     305     2    in   Ljava/io/InputStream;
+│ -            0     305     3 actualEncoding   Ljava/lang/String;
+│ -          275      30     4 archiveStreamProvider   Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;
+│ +            0     323     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ +            0     323     1 archiverName   Ljava/lang/String;
+│ +            0     323     2    in   Ljava/io/InputStream;
+│ +            0     323     3 actualEncoding   Ljava/lang/String;
+│ +          275      48     4 archiveStreamProvider   Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;
+│        StackMapTable: number_of_entries = 17
+│          frame_type = 14 /* same */
+│          frame_type = 13 /* same */
+│          frame_type = 17 /* same */
+│          frame_type = 22 /* same */
+│          frame_type = 8 /* same */
+│          frame_type = 22 /* same */
+│ @@ -953,15 +958,15 @@
+│      Code:
+│        stack=4, locals=3, args_size=3
+│           0: aload_0
+│           1: aload_1
+│           2: aload_2
+│           3: aload_0
+│           4: getfield      #25                 // Field entryEncoding:Ljava/lang/String;
+│ -         7: invokevirtual #72                 // Method createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ +         7: invokevirtual #77                 // Method createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│          10: areturn
+│        LineNumberTable:
+│          line 408: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      11     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│              0      11     1 archiverName   Ljava/lang/String;
+│ @@ -981,123 +986,131 @@
+│           8: ldc           #31                 // String Archivername must not be null.
+│          10: invokespecial #32                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+│          13: athrow
+│          14: aload_2
+│          15: ifnonnull     28
+│          18: new           #30                 // class java/lang/IllegalArgumentException
+│          21: dup
+│ -        22: ldc           #73                 // String OutputStream must not be null.
+│ +        22: ldc           #78                 // String OutputStream must not be null.
+│          24: invokespecial #32                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+│          27: athrow
+│          28: ldc           #35                 // String ar
+│          30: aload_1
+│          31: invokevirtual #36                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│          34: ifeq          46
+│ -        37: new           #74                 // class org/apache/commons/compress/archivers/ar/ArArchiveOutputStream
+│ +        37: new           #79                 // class org/apache/commons/compress/archivers/ar/ArArchiveOutputStream
+│          40: dup
+│          41: aload_2
+│ -        42: invokespecial #75                 // Method org/apache/commons/compress/archivers/ar/ArArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +        42: invokespecial #80                 // Method org/apache/commons/compress/archivers/ar/ArArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│          45: areturn
+│          46: ldc           #43                 // String zip
+│          48: aload_1
+│          49: invokevirtual #36                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│          52: ifeq          78
+│ -        55: new           #76                 // class org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream
+│ +        55: new           #81                 // class org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream
+│          58: dup
+│          59: aload_2
+│ -        60: invokespecial #77                 // Method org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +        60: invokespecial #82                 // Method org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│          63: astore        4
+│          65: aload_3
+│          66: ifnull        75
+│          69: aload         4
+│          71: aload_3
+│ -        72: invokevirtual #78                 // Method org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.setEncoding:(Ljava/lang/String;)V
+│ +        72: invokevirtual #83                 // Method org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream.setEncoding:(Ljava/lang/String;)V
+│          75: aload         4
+│          77: areturn
+│          78: ldc           #47                 // String tar
+│          80: aload_1
+│          81: invokevirtual #36                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│          84: ifeq          110
+│          87: aload_3
+│          88: ifnull        101
+│ -        91: new           #79                 // class org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│ +        91: new           #84                 // class org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│          94: dup
+│          95: aload_2
+│          96: aload_3
+│ -        97: invokespecial #80                 // Method org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +        97: invokespecial #85                 // Method org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│         100: areturn
+│ -       101: new           #79                 // class org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│ +       101: new           #84                 // class org/apache/commons/compress/archivers/tar/TarArchiveOutputStream
+│         104: dup
+│         105: aload_2
+│ -       106: invokespecial #81                 // Method org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +       106: invokespecial #86                 // Method org/apache/commons/compress/archivers/tar/TarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│         109: areturn
+│         110: ldc           #51                 // String jar
+│         112: aload_1
+│         113: invokevirtual #36                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│         116: ifeq          142
+│         119: aload_3
+│         120: ifnull        133
+│ -       123: new           #82                 // class org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│ +       123: new           #87                 // class org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│         126: dup
+│         127: aload_2
+│         128: aload_3
+│ -       129: invokespecial #83                 // Method org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +       129: invokespecial #88                 // Method org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│         132: areturn
+│ -       133: new           #82                 // class org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│ +       133: new           #87                 // class org/apache/commons/compress/archivers/jar/JarArchiveOutputStream
+│         136: dup
+│         137: aload_2
+│ -       138: invokespecial #84                 // Method org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +       138: invokespecial #89                 // Method org/apache/commons/compress/archivers/jar/JarArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│         141: areturn
+│         142: ldc           #55                 // String cpio
+│         144: aload_1
+│         145: invokevirtual #36                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│         148: ifeq          174
+│         151: aload_3
+│         152: ifnull        165
+│ -       155: new           #85                 // class org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│ +       155: new           #90                 // class org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│         158: dup
+│         159: aload_2
+│         160: aload_3
+│ -       161: invokespecial #86                 // Method org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│ +       161: invokespecial #91                 // Method org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;Ljava/lang/String;)V
+│         164: areturn
+│ -       165: new           #85                 // class org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│ +       165: new           #90                 // class org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream
+│         168: dup
+│         169: aload_2
+│ -       170: invokespecial #87                 // Method org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│ +       170: invokespecial #92                 // Method org/apache/commons/compress/archivers/cpio/CpioArchiveOutputStream."<init>":(Ljava/io/OutputStream;)V
+│         173: areturn
+│         174: ldc           #63                 // String 7z
+│         176: aload_1
+│         177: invokevirtual #36                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+│         180: ifeq          193
+│         183: new           #64                 // class org/apache/commons/compress/archivers/StreamingNotSupportedException
+│         186: dup
+│         187: ldc           #63                 // String 7z
+│         189: invokespecial #65                 // Method org/apache/commons/compress/archivers/StreamingNotSupportedException."<init>":(Ljava/lang/String;)V
+│         192: athrow
+│         193: aload_0
+│ -       194: invokevirtual #88                 // Method getArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ +       194: invokevirtual #93                 // Method getArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│         197: aload_1
+│         198: invokestatic  #9                  // Method toKey:(Ljava/lang/String;)Ljava/lang/String;
+│         201: invokeinterface #67,  2           // InterfaceMethod java/util/SortedMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+│         206: checkcast     #12                 // class org/apache/commons/compress/archivers/ArchiveStreamProvider
+│         209: astore        4
+│         211: aload         4
+│         213: ifnull        227
+│         216: aload         4
+│         218: aload_1
+│         219: aload_2
+│         220: aload_3
+│ -       221: invokeinterface #89,  4           // InterfaceMethod org/apache/commons/compress/archivers/ArchiveStreamProvider.createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│ +       221: invokeinterface #94,  4           // InterfaceMethod org/apache/commons/compress/archivers/ArchiveStreamProvider.createArchiveOutputStream:(Ljava/lang/String;Ljava/io/OutputStream;Ljava/lang/String;)Lorg/apache/commons/compress/archivers/ArchiveOutputStream;
+│         226: areturn
+│         227: new           #69                 // class org/apache/commons/compress/archivers/ArchiveException
+│         230: dup
+│ -       231: aload_1
+│ -       232: invokedynamic #70,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+│ -       237: invokespecial #71                 // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│ -       240: athrow
+│ +       231: new           #70                 // class java/lang/StringBuilder
+│ +       234: dup
+│ +       235: invokespecial #71                 // Method java/lang/StringBuilder."<init>":()V
+│ +       238: ldc           #72                 // String Archiver:
+│ +       240: invokevirtual #73                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +       243: aload_1
+│ +       244: invokevirtual #73                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +       247: ldc           #74                 // String  not found.
+│ +       249: invokevirtual #73                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+│ +       252: invokevirtual #75                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+│ +       255: invokespecial #76                 // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│ +       258: athrow
+│        LineNumberTable:
+│          line 415: 0
+│          line 416: 4
+│          line 418: 14
+│          line 419: 18
+│          line 422: 28
+│          line 423: 37
+│ @@ -1123,19 +1136,19 @@
+│          line 454: 193
+│          line 455: 211
+│          line 456: 216
+│          line 459: 227
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│             65      13     4   zip   Lorg/apache/commons/compress/archivers/zip/ZipArchiveOutputStream;
+│ -            0     241     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -            0     241     1 archiverName   Ljava/lang/String;
+│ -            0     241     2   out   Ljava/io/OutputStream;
+│ -            0     241     3 actualEncoding   Ljava/lang/String;
+│ -          211      30     4 archiveStreamProvider   Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;
+│ +            0     259     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ +            0     259     1 archiverName   Ljava/lang/String;
+│ +            0     259     2   out   Ljava/io/OutputStream;
+│ +            0     259     3 actualEncoding   Ljava/lang/String;
+│ +          211      48     4 archiveStreamProvider   Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;
+│        StackMapTable: number_of_entries = 13
+│          frame_type = 14 /* same */
+│          frame_type = 13 /* same */
+│          frame_type = 17 /* same */
+│          frame_type = 252 /* append */
+│            offset_delta = 28
+│            locals = [ class org/apache/commons/compress/archivers/zip/ZipArchiveOutputStream ]
+│ @@ -1157,17 +1170,17 @@
+│    public org.apache.commons.compress.archivers.ArchiveInputStream createArchiveInputStream(java.io.InputStream) throws org.apache.commons.compress.archivers.ArchiveException;
+│      descriptor: (Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=3, locals=2, args_size=2
+│           0: aload_0
+│           1: aload_1
+│ -         2: invokestatic  #90                 // Method detect:(Ljava/io/InputStream;)Ljava/lang/String;
+│ +         2: invokestatic  #95                 // Method detect:(Ljava/io/InputStream;)Ljava/lang/String;
+│           5: aload_1
+│ -         6: invokevirtual #91                 // Method createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│ +         6: invokevirtual #96                 // Method createArchiveInputStream:(Ljava/lang/String;Ljava/io/InputStream;)Lorg/apache/commons/compress/archivers/ArchiveInputStream;
+│           9: areturn
+│        LineNumberTable:
+│          line 476: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      10     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│              0      10     1    in   Ljava/io/InputStream;
+│ @@ -1179,177 +1192,177 @@
+│      flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+│      Code:
+│        stack=5, locals=8, args_size=1
+│           0: aload_0
+│           1: ifnonnull     14
+│           4: new           #30                 // class java/lang/IllegalArgumentException
+│           7: dup
+│ -         8: ldc           #92                 // String Stream must not be null.
+│ +         8: ldc           #97                 // String Stream must not be null.
+│          10: invokespecial #32                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+│          13: athrow
+│          14: aload_0
+│ -        15: invokevirtual #93                 // Method java/io/InputStream.markSupported:()Z
+│ +        15: invokevirtual #98                 // Method java/io/InputStream.markSupported:()Z
+│          18: ifne          31
+│          21: new           #30                 // class java/lang/IllegalArgumentException
+│          24: dup
+│ -        25: ldc           #94                 // String Mark is not supported.
+│ +        25: ldc           #99                 // String Mark is not supported.
+│          27: invokespecial #32                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+│          30: athrow
+│          31: bipush        12
+│          33: newarray       byte
+│          35: astore_1
+│          36: aload_0
+│          37: aload_1
+│          38: arraylength
+│ -        39: invokevirtual #95                 // Method java/io/InputStream.mark:(I)V
+│ +        39: invokevirtual #100                // Method java/io/InputStream.mark:(I)V
+│          42: iconst_m1
+│          43: istore_2
+│          44: aload_0
+│          45: aload_1
+│ -        46: invokestatic  #96                 // Method org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│ +        46: invokestatic  #101                // Method org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│          49: istore_2
+│          50: aload_0
+│ -        51: invokevirtual #97                 // Method java/io/InputStream.reset:()V
+│ +        51: invokevirtual #102                // Method java/io/InputStream.reset:()V
+│          54: goto          69
+│          57: astore_3
+│          58: new           #69                 // class org/apache/commons/compress/archivers/ArchiveException
+│          61: dup
+│ -        62: ldc           #99                 // String IOException while reading signature.
+│ +        62: ldc           #104                // String IOException while reading signature.
+│          64: aload_3
+│ -        65: invokespecial #100                // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│ +        65: invokespecial #105                // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│          68: athrow
+│          69: aload_1
+│          70: iload_2
+│ -        71: invokestatic  #101                // Method org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.matches:([BI)Z
+│ +        71: invokestatic  #106                // Method org/apache/commons/compress/archivers/zip/ZipArchiveInputStream.matches:([BI)Z
+│          74: ifeq          80
+│          77: ldc           #43                 // String zip
+│          79: areturn
+│          80: aload_1
+│          81: iload_2
+│ -        82: invokestatic  #102                // Method org/apache/commons/compress/archivers/jar/JarArchiveInputStream.matches:([BI)Z
+│ +        82: invokestatic  #107                // Method org/apache/commons/compress/archivers/jar/JarArchiveInputStream.matches:([BI)Z
+│          85: ifeq          91
+│          88: ldc           #51                 // String jar
+│          90: areturn
+│          91: aload_1
+│          92: iload_2
+│ -        93: invokestatic  #103                // Method org/apache/commons/compress/archivers/ar/ArArchiveInputStream.matches:([BI)Z
+│ +        93: invokestatic  #108                // Method org/apache/commons/compress/archivers/ar/ArArchiveInputStream.matches:([BI)Z
+│          96: ifeq          102
+│          99: ldc           #35                 // String ar
+│         101: areturn
+│         102: aload_1
+│         103: iload_2
+│ -       104: invokestatic  #104                // Method org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.matches:([BI)Z
+│ +       104: invokestatic  #109                // Method org/apache/commons/compress/archivers/cpio/CpioArchiveInputStream.matches:([BI)Z
+│         107: ifeq          113
+│         110: ldc           #55                 // String cpio
+│         112: areturn
+│         113: aload_1
+│         114: iload_2
+│ -       115: invokestatic  #105                // Method org/apache/commons/compress/archivers/arj/ArjArchiveInputStream.matches:([BI)Z
+│ +       115: invokestatic  #110                // Method org/apache/commons/compress/archivers/arj/ArjArchiveInputStream.matches:([BI)Z
+│         118: ifeq          124
+│         121: ldc           #39                 // String arj
+│         123: areturn
+│         124: aload_1
+│         125: iload_2
+│ -       126: invokestatic  #106                // Method org/apache/commons/compress/archivers/sevenz/SevenZFile.matches:([BI)Z
+│ +       126: invokestatic  #111                // Method org/apache/commons/compress/archivers/sevenz/SevenZFile.matches:([BI)Z
+│         129: ifeq          135
+│         132: ldc           #63                 // String 7z
+│         134: areturn
+│         135: bipush        32
+│         137: newarray       byte
+│         139: astore_3
+│         140: aload_0
+│         141: aload_3
+│         142: arraylength
+│ -       143: invokevirtual #95                 // Method java/io/InputStream.mark:(I)V
+│ +       143: invokevirtual #100                // Method java/io/InputStream.mark:(I)V
+│         146: aload_0
+│         147: aload_3
+│ -       148: invokestatic  #96                 // Method org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│ +       148: invokestatic  #101                // Method org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│         151: istore_2
+│         152: aload_0
+│ -       153: invokevirtual #97                 // Method java/io/InputStream.reset:()V
+│ +       153: invokevirtual #102                // Method java/io/InputStream.reset:()V
+│         156: goto          173
+│         159: astore        4
+│         161: new           #69                 // class org/apache/commons/compress/archivers/ArchiveException
+│         164: dup
+│ -       165: ldc           #107                // String IOException while reading dump signature
+│ +       165: ldc           #112                // String IOException while reading dump signature
+│         167: aload         4
+│ -       169: invokespecial #100                // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│ +       169: invokespecial #105                // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│         172: athrow
+│         173: aload_3
+│         174: iload_2
+│ -       175: invokestatic  #108                // Method org/apache/commons/compress/archivers/dump/DumpArchiveInputStream.matches:([BI)Z
+│ +       175: invokestatic  #113                // Method org/apache/commons/compress/archivers/dump/DumpArchiveInputStream.matches:([BI)Z
+│         178: ifeq          184
+│         181: ldc           #59                 // String dump
+│         183: areturn
+│         184: sipush        512
+│         187: newarray       byte
+│         189: astore        4
+│         191: aload_0
+│         192: aload         4
+│         194: arraylength
+│ -       195: invokevirtual #95                 // Method java/io/InputStream.mark:(I)V
+│ +       195: invokevirtual #100                // Method java/io/InputStream.mark:(I)V
+│         198: aload_0
+│         199: aload         4
+│ -       201: invokestatic  #96                 // Method org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│ +       201: invokestatic  #101                // Method org/apache/commons/compress/utils/IOUtils.readFully:(Ljava/io/InputStream;[B)I
+│         204: istore_2
+│         205: aload_0
+│ -       206: invokevirtual #97                 // Method java/io/InputStream.reset:()V
+│ +       206: invokevirtual #102                // Method java/io/InputStream.reset:()V
+│         209: goto          226
+│         212: astore        5
+│         214: new           #69                 // class org/apache/commons/compress/archivers/ArchiveException
+│         217: dup
+│ -       218: ldc           #109                // String IOException while reading tar signature
+│ +       218: ldc           #114                // String IOException while reading tar signature
+│         220: aload         5
+│ -       222: invokespecial #100                // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│ +       222: invokespecial #105                // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;Ljava/lang/Exception;)V
+│         225: athrow
+│         226: aload         4
+│         228: iload_2
+│ -       229: invokestatic  #110                // Method org/apache/commons/compress/archivers/tar/TarArchiveInputStream.matches:([BI)Z
+│ +       229: invokestatic  #115                // Method org/apache/commons/compress/archivers/tar/TarArchiveInputStream.matches:([BI)Z
+│         232: ifeq          238
+│         235: ldc           #47                 // String tar
+│         237: areturn
+│         238: iload_2
+│         239: sipush        512
+│         242: if_icmplt     317
+│         245: aconst_null
+│         246: astore        5
+│         248: new           #48                 // class org/apache/commons/compress/archivers/tar/TarArchiveInputStream
+│         251: dup
+│ -       252: new           #111                // class java/io/ByteArrayInputStream
+│ +       252: new           #116                // class java/io/ByteArrayInputStream
+│         255: dup
+│         256: aload         4
+│ -       258: invokespecial #112                // Method java/io/ByteArrayInputStream."<init>":([B)V
+│ +       258: invokespecial #117                // Method java/io/ByteArrayInputStream."<init>":([B)V
+│         261: invokespecial #50                 // Method org/apache/commons/compress/archivers/tar/TarArchiveInputStream."<init>":(Ljava/io/InputStream;)V
+│         264: astore        5
+│         266: aload         5
+│ -       268: invokevirtual #113                // Method org/apache/commons/compress/archivers/tar/TarArchiveInputStream.getNextTarEntry:()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ -       271: invokevirtual #114                // Method org/apache/commons/compress/archivers/tar/TarArchiveEntry.isCheckSumOK:()Z
+│ +       268: invokevirtual #118                // Method org/apache/commons/compress/archivers/tar/TarArchiveInputStream.getNextTarEntry:()Lorg/apache/commons/compress/archivers/tar/TarArchiveEntry;
+│ +       271: invokevirtual #119                // Method org/apache/commons/compress/archivers/tar/TarArchiveEntry.isCheckSumOK:()Z
+│         274: ifeq          289
+│         277: ldc           #47                 // String tar
+│         279: astore        6
+│         281: aload         5
+│ -       283: invokestatic  #115                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│ +       283: invokestatic  #120                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│         286: aload         6
+│         288: areturn
+│         289: aload         5
+│ -       291: invokestatic  #115                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│ +       291: invokestatic  #120                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│         294: goto          317
+│         297: astore        6
+│         299: aload         5
+│ -       301: invokestatic  #115                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│ +       301: invokestatic  #120                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│         304: goto          317
+│         307: astore        7
+│         309: aload         5
+│ -       311: invokestatic  #115                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│ +       311: invokestatic  #120                // Method org/apache/commons/compress/utils/IOUtils.closeQuietly:(Ljava/io/Closeable;)V
+│         314: aload         7
+│         316: athrow
+│         317: new           #69                 // class org/apache/commons/compress/archivers/ArchiveException
+│         320: dup
+│ -       321: ldc           #117                // String No Archiver found for the stream signature
+│ -       323: invokespecial #71                 // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│ +       321: ldc           #122                // String No Archiver found for the stream signature
+│ +       323: invokespecial #76                 // Method org/apache/commons/compress/archivers/ArchiveException."<init>":(Ljava/lang/String;)V
+│         326: athrow
+│        Exception table:
+│           from    to  target type
+│              44    54    57   Class java/io/IOException
+│             146   156   159   Class java/io/IOException
+│             198   209   212   Class java/io/IOException
+│             248   281   297   Class java/lang/Exception
+│ @@ -1408,14 +1421,15 @@
+│          line 552: 286
+│          line 560: 289
+│          line 561: 294
+│          line 554: 297
+│          line 560: 299
+│          line 561: 304
+│          line 560: 307
+│ +        line 561: 314
+│          line 563: 317
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│             58      11     3     e   Ljava/io/IOException;
+│            161      12     4     e   Ljava/io/IOException;
+│            214      12     5     e   Ljava/io/IOException;
+│            248      69     5  tais   Lorg/apache/commons/compress/archivers/tar/TarArchiveInputStream;
+│ @@ -1464,61 +1478,61 @@
+│  
+│    public java.util.SortedMap<java.lang.String, org.apache.commons.compress.archivers.ArchiveStreamProvider> getArchiveInputStreamProviders();
+│      descriptor: ()Ljava/util/SortedMap;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=2, locals=1, args_size=1
+│           0: aload_0
+│ -         1: getfield      #118                // Field archiveInputStreamProviders:Ljava/util/SortedMap;
+│ +         1: getfield      #123                // Field archiveInputStreamProviders:Ljava/util/SortedMap;
+│           4: ifnonnull     17
+│           7: aload_0
+│ -         8: invokestatic  #119                // Method findAvailableArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ -        11: invokestatic  #120                // Method java/util/Collections.unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ -        14: putfield      #118                // Field archiveInputStreamProviders:Ljava/util/SortedMap;
+│ +         8: invokestatic  #124                // Method findAvailableArchiveInputStreamProviders:()Ljava/util/SortedMap;
+│ +        11: invokestatic  #125                // Method java/util/Collections.unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ +        14: putfield      #123                // Field archiveInputStreamProviders:Ljava/util/SortedMap;
+│          17: aload_0
+│ -        18: getfield      #118                // Field archiveInputStreamProviders:Ljava/util/SortedMap;
+│ +        18: getfield      #123                // Field archiveInputStreamProviders:Ljava/util/SortedMap;
+│          21: areturn
+│        LineNumberTable:
+│          line 567: 0
+│          line 568: 7
+│          line 569: 8
+│          line 571: 17
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      22     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│        StackMapTable: number_of_entries = 1
+│          frame_type = 17 /* same */
+│ -    Signature: #181                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #186                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    public java.util.SortedMap<java.lang.String, org.apache.commons.compress.archivers.ArchiveStreamProvider> getArchiveOutputStreamProviders();
+│      descriptor: ()Ljava/util/SortedMap;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=2, locals=1, args_size=1
+│           0: aload_0
+│ -         1: getfield      #121                // Field archiveOutputStreamProviders:Ljava/util/SortedMap;
+│ +         1: getfield      #126                // Field archiveOutputStreamProviders:Ljava/util/SortedMap;
+│           4: ifnonnull     17
+│           7: aload_0
+│ -         8: invokestatic  #122                // Method findAvailableArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ -        11: invokestatic  #120                // Method java/util/Collections.unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ -        14: putfield      #121                // Field archiveOutputStreamProviders:Ljava/util/SortedMap;
+│ +         8: invokestatic  #127                // Method findAvailableArchiveOutputStreamProviders:()Ljava/util/SortedMap;
+│ +        11: invokestatic  #125                // Method java/util/Collections.unmodifiableSortedMap:(Ljava/util/SortedMap;)Ljava/util/SortedMap;
+│ +        14: putfield      #126                // Field archiveOutputStreamProviders:Ljava/util/SortedMap;
+│          17: aload_0
+│ -        18: getfield      #121                // Field archiveOutputStreamProviders:Ljava/util/SortedMap;
+│ +        18: getfield      #126                // Field archiveOutputStreamProviders:Ljava/util/SortedMap;
+│          21: areturn
+│        LineNumberTable:
+│          line 575: 0
+│          line 576: 7
+│          line 577: 8
+│          line 579: 17
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      22     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│        StackMapTable: number_of_entries = 1
+│          frame_type = 17 /* same */
+│ -    Signature: #181                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│ +    Signature: #186                         // ()Ljava/util/SortedMap<Ljava/lang/String;Lorg/apache/commons/compress/archivers/ArchiveStreamProvider;>;
+│  
+│    public java.util.Set<java.lang.String> getInputStreamArchiveNames();
+│      descriptor: ()Ljava/util/Set;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=4, locals=1, args_size=1
+│           0: bipush        8
+│ @@ -1551,22 +1565,22 @@
+│          36: bipush        6
+│          38: ldc           #59                 // String dump
+│          40: aastore
+│          41: dup
+│          42: bipush        7
+│          44: ldc           #63                 // String 7z
+│          46: aastore
+│ -        47: invokestatic  #123                // Method org/apache/commons/compress/utils/Sets.newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│ +        47: invokestatic  #128                // Method org/apache/commons/compress/utils/Sets.newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│          50: areturn
+│        LineNumberTable:
+│          line 584: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      51     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -    Signature: #228                         // ()Ljava/util/Set<Ljava/lang/String;>;
+│ +    Signature: #233                         // ()Ljava/util/Set<Ljava/lang/String;>;
+│  
+│    public java.util.Set<java.lang.String> getOutputStreamArchiveNames();
+│      descriptor: ()Ljava/util/Set;
+│      flags: (0x0001) ACC_PUBLIC
+│      Code:
+│        stack=4, locals=1, args_size=1
+│           0: bipush        6
+│ @@ -1591,22 +1605,22 @@
+│          26: iconst_4
+│          27: ldc           #55                 // String cpio
+│          29: aastore
+│          30: dup
+│          31: iconst_5
+│          32: ldc           #63                 // String 7z
+│          34: aastore
+│ -        35: invokestatic  #123                // Method org/apache/commons/compress/utils/Sets.newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│ +        35: invokestatic  #128                // Method org/apache/commons/compress/utils/Sets.newHashSet:([Ljava/lang/Object;)Ljava/util/HashSet;
+│          38: areturn
+│        LineNumberTable:
+│          line 589: 0
+│        LocalVariableTable:
+│          Start  Length  Slot  Name   Signature
+│              0      39     0  this   Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ -    Signature: #228                         // ()Ljava/util/Set<Ljava/lang/String;>;
+│ +    Signature: #233                         // ()Ljava/util/Set<Ljava/lang/String;>;
+│  
+│    static org.apache.commons.compress.archivers.ArchiveStreamFactory access$000();
+│      descriptor: ()Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│      flags: (0x1008) ACC_STATIC, ACC_SYNTHETIC
+│      Code:
+│        stack=1, locals=0, args_size=0
+│           0: getstatic     #2                  // Field SINGLETON:Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│ @@ -1627,22 +1641,17 @@
+│    static {};
+│      descriptor: ()V
+│      flags: (0x0008) ACC_STATIC
+│      Code:
+│        stack=2, locals=0, args_size=0
+│           0: new           #34                 // class org/apache/commons/compress/archivers/ArchiveStreamFactory
+│           3: dup
+│ -         4: invokespecial #124                // Method "<init>":()V
+│ +         4: invokespecial #129                // Method "<init>":()V
+│           7: putstatic     #2                  // Field SINGLETON:Lorg/apache/commons/compress/archivers/ArchiveStreamFactory;
+│          10: return
+│        LineNumberTable:
+│          line 97: 0
+│  }
+│  SourceFile: "ArchiveStreamFactory.java"
+│  InnerClasses:
+│    #20;                                    // class org/apache/commons/compress/archivers/ArchiveStreamFactory$2
+│    #16;                                    // class org/apache/commons/compress/archivers/ArchiveStreamFactory$1
+│ -  public static final #404= #403 of #406; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+│ -BootstrapMethods:
+│ -  0: #293 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+│ -    Method arguments:
+│ -      #294 Archiver: \u0001 not found.

@@ -17,6 +17,7 @@ import java.lang.classfile.constantpool.ClassEntry;
 import java.lang.classfile.constantpool.Utf8Entry;
 import java.lang.classfile.instruction.ConstantInstruction;
 import java.lang.classfile.instruction.FieldInstruction;
+import java.lang.classfile.instruction.InvokeDynamicInstruction;
 import java.lang.classfile.instruction.InvokeInstruction;
 import java.lang.classfile.instruction.LoadInstruction;
 import java.lang.classfile.instruction.NewObjectInstruction;
@@ -258,6 +259,31 @@ public class ClassFileVisitor {
                 addLeafNode(methodTypeNode);
 
                 // remove invoke instruction node
+                nodes.pop();
+            }
+
+            case InvokeDynamicInstruction invokeDynamicInstruction -> {
+                Type type = TypeSet.type(invokeDynamicInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                pushNodeToTree(node);
+
+                Type bootstrapMethodName = TypeSet.type("BOOTSTRAP_METHOD_NAME");
+                Tree methodName = treeContext.createTree(
+                        bootstrapMethodName, invokeDynamicInstruction.name().stringValue());
+                addLeafNode(methodName);
+
+                Type bootstrapMethodType = TypeSet.type("BOOTSTRAP_METHOD_TYPE");
+                Tree methodTypeNode = treeContext.createTree(
+                        bootstrapMethodType, invokeDynamicInstruction.type().stringValue());
+                addLeafNode(methodTypeNode);
+
+                Type bootstrapMethodOwner = TypeSet.type("BOOTSTRAP_METHOD_OWNER");
+                Tree methodOwnerNode = treeContext.createTree(
+                        bootstrapMethodOwner,
+                        invokeDynamicInstruction.bootstrapMethod().owner().descriptorString());
+                addLeafNode(methodOwnerNode);
+
+                // remove invoke dynamic instruction node
                 nodes.pop();
             }
             case ReturnInstruction returnInstruction -> {
