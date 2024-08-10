@@ -406,6 +406,18 @@ public class ClassFileVisitorTest {
             List<Action> rootOperations = diff.getRootOperations();
             assertThat(rootOperations).size().isEqualTo(1);
         }
+
+        @Disabled("lot of spurious changes by Gumtree here")
+        @Test
+        void showShowDifferencesInLDCOnly() throws IOException {
+            Path oldClass = NEQ1.resolve("28").resolve("commons-compress-1.16").resolve("TapeInputStream.class");
+            Path newClass = NEQ1.resolve("28").resolve("commons-compress-1.20").resolve("TapeInputStream.class");
+            DiffImpl diff = getDiff(oldClass, newClass);
+
+            // assert
+            List<Action> rootOperations = diff.getRootOperations();
+            assertThat(rootOperations).size().isEqualTo(1);
+        }
     }
 
     private static DiffImpl getDiff(Path oldClass, Path newClass) throws IOException {

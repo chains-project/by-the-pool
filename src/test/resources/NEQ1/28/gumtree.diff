@@ -1,0 +1,289 @@
+[===
+update-node
+---
+ReferenceType: all reads must be multiple of record size (1024 bytes. [0,0]
+replace all reads must be multiple of record size (1024 bytes. by All reads must be multiple of record size (1024 bytes., ===
+update-node
+---
+BRANCH_NUMBER: 18 [0,0]
+replace 18 by 24, ===
+update-node
+---
+ReferenceType: all reads must be multiple of record size (1024 bytes. [0,0]
+replace all reads must be multiple of record size (1024 bytes. by All reads must be multiple of record size (1024 bytes., ===
+update-node
+---
+BRANCH_NUMBER: 123 [0,0]
+replace 123 by 129, ===
+update-node
+---
+BRANCH_NUMBER: 46 [0,0]
+replace 46 by 52, ===
+update-node
+---
+BRANCH_NUMBER: 46 [0,0]
+replace 46 by 52, ===
+update-node
+---
+BRANCH_NUMBER: 74 [0,0]
+replace 74 by 80, ===
+update-node
+---
+BRANCH_NUMBER: 85 [0,0]
+replace 85 by 91, ===
+update-node
+---
+BRANCH_NUMBER: 24 [0,0]
+replace 24 by 30, ===
+update-node
+---
+ReferenceType: all reads must be multiple of record size (1024 bytes. [0,0]
+replace all reads must be multiple of record size (1024 bytes. by All reads must be multiple of record size (1024 bytes., ===
+update-node
+---
+ReferenceType: input buffer is closed [0,0]
+replace input buffer is closed by Input buffer is closed, ===
+update-node
+---
+ReferenceType: bad data [0,0]
+replace bad data by Bad data, ===
+insert-node
+---
+ILOAD_1: IntType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 3, ===
+insert-node
+---
+ICONST_1 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 4, ===
+insert-node
+---
+IF_ICMPGE [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 5, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 6, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 7, ===
+insert-node
+---
+NEW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 8, ===
+insert-node
+---
+DUP [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 9, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 10, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 11, ===
+insert-node
+---
+ILOAD_1: IntType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 12, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 13, ===
+insert-node
+---
+LDC [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 14, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 15, ===
+insert-node
+---
+INVOKEVIRTUAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 16, ===
+insert-node
+---
+INVOKESPECIAL [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 17, ===
+insert-node
+---
+ATHROW [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 18, ===
+insert-node
+---
+IFNE [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 1, ===
+insert-node
+---
+ICONST_0 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 2, ===
+insert-node
+---
+IRETURN [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 3, ===
+insert-node
+---
+ILOAD_3: IntType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 4, ===
+move-tree
+---
+SIPUSH [0,0]
+    ShortType: 1024 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 4, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: [B [0,0]
+    fieldName: blockBuffer [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 9, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: I [0,0]
+    fieldName: blockSize [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 14, ===
+move-tree
+---
+ICONST_0 [0,0]
+    IntType: 0 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 18, ===
+move-tree
+---
+SIPUSH [0,0]
+    ShortType: 1024 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 23, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: [B [0,0]
+    fieldName: blockBuffer [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 26, ===
+move-tree
+---
+ALOAD_0: ReferenceType [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 29, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: I [0,0]
+    fieldName: blockSize [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 29, ===
+move-tree
+---
+SIPUSH [0,0]
+    ShortType: 1024 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 29, ===
+move-tree
+---
+ICONST_0 [0,0]
+    IntType: 0 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 31, ===
+move-tree
+---
+SIPUSH [0,0]
+    ShortType: 1024 [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 33, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: I [0,0]
+    fieldName: blockSize [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 30, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: I [0,0]
+    fieldName: blockSize [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 37, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: I [0,0]
+    fieldName: readOffset [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 39, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: I [0,0]
+    fieldName: readOffset [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 45, ===
+move-tree
+---
+GETFIELD [0,0]
+    fieldType: I [0,0]
+    fieldName: readOffset [0,0]
+to
+java.lang.classfile.CodeModel: CodeModel [0,0]
+at 51]

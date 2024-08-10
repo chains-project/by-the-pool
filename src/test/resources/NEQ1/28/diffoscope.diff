@@ -1,0 +1,99 @@
+--- commons-compress-1.16/TapeInputStream.class
++++ commons-compress-1.20/TapeInputStream.class
+├── procyon -ec {}
+│ @@ -30,14 +30,17 @@
+│          this.readOffset = 1024;
+│          this.isCompressed = false;
+│          this.bytesRead = 0L;
+│      }
+│
+│      public void resetBlockSize(final int recsPerBlock, final boolean isCompressed) throws IOException {
+│          this.isCompressed = isCompressed;
+│ +        if (recsPerBlock < 1) {
+│ +            throw new IOException("Block with " + recsPerBlock + " records found, must be at least 1");
+│ +        }
+│          this.blockSize = 1024 * recsPerBlock;
+│          final byte[] oldBuffer = this.blockBuffer;
+│          System.arraycopy(oldBuffer, 0, this.blockBuffer = new byte[this.blockSize], 0, 1024);
+│          this.readFully(this.blockBuffer, 1024, this.blockSize - 1024);
+│          this.currBlkIdx = 0;
+│          this.readOffset = 1024;
+│      }
+│ @@ -48,21 +51,24 @@
+│              return this.blockSize - this.readOffset;
+│          }
+│          return this.in.available();
+│      }
+│
+│      @Override
+│      public int read() throws IOException {
+│ -        throw new IllegalArgumentException("all reads must be multiple of record size (1024 bytes.");
+│ +        throw new IllegalArgumentException("All reads must be multiple of record size (1024 bytes.");
+│      }
+│
+│      @Override
+│      public int read(final byte[] b, int off, final int len) throws IOException {
+│ +        if (len == 0) {
+│ +            return 0;
+│ +        }
+│          if (len % 1024 != 0) {
+│ -            throw new IllegalArgumentException("all reads must be multiple of record size (1024 bytes.");
+│ +            throw new IllegalArgumentException("All reads must be multiple of record size (1024 bytes.");
+│          }
+│          int bytes;
+│          int n;
+│          for (bytes = 0; bytes < len; bytes += n, off += n) {
+│              if (this.readOffset == this.blockSize) {
+│                  try {
+│                      this.readBlock(true);
+│ @@ -83,15 +89,15 @@
+│          }
+│          return bytes;
+│      }
+│
+│      @Override
+│      public long skip(final long len) throws IOException {
+│          if (len % 1024L != 0L) {
+│ -            throw new IllegalArgumentException("all reads must be multiple of record size (1024 bytes.");
+│ +            throw new IllegalArgumentException("All reads must be multiple of record size (1024 bytes.");
+│          }
+│          long bytes;
+│          long n;
+│          for (bytes = 0L; bytes < len; bytes += n) {
+│              if (this.readOffset == this.blockSize) {
+│                  try {
+│                      this.readBlock(len - bytes < (long)this.blockSize);
+│ @@ -139,15 +145,15 @@
+│              throw new ShortFileException();
+│          }
+│          return result;
+│      }
+│
+│      private void readBlock(final boolean decompress) throws IOException {
+│          if (this.in == null) {
+│ -            throw new IOException("input buffer is closed");
+│ +            throw new IOException("Input buffer is closed");
+│          }
+│          if (!this.isCompressed || this.currBlkIdx == -1) {
+│              this.readFully(this.blockBuffer, 0, this.blockSize);
+│              this.bytesRead += this.blockSize;
+│          }
+│          else {
+│              this.readFully(this.blockBuffer, 0, 4);
+│ @@ -175,15 +181,15 @@
+│                                  inflator.setInput(compBuffer, 0, compBuffer.length);
+│                                  length = inflator.inflate(this.blockBuffer);
+│                                  if (length != this.blockSize) {
+│                                      throw new ShortFileException();
+│                                  }
+│                              }
+│                              catch (final DataFormatException e) {
+│ -                                throw new DumpArchiveException("bad data", (Throwable)e);
+│ +                                throw new DumpArchiveException("Bad data", (Throwable)e);
+│                              }
+│                              finally {
+│                                  inflator.end();
+│                              }
+│                              inflator.end();
+│                              break;
+│                          }
