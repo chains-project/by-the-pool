@@ -1,2 +1,3 @@
-If we don't want to show difference in `StackMapTable`, then the diff by 
-gumtree is perfect.
+Gumtree does not show a difference in StackMapTable.
+
+It needs to be investigated if this would be the expected behaviour.

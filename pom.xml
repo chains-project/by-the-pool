@@ -52,6 +52,8 @@
           <source>22</source>
           <target>22</target>
           <compilerArgs>
+            <arg>--add-exports</arg>
+            <arg>java.base/jdk.internal.classfile.impl=ALL-UNNAMED</arg>
             <arg>--enable-preview</arg>
           </compilerArgs>
         </configuration>

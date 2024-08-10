@@ -15,6 +15,7 @@ import java.lang.classfile.MethodModel;
 import java.lang.classfile.attribute.SourceFileAttribute;
 import java.lang.classfile.constantpool.ClassEntry;
 import java.lang.classfile.constantpool.Utf8Entry;
+import java.lang.classfile.instruction.BranchInstruction;
 import java.lang.classfile.instruction.ConstantInstruction;
 import java.lang.classfile.instruction.FieldInstruction;
 import java.lang.classfile.instruction.InvokeDynamicInstruction;
@@ -27,6 +28,7 @@ import java.lang.classfile.instruction.StoreInstruction;
 import java.lang.classfile.instruction.TypeCheckInstruction;
 import java.lang.reflect.Field;
 import java.util.Stack;
+import jdk.internal.classfile.impl.LabelImpl;
 
 public class ClassFileVisitor {
     public static final String NOTYPE = "<notype>";
@@ -204,6 +206,18 @@ public class ClassFileVisitor {
                         typeCheckType, typeCheckInstruction.type().asInternalName());
                 addLeafNode(typeCheckNode);
                 // remove type check instruction node
+                nodes.pop();
+            }
+            case BranchInstruction branchInstruction -> {
+                Type type = TypeSet.type(branchInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                pushNodeToTree(node);
+
+                Type branchType = TypeSet.type("BRANCH_NUMBER");
+                Tree branchNode = treeContext.createTree(
+                        branchType, String.valueOf(((LabelImpl) branchInstruction.target()).getBCI()));
+                addLeafNode(branchNode);
+                // remove branch instruction node
                 nodes.pop();
             }
             case StackInstruction stackInstruction -> {

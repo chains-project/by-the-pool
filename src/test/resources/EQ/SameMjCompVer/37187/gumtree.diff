@@ -1,0 +1,13 @@
+[===
+delete-node
+---
+GOTO [0,0]
+===, ===
+delete-node
+---
+GOTO [0,0]
+===, ===
+delete-node
+---
+ASTORE_1: ReferenceType [0,0]
+===]

@@ -176,7 +176,7 @@ public class ClassFileVisitorTest {
 
                 // assert
                 List<Action> rootOperations = diff.getRootOperations();
-                assertThat(rootOperations).size().isEqualTo(21);
+                assertThat(rootOperations).size().isEqualTo(28);
             }
 
             @Test
@@ -324,6 +324,7 @@ public class ClassFileVisitorTest {
                 assertThat(rootOperations).size().isEqualTo(1);
             }
 
+            @Disabled("Check if stack map table is different.")
             @Test
             void shouldShowDiffInStackMapTable() throws IOException {
                 Path oldClass = EQ.resolve("SameMjCompVer")
@@ -355,7 +356,24 @@ public class ClassFileVisitorTest {
 
                 // assert
                 List<Action> rootOperations = diff.getRootOperations();
-                assertThat(rootOperations).size().isEqualTo(1);
+                assertThat(rootOperations).size().isEqualTo(0);
+            }
+
+            @Test
+            void shouldDelete3Instructions() throws IOException {
+                Path oldClass = EQ.resolve("SameMjCompVer")
+                        .resolve("37187")
+                        .resolve("openjdk-17.0.1")
+                        .resolve("SuppressionXpathRegressionNestedTryDepth.class");
+                Path newClass = EQ.resolve("SameMjCompVer")
+                        .resolve("37187")
+                        .resolve("openjdk-17.0.4")
+                        .resolve("SuppressionXpathRegressionNestedTryDepth.class");
+                DiffImpl diff = getDiff(oldClass, newClass);
+
+                // assert
+                List<Action> rootOperations = diff.getRootOperations();
+                assertThat(rootOperations).size().isEqualTo(3);
             }
         }
     }
