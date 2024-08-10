@@ -25,6 +25,7 @@ import java.lang.classfile.instruction.NewObjectInstruction;
 import java.lang.classfile.instruction.ReturnInstruction;
 import java.lang.classfile.instruction.StackInstruction;
 import java.lang.classfile.instruction.StoreInstruction;
+import java.lang.classfile.instruction.ThrowInstruction;
 import java.lang.classfile.instruction.TypeCheckInstruction;
 import java.lang.reflect.Field;
 import java.util.Stack;
@@ -302,6 +303,11 @@ public class ClassFileVisitor {
             }
             case ReturnInstruction returnInstruction -> {
                 Type type = TypeSet.type(returnInstruction.opcode().name());
+                Tree node = treeContext.createTree(type);
+                addLeafNode(node);
+            }
+            case ThrowInstruction throwInstruction -> {
+                Type type = TypeSet.type(throwInstruction.opcode().name());
                 Tree node = treeContext.createTree(type);
                 addLeafNode(node);
             }

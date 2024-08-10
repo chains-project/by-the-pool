@@ -20,6 +20,7 @@ public class ClassFileVisitorTest {
     private static final Path RESOURCES = Path.of("src/test/resources");
 
     private static final Path EQ = RESOURCES.resolve("EQ");
+    private static final Path NEQ1 = RESOURCES.resolve("NEQ1");
 
     @Test
     void shouldShowDiffIn_majorVersion() throws IOException {
@@ -176,7 +177,7 @@ public class ClassFileVisitorTest {
 
                 // assert
                 List<Action> rootOperations = diff.getRootOperations();
-                assertThat(rootOperations).size().isEqualTo(28);
+                assertThat(rootOperations).size().isEqualTo(29);
             }
 
             @Test
@@ -375,6 +376,21 @@ public class ClassFileVisitorTest {
                 List<Action> rootOperations = diff.getRootOperations();
                 assertThat(rootOperations).size().isEqualTo(3);
             }
+        }
+    }
+
+    @Nested
+    class NEQ1 {
+        @Disabled("after difference in exception table is implemented")
+        @Test
+        void shouldShowDifferenceInExceptionTable() throws IOException {
+            Path oldClass = NEQ1.resolve("2").resolve("commons-codec-1.15").resolve("BaseNCodecOutputStream.class");
+            Path newClass = NEQ1.resolve("2").resolve("commons-codec-1.16.0").resolve("BaseNCodecOutputStream.class");
+            DiffImpl diff = getDiff(oldClass, newClass);
+
+            // assert
+            List<Action> rootOperations = diff.getRootOperations();
+            assertThat(rootOperations).size().isEqualTo(1);
         }
     }
 

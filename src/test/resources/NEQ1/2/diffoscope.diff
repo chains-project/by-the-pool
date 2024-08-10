@@ -1,0 +1,37 @@
+--- commons-codec-1.15/BaseNCodecOutputStream.class
++++ commons-codec-1.16.0/BaseNCodecOutputStream.class
+├── procyon -ec {}
+│ @@ -12,30 +12,30 @@
+│  public class BaseNCodecOutputStream extends FilterOutputStream
+│  {
+│      private final boolean doEncode;
+│      private final BaseNCodec baseNCodec;
+│      private final byte[] singleByte;
+│      private final BaseNCodec.Context context;
+│
+│ -    public BaseNCodecOutputStream(final OutputStream output, final BaseNCodec basedCodec, final boolean doEncode) {
+│ -        super(output);
+│ +    public BaseNCodecOutputStream(final OutputStream outputStream, final BaseNCodec basedCodec, final boolean doEncode) {
+│ +        super(outputStream);
+│          this.singleByte = new byte[1];
+│          this.context = new BaseNCodec.Context();
+│          this.baseNCodec = basedCodec;
+│          this.doEncode = doEncode;
+│      }
+│
+│      @Override
+│      public void close() throws IOException {
+│          this.eof();
+│          this.flush();
+│          this.out.close();
+│      }
+│
+│ -    public void eof() throws IOException {
+│ +    public void eof() {
+│          if (this.doEncode) {
+│              this.baseNCodec.encode(this.singleByte, 0, -1, this.context);
+│          }
+│          else {
+│              this.baseNCodec.decode(this.singleByte, 0, -1, this.context);
+│          }
+│      }
