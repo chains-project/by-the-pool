@@ -392,6 +392,20 @@ public class ClassFileVisitorTest {
             List<Action> rootOperations = diff.getRootOperations();
             assertThat(rootOperations).size().isEqualTo(1);
         }
+
+        @Disabled("does not work because gumtree does not show diff in field values")
+        @Test
+        void test() throws IOException {
+            Path oldClass =
+                    NEQ1.resolve("3").resolve("commons-codec-1.12-tests").resolve("Base64TestData.class");
+            Path newClass =
+                    NEQ1.resolve("3").resolve("commons-codec-1.13-tests").resolve("Base64TestData.class");
+            DiffImpl diff = getDiff(oldClass, newClass);
+
+            // assert
+            List<Action> rootOperations = diff.getRootOperations();
+            assertThat(rootOperations).size().isEqualTo(1);
+        }
     }
 
     private static DiffImpl getDiff(Path oldClass, Path newClass) throws IOException {
