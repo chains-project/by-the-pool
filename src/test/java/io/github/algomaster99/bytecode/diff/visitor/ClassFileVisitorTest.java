@@ -418,6 +418,19 @@ public class ClassFileVisitorTest {
             List<Action> rootOperations = diff.getRootOperations();
             assertThat(rootOperations).size().isEqualTo(1);
         }
+
+        @Test
+        void shouldShowALotOfSpuriousChanges() throws IOException {
+            Path oldClass =
+                    NEQ1.resolve("5").resolve("commons-codec-1.13-tests").resolve("MurmurHash3Test.class");
+            Path newClass =
+                    NEQ1.resolve("5").resolve("commons-codec-1.14-tests").resolve("MurmurHash3Test.class");
+            DiffImpl diff = getDiff(oldClass, newClass);
+
+            // assert
+            List<Action> rootOperations = diff.getRootOperations();
+            assertThat(rootOperations).size().isEqualTo(455);
+        }
     }
 
     private static DiffImpl getDiff(Path oldClass, Path newClass) throws IOException {
