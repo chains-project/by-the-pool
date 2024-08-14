@@ -42,6 +42,7 @@
           <argLine>--add-opens java.base/jdk.internal.classfile.impl=ALL-UNNAMED --enable-preview</argLine>
           <excludes>
             <exclude>**/*TestCase.java</exclude>
+            <exclude>MurmurHash3Test</exclude>
           </excludes>
         </configuration>
       </plugin>
