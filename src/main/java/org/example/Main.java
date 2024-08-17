@@ -11,48 +11,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.jar.JarFile;
-import java.util.logging.FileHandler;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 import java.util.zip.ZipEntry;
 
+import static org.example.Constants.ROOT;
+
 public class Main {
-    public static final Path ROOT = Paths.get(".").toAbsolutePath().normalize().getParent();
-    private static final Path OUTPUT;
-    private static final Logger logger;
-    static {
-        // create folder for all the classfiles
-        OUTPUT = ROOT.resolve("EQ");
-        if (!OUTPUT.toFile().exists()) {
-            OUTPUT.toFile().mkdir();
-        }
-
-        logger = Logger.getLogger("MyLog");
-        FileHandler fh;
-
-        try {
-
-            // This block configure the logger with handler and formatter
-            fh = new FileHandler(ROOT.resolve("dataset.log").toString());
-            logger.addHandler(fh);
-            SimpleFormatter formatter = new SimpleFormatter();
-            fh.setFormatter(formatter);
-
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
     private static final Path DATASET = ROOT.resolve("dataset");
+    private static final Logger logger = Constants.getLogger(Main.class, "dataset.log");
+    private static final Path OUTPUT = ROOT.resolve("output");
+
     public static void main(String[] args) throws IOException {
         Path datasetEQ = DATASET.resolve("EQ.tsv");
         Reader reader = new FileReader(datasetEQ.toFile());
 
-        FileWriter f0 = new FileWriter("paths.csv");
-
-        String newLine = System.getProperty("line.separator");
+        FileWriter f0 = Constants.getFileForFurtherProcessing("paths.csv");
 
         Iterable<CSVRecord> records = CSVFormat.MONGODB_TSV.parse(reader);
         for (CSVRecord record : records) {
@@ -85,8 +58,7 @@ public class Main {
             Files.createDirectories(outputClassfile2.getParent());
             Files.write(outputClassfile2, classfileBytes2);
 
-            f0.write(outputClassfile1.toString() + "," + outputClassfile2.toString() + newLine);
-
+            f0.write(outputClassfile1 + "," + outputClassfile2 + System.lineSeparator());
 
             logger.info("Record Number: " + recordNumber + " " + outputClassfile1 + " " + outputClassfile2);
         }
