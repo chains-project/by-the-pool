@@ -28,7 +28,6 @@ public class DiffoscopeDiff implements Runnable {
         try {
             Process p = pb.start();
             int exitCode = p.waitFor();
-            Diffoscope.f0.write(recordNumber + "," + exitCode + System.lineSeparator());
             logger.info("Record: " + recordNumber + " Exit Code: " + exitCode);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);

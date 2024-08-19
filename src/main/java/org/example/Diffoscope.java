@@ -16,7 +16,6 @@ import org.apache.commons.csv.CSVRecord;
 import static org.example.Constants.ROOT;
 
 public class Diffoscope {
-    public static final FileWriter f0 = Constants.getFileForFurtherProcessing("diffoscope.csv");
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Path paths = ROOT.resolve("paths.csv");
@@ -31,7 +30,6 @@ public class Diffoscope {
             pool.submit(new DiffoscopeDiff(record));
 
         }
-        f0.close();
     }
 
 }
