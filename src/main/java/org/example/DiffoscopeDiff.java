@@ -13,15 +13,16 @@ public class DiffoscopeDiff implements Runnable {
     private static final Logger logger = Constants.getLogger(DiffoscopeDiff.class, "diffoscope.log");
 
     private final CSVRecord record;
-    public DiffoscopeDiff(CSVRecord record) {
-        this.record=record;
 
+    public DiffoscopeDiff(CSVRecord record) {
+        this.record = record;
     }
+
     public void run() {
         Path class1 = Paths.get(record.get(0));
         Path class2 = Paths.get(record.get(1));
 
-        ProcessBuilder pb = new ProcessBuilder(DIFFOSCOPE.toString(), "--text", "diffoscope.diff", class1.toString(), class2.toString());
+        ProcessBuilder pb = new ProcessBuilder(DIFFOSCOPE.toString(), "--json", "diffoscope.json", class1.toString(), class2.toString());
         pb.directory(class1.getParent().getParent().toFile());
 
         String recordNumber = class1.getParent().getParent().getFileName().toString();
