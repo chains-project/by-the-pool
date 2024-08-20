@@ -3,11 +3,11 @@ package org.example;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Path;
-import java.io.FileWriter;
 import java.io.FileReader;
 import java.lang.InterruptedException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
 import org.apache.commons.csv.CSVFormat;
@@ -28,8 +28,8 @@ public class Diffoscope {
 
         for (CSVRecord record : records) {
             pool.submit(new DiffoscopeDiff(record));
-
         }
+        pool.shutdown();
+        pool.awaitTermination(1, TimeUnit.HOURS);
     }
-
 }
