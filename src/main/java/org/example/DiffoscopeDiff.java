@@ -22,8 +22,10 @@ public class DiffoscopeDiff implements Runnable {
         Path class1 = Paths.get(record.get(0));
         Path class2 = Paths.get(record.get(1));
 
-        ProcessBuilder pb = new ProcessBuilder(DIFFOSCOPE.toString(), "--json", "diffoscope.json", class1.toString(), class2.toString());
-        pb.directory(class1.getParent().getParent().toFile());
+        Path diffRootDirectory = class1.getParent().getParent();
+
+        ProcessBuilder pb = new ProcessBuilder(DIFFOSCOPE.toString(), "--json", "diffoscope.json", diffRootDirectory.relativize(class1).toString(), diffRootDirectory.relativize(class2).toString());
+        pb.directory(diffRootDirectory.toFile());
 
         String recordNumber = class1.getParent().getParent().getFileName().toString();
         try {
