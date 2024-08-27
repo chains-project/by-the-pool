@@ -22,7 +22,7 @@ public class Constants {
             ex.printStackTrace();
         }
     }
-    public static final Path ROOT = Paths.get(PROPERTIES.getProperty("ROOT")).toAbsolutePath().normalize().getParent();
+    public static final Path ROOT = Paths.get(PROPERTIES.getProperty("ROOT")).toAbsolutePath().normalize();
     public static final Path DIFFOSCOPE_EXECUTABLE = Paths.get(PROPERTIES.getProperty("DIFFOSCOPE_EXECUTABLE"));
 
     public static Logger getLogger(Class<?> clazz, String logFileName) {
