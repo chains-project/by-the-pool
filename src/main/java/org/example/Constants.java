@@ -4,14 +4,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Constants {
-    public static final Path ROOT = Paths.get(".").toAbsolutePath().normalize().getParent();
-    public static final Path DIFFOSCOPE_EXECUTABLE = Paths.get("/home/aman/Desktop/personal/diffoscope/bin/diffoscope");
+    public static final Properties PROPERTIES;
+    static {
+        PROPERTIES = new Properties();
+        try {
+            //load a properties file from class path, inside static method
+            PROPERTIES.load(Constants.class.getClassLoader().getResourceAsStream("config.properties"));
+        }
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static final Path ROOT = Paths.get(PROPERTIES.getProperty("ROOT")).toAbsolutePath().normalize().getParent();
+    public static final Path DIFFOSCOPE_EXECUTABLE = Paths.get(PROPERTIES.getProperty("DIFFOSCOPE_EXECUTABLE"));
 
     public static Logger getLogger(Class<?> clazz, String logFileName) {
         try {

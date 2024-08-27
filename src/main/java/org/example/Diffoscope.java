@@ -1,17 +1,15 @@
 package org.example;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Path;
-import java.io.FileReader;
-import java.lang.InterruptedException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
 
 import static org.example.Constants.ROOT;
 
@@ -23,8 +21,8 @@ public class Diffoscope {
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(reader);
 
 
-        int workers = Runtime.getRuntime().availableProcessors();
-        ExecutorService pool= Executors.newFixedThreadPool(workers);
+        int workers = args.length > 0 ? Integer.parseInt(args[0]) : Runtime.getRuntime().availableProcessors();
+        ExecutorService pool = Executors.newFixedThreadPool(workers);
 
         for (CSVRecord record : records) {
             pool.submit(new DiffoscopeDiff(record));
