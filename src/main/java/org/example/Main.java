@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.jar.JarFile;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
+import java.util.List;
 
 import static org.example.Constants.ROOT;
 
@@ -20,6 +21,15 @@ public class Main {
     private static final Path DATASET = ROOT.resolve("dataset");
     private static final Logger logger = Constants.getLogger(Main.class, "dataset.log");
     private static final Path OUTPUT = ROOT.resolve("output");
+
+    private static final List<String> RANDOM_NUMBERS;
+    static {
+        try {
+            RANDOM_NUMBERS = Files.readAllLines(ROOT.resolve("random_numbers.txt"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         Path datasetEQ = DATASET.resolve("EQ.tsv");
@@ -32,6 +42,9 @@ public class Main {
             long recordNumber = record.getRecordNumber();
             if (recordNumber == 1) {
                 // title row
+                continue;
+            }
+            if (!RANDOM_NUMBERS.contains(String.valueOf(recordNumber))) {
                 continue;
             }
             Path pathToJar1 = DATASET.resolve(Paths.get(record.get(0)));
@@ -58,9 +71,9 @@ public class Main {
             Files.createDirectories(outputClassfile2.getParent());
             Files.write(outputClassfile2, classfileBytes2);
 
-            f0.write(outputClassfile1 + "," + outputClassfile2 + System.lineSeparator());
+            f0.write(ROOT.relativize(outputClassfile1) + "," + ROOT.relativize(outputClassfile2) + System.lineSeparator());
 
-            logger.info("Record Number: " + recordNumber + " " + outputClassfile1 + " " + outputClassfile2);
+            logger.info("Record Number: " + recordNumber + " " + ROOT.relativize(outputClassfile1) + " " + ROOT.relativize(outputClassfile1));
         }
         f0.close();
     }
