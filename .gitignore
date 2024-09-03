@@ -37,6 +37,6 @@ build/
 work
 
 ### project ###
-dataset*
+dataset
 config.properties
 .env
