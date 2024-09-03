@@ -1,5 +1,4 @@
 # by-the-pool
-> todo: cool name :P
 
 ## Goal
 
