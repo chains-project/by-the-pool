@@ -1,11 +1,10 @@
 package org.example;
 
-import org.apache.commons.csv.CSVRecord;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.logging.Logger;
+import org.apache.commons.csv.CSVRecord;
 
 public class DiffoscopeDiff implements Runnable {
     private static final Path DIFFOSCOPE = Constants.DIFFOSCOPE_EXECUTABLE;
@@ -24,7 +23,12 @@ public class DiffoscopeDiff implements Runnable {
 
         Path diffRootDirectory = class1.getParent().getParent();
 
-        ProcessBuilder pb = new ProcessBuilder(DIFFOSCOPE.toString(), "--json", "diffoscope.json", diffRootDirectory.relativize(class1).toString(), diffRootDirectory.relativize(class2).toString());
+        ProcessBuilder pb = new ProcessBuilder(
+                DIFFOSCOPE.toString(),
+                "--json",
+                "diffoscope.json",
+                diffRootDirectory.relativize(class1).toString(),
+                diffRootDirectory.relativize(class2).toString());
         pb.directory(diffRootDirectory.toFile());
 
         String recordNumber = class1.getParent().getParent().getFileName().toString();
@@ -35,6 +39,5 @@ public class DiffoscopeDiff implements Runnable {
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

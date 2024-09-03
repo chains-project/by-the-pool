@@ -1,7 +1,6 @@
 package org.example;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
+import static org.example.Constants.ROOT;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,12 +9,12 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.jar.JarFile;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
-import java.util.List;
-
-import static org.example.Constants.ROOT;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 
 public class Dataset {
     private static final Path DATASET = ROOT.resolve("dataset");
@@ -23,6 +22,7 @@ public class Dataset {
     private static final Path OUTPUT = ROOT.resolve("output");
 
     private static final List<String> RANDOM_NUMBERS;
+
     static {
         try {
             RANDOM_NUMBERS = Files.readAllLines(ROOT.resolve("random_numbers.txt"));
@@ -62,8 +62,12 @@ public class Dataset {
             byte[] classfileBytes2 = getClassFileBytes(jar2, classfileInsideJar2);
             String classfileName1 = getClassNameFromFullyQualifiedClassName(classfileInsideJar1);
             String classfileName2 = getClassNameFromFullyQualifiedClassName(classfileInsideJar2);
-            Path outputClassfile1 = OUTPUT.resolve(String.valueOf(recordNumber)).resolve("first").resolve(classfileName1);
-            Path outputClassfile2 = OUTPUT.resolve(String.valueOf(recordNumber)).resolve("second").resolve(classfileName2);
+            Path outputClassfile1 = OUTPUT.resolve(String.valueOf(recordNumber))
+                    .resolve("first")
+                    .resolve(classfileName1);
+            Path outputClassfile2 = OUTPUT.resolve(String.valueOf(recordNumber))
+                    .resolve("second")
+                    .resolve(classfileName2);
 
             Files.createDirectories(outputClassfile1.getParent());
             Files.write(outputClassfile1, classfileBytes1);
@@ -71,9 +75,11 @@ public class Dataset {
             Files.createDirectories(outputClassfile2.getParent());
             Files.write(outputClassfile2, classfileBytes2);
 
-            f0.write(ROOT.relativize(outputClassfile1) + "," + ROOT.relativize(outputClassfile2) + System.lineSeparator());
+            f0.write(ROOT.relativize(outputClassfile1) + "," + ROOT.relativize(outputClassfile2)
+                    + System.lineSeparator());
 
-            logger.info("Record Number: " + recordNumber + " " + ROOT.relativize(outputClassfile1) + " " + ROOT.relativize(outputClassfile1));
+            logger.info("Record Number: " + recordNumber + " " + ROOT.relativize(outputClassfile1) + " "
+                    + ROOT.relativize(outputClassfile1));
         }
         f0.close();
     }
