@@ -31,8 +31,12 @@ build/
 
 ### Mac OS ###
 .DS_Store
-dataset*
 
 ### nextflow ###
 .nextflow*
 work
+
+### project ###
+dataset*
+config.properties
+.env
