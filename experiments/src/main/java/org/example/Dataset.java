@@ -75,6 +75,11 @@ public class Dataset {
             Files.createDirectories(outputClassfile2.getParent());
             Files.write(outputClassfile2, classfileBytes2);
 
+            String scope1 = record.get(24);
+            String scope2 = record.get(25);
+
+            assert scope1.equals(scope2) && scope1.equals("main");
+
             f0.write(ROOT.relativize(outputClassfile1) + "," + ROOT.relativize(outputClassfile2)
                     + System.lineSeparator());
 
