@@ -1,1 +1,0 @@
-{"diffoscope-json-version": 1, "source1": "first/Node.class", "source2": "second/Node.class", "unified_diff": null, "details": [{"source1": "procyon -ec {}", "source2": "procyon -ec {}", "unified_diff": "@@ -1,7 +1,7 @@\n \n package org.apache.bcel.classfile;\n \n public interface Node\n {\n-    void accept(final Visitor obj);\n+    void accept(final Visitor p0);\n }\n"}]}
