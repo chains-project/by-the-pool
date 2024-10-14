@@ -10,6 +10,7 @@
     <module>canonicalize</module>
     <module>ast</module>
     <module>experiments</module>
+      <module>ground-truth</module>
   </modules>
 
   <dependencyManagement>

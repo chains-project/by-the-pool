@@ -1,0 +1,3 @@
+[submodule "ground-truth/jnorm-tool"]
+	path = ground-truth/jnorm-tool
+	url = git@github.com:stschott/jnorm-tool.git

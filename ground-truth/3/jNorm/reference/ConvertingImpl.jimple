@@ -1,0 +1,2452 @@
+class ConvertingImpl extends org.osgi.util.converter.AbstractSpecifying implements org.osgi.util.converter.Converting, org.osgi.util.converter.InternalConverting
+{
+private static final java.util.Map INTERFACE_IMPLS;
+private static final java.util.Collection NO_MAP_VIEW_TYPES;
+private final org.osgi.util.converter.InternalConverter initialConverter;
+private volatile java.lang.Object object;
+private volatile java.lang.Class sourceClass;
+private volatile java.lang.Class targetClass;
+private volatile java.lang.reflect.Type[] typeArguments;
+private volatile java.lang.reflect.Type targetType;
+private static void addClassIfAvailable(java.lang.String, java.util.Collection)
+{
+java.util.Collection v1;
+java.lang.Class v2, v4;
+java.lang.ClassLoader v3;
+java.lang.String v0;
+java.lang.Exception v5;
+v0 := @parameter0: java.lang.String;
+v1 := @parameter1: java.util.Collection;
+label1:
+v2 = class "Lorg/osgi/util/converter/ConvertingImpl;";
+v3 = virtualinvoke v2.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+v4 = virtualinvoke v3.<java.lang.ClassLoader: java.lang.Class loadClass(java.lang.String)>(v0);
+interfaceinvoke v1.<java.util.Collection: boolean add(java.lang.Object)>(v4);
+label2:
+goto label4;
+label3:
+v5 := @caughtexception;
+label4:
+return;
+catch java.lang.Exception from label1 to label2 with label3;
+}
+void <init>(org.osgi.util.converter.InternalConverter, java.lang.Object)
+{
+java.lang.Object v2;
+org.osgi.util.converter.InternalConverter v1;
+ConvertingImpl v0;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 := @parameter1: java.lang.Object;
+specialinvoke v0.<org.osgi.util.converter.AbstractSpecifying: void <init>()>();
+v0.<org.osgi.util.converter.ConvertingImpl: org.osgi.util.converter.InternalConverter initialConverter> = v1;
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object> = v2;
+return;
+}
+public java.lang.Object 'to'(java.lang.Class)
+{
+java.lang.Class v1;
+java.lang.Object v2;
+ConvertingImpl v0;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 = virtualinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object 'to'(java.lang.reflect.Type)>(v1);
+return v2;
+}
+public java.lang.Object 'to'(org.osgi.util.converter.TypeReference)
+{
+java.lang.reflect.Type v2;
+ConvertingImpl v0;
+org.osgi.util.converter.TypeReference v1;
+java.lang.Object v3;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.TypeReference;
+v2 = virtualinvoke v1.<org.osgi.util.converter.TypeReference: java.lang.reflect.Type getType()>();
+v3 = virtualinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object 'to'(java.lang.reflect.Type)>(v2);
+return v3;
+}
+public java.lang.Object 'to'(java.lang.reflect.Type)
+{
+java.lang.reflect.Type v1;
+ConvertingImpl v0;
+java.lang.Object v3;
+org.osgi.util.converter.InternalConverter v2;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.reflect.Type;
+v2 = v0.<org.osgi.util.converter.ConvertingImpl: org.osgi.util.converter.InternalConverter initialConverter>;
+v3 = virtualinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object 'to'(java.lang.reflect.Type,org.osgi.util.converter.InternalConverter)>(v1, v2);
+return v3;
+}
+public java.lang.Object 'to'(java.lang.reflect.Type, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v2;
+ConvertingImpl v0;
+org.osgi.util.converter.ConversionException v6, v82;
+java.lang.String v7, v8, v85;
+org.osgi.util.converter.Specifying v77, v79;
+boolean v10, v11, v13, v15, v16, v26, v29, v3, v33, v39, v45, v48, v49, v50, v54, v58, v59, v60, v64, v69, v73, v87, v88;
+java.lang.reflect.Type v1, v14, v41, v86, v89;
+java.lang.reflect.Type[] v12, v4, v9;
+org.osgi.util.converter.InternalConverting v75;
+int v5;
+java.lang.Class v19, v20, v21, v22, v23, v25, v27, v28, v32, v34, v35, v36, v37, v40, v43, v44, v47, v52, v53, v55, v57, v61, v65, v70, v76, v78, v80, v84;
+java.lang.Object v17, v18, v24, v30, v31, v38, v42, v46, v51, v56, v62, v63, v66, v67, v68, v71, v72, v74, v81, v83;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.reflect.Type;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = v1 instanceof java.lang.reflect.WildcardType;
+if v3 == 0 goto label02;
+v4 = interfaceinvoke v1.<java.lang.reflect.WildcardType: java.lang.reflect.Type[] getLowerBounds()>();
+v5 = lengthof v4;
+if v5 == 0 goto label01;
+v6 = new org.osgi.util.converter.ConversionException;
+v7 = virtualinvoke v1.<java.lang.Object: java.lang.String toString()>();
+v8 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.String)>(v7) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("The type variable \u0001 cannot be used with the converter. The use of <? super ...> is highly ambiguous.");
+specialinvoke v6.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String)>(v8);
+throw v6;
+label01:
+v9 = interfaceinvoke v1.<java.lang.reflect.WildcardType: java.lang.reflect.Type[] getUpperBounds()>();
+v1 = v9[0];
+label02:
+v10 = v1 instanceof java.lang.Class;
+if v10 != 0 goto label04;
+v11 = v1 instanceof java.lang.reflect.ParameterizedType;
+if v11 == 0 goto label03;
+interfaceinvoke v1.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type getRawType()>();
+v12 = interfaceinvoke v1.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type[] getActualTypeArguments()>();
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments> = v12;
+goto label04;
+label03:
+v13 = v1 instanceof java.lang.reflect.GenericArrayType;
+if v13 == 0 goto label04;
+v14 = interfaceinvoke v1.<java.lang.reflect.GenericArrayType: java.lang.reflect.Type getGenericComponentType()>();
+v15 = v14 instanceof java.lang.Class;
+if v15 != 0 goto label04;
+v16 = v14 instanceof java.lang.reflect.ParameterizedType;
+if v16 == 0 goto label04;
+interfaceinvoke v14.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type getRawType()>();
+label04:
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type targetType> = v1;
+if v1 != null goto label05;
+return null;
+label05:
+v17 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+if v17 != null goto label06;
+v18 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object handleNull(java.lang.Class,org.osgi.util.converter.InternalConverter)>(v1, v2);
+return v18;
+label06:
+v19 = staticinvoke <org.osgi.util.converter.Util: java.lang.Class primitiveToBoxed(java.lang.Class)>(v1);
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass> = v19;
+v20 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+if v20 != null goto label07;
+v21 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass> = v21;
+label07:
+v22 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceAsClass>;
+if v22 == null goto label08;
+v23 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceAsClass>;
+goto label09;
+label08:
+v24 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v23 = virtualinvoke v24.<java.lang.Object: java.lang.Class getClass()>();
+label09:
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass> = v23;
+v25 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v26 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isCopyRequiredType(java.lang.Class)>(v25);
+if v26 != 0 goto label10;
+v27 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v28 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v29 = virtualinvoke v27.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v28);
+if v29 == 0 goto label10;
+v30 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+return v30;
+label10:
+v31 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object trySpecialCases(org.osgi.util.converter.InternalConverter)>(v2);
+if v31 == null goto label11;
+return v31;
+label11:
+v32 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v33 = virtualinvoke v32.<java.lang.Class: boolean isArray()>();
+if v33 == 0 goto label12;
+v34 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v35 = virtualinvoke v34.<java.lang.Class: java.lang.Class getComponentType()>();
+v36 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v37 = virtualinvoke v36.<java.lang.Class: java.lang.Class getComponentType()>();
+v38 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToArray(java.lang.Class,java.lang.reflect.Type,org.osgi.util.converter.InternalConverter)>(v35, v37, v2);
+return v38;
+label12:
+v39 = v1 instanceof java.lang.reflect.GenericArrayType;
+if v39 == 0 goto label13;
+v40 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v41 = interfaceinvoke v1.<java.lang.reflect.GenericArrayType: java.lang.reflect.Type getGenericComponentType()>();
+v42 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToArray(java.lang.Class,java.lang.reflect.Type,org.osgi.util.converter.InternalConverter)>(v40, v41, v2);
+return v42;
+label13:
+v43 = class "Ljava/util/Collection;";
+v44 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v45 = virtualinvoke v43.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v44);
+if v45 == 0 goto label14;
+v46 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToCollectionType(org.osgi.util.converter.InternalConverter)>(v2);
+return v46;
+label14:
+v47 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v48 = v0.<org.osgi.util.converter.ConvertingImpl: boolean targetAsJavaBean>;
+v49 = v0.<org.osgi.util.converter.ConvertingImpl: boolean targetAsDTO>;
+v50 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isMapType(java.lang.Class,boolean,boolean)>(v47, v48, v49);
+if v50 == 0 goto label15;
+v51 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToMapType(org.osgi.util.converter.InternalConverter)>(v2);
+return v51;
+label15:
+v52 = class "Ljava/util/Collection;";
+v53 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v54 = virtualinvoke v52.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v53);
+if v54 == 0 goto label16;
+v55 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v56 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertCollectionToSingleValue(java.lang.Class,org.osgi.util.converter.InternalConverter)>(v55, v2);
+return v56;
+label16:
+v57 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v58 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsJavaBean>;
+v59 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+v60 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isMapType(java.lang.Class,boolean,boolean)>(v57, v58, v59);
+if v60 == 0 goto label17;
+v61 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v62 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertMapToSingleValue(java.lang.Class,org.osgi.util.converter.InternalConverter)>(v61, v2);
+return v62;
+label17:
+v63 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v64 = v63 instanceof java.util.Map$Entry;
+if v64 == 0 goto label18;
+v65 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v66 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertMapEntryToSingleValue(java.lang.Class,org.osgi.util.converter.InternalConverter)>(v65, v2);
+return v66;
+label18:
+v67 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v68 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.Object asBoxedArray(java.lang.Object)>(v67);
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object> = v68;
+v69 = v68 instanceof java.lang.Object[];
+if v69 == 0 goto label19;
+v70 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v71 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertArrayToSingleValue(java.lang.Class,org.osgi.util.converter.InternalConverter)>(v70, v2);
+return v71;
+label19:
+v72 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object tryStandardMethods()>();
+if v72 == null goto label20;
+return v72;
+label20:
+v73 = v0.<org.osgi.util.converter.ConvertingImpl: boolean hasDefault>;
+if v73 == 0 goto label21;
+v74 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object defaultValue>;
+v75 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v74);
+v76 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceAsClass>;
+v77 = interfaceinvoke v75.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying sourceAs(java.lang.Class)>(v76);
+v78 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v79 = interfaceinvoke v77.<org.osgi.util.converter.Converting: org.osgi.util.converter.Specifying targetAs(java.lang.Class)>(v78);
+v80 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v81 = interfaceinvoke v79.<org.osgi.util.converter.Converting: java.lang.Object 'to'(java.lang.Class)>(v80);
+return v81;
+label21:
+v82 = new org.osgi.util.converter.ConversionException;
+v83 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v84 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v85 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.Object,java.lang.Class)>(v83, v84) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot convert \u0001 to \u0001");
+specialinvoke v82.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String)>(v85);
+throw v82;
+}
+private java.lang.Object convertArrayToSingleValue(java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+org.osgi.util.converter.InternalConverter v2;
+org.osgi.util.converter.InternalConverting v6;
+int v4;
+java.lang.Class v1;
+java.lang.Object v3, v5, v7;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v4 = lengthof v3;
+if v4 != 0 goto label1;
+return null;
+label1:
+v5 = v3[0];
+v6 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v5);
+v7 = interfaceinvoke v6.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v7;
+}
+private java.lang.Object convertCollectionToSingleValue(java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+java.util.Iterator v5;
+ConvertingImpl v0;
+org.osgi.util.converter.InternalConverter v2;
+org.osgi.util.converter.InternalConverting v7;
+int v4;
+java.lang.Class v1;
+java.lang.Object v3, v6, v8;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v4 = interfaceinvoke v3.<java.util.Collection: int size()>();
+if v4 != 0 goto label1;
+return null;
+label1:
+v5 = interfaceinvoke v3.<java.util.Collection: java.util.Iterator iterator()>();
+v6 = interfaceinvoke v5.<java.util.Iterator: java.lang.Object next()>();
+v7 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v6);
+v8 = interfaceinvoke v7.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v8;
+}
+private java.lang.Object convertMapToSingleValue(java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+java.util.Iterator v8;
+ConvertingImpl v0;
+java.util.Set v7;
+org.osgi.util.converter.InternalConverter v2;
+java.util.Map v5;
+org.osgi.util.converter.InternalConverting v10;
+int v6;
+java.lang.Class v1, v4;
+java.lang.Object v11, v3, v9;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v5 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map mapView(java.lang.Object,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v3, v4, v2);
+v6 = interfaceinvoke v5.<java.util.Map: int size()>();
+if v6 <= 0 goto label1;
+v7 = interfaceinvoke v5.<java.util.Map: java.util.Set entrySet()>();
+v8 = interfaceinvoke v7.<java.util.Set: java.util.Iterator iterator()>();
+v9 = interfaceinvoke v8.<java.util.Iterator: java.lang.Object next()>();
+v10 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v9);
+v11 = interfaceinvoke v10.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v11;
+label1:
+return null;
+}
+private java.lang.Object convertMapEntryToSingleValue(java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v2;
+boolean v12, v16, v20, v24, v29, v34;
+ConvertingImpl v0;
+org.osgi.util.converter.InternalConverting v14, v18, v22, v26, v31, v36, v39, v41;
+java.lang.Class v1, v10, v11, v6, v7;
+java.lang.Object v13, v15, v17, v19, v21, v23, v25, v27, v28, v3, v30, v32, v33, v35, v37, v38, v4, v40, v42, v5, v8, v9;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v4 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getKey()>();
+if v4 == null goto label01;
+v5 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getKey()>();
+v6 = virtualinvoke v5.<java.lang.Object: java.lang.Class getClass()>();
+goto label02;
+label01:
+v6 = null;
+label02:
+v7 = v6;
+v8 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getValue()>();
+if v8 == null goto label03;
+v9 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getValue()>();
+v10 = virtualinvoke v9.<java.lang.Object: java.lang.Class getClass()>();
+goto label04;
+label03:
+v10 = null;
+label04:
+v11 = v10;
+v12 = virtualinvoke v1.<java.lang.Object: boolean equals(java.lang.Object)>(v7);
+if v12 == 0 goto label05;
+v13 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getKey()>();
+v14 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v13);
+v15 = interfaceinvoke v14.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v15;
+label05:
+v16 = virtualinvoke v1.<java.lang.Object: boolean equals(java.lang.Object)>(v10);
+if v16 == 0 goto label06;
+v17 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getValue()>();
+v18 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v17);
+v19 = interfaceinvoke v18.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v19;
+label06:
+if v7 == null goto label07;
+v20 = virtualinvoke v1.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v7);
+if v20 == 0 goto label07;
+v21 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getKey()>();
+v22 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v21);
+v23 = interfaceinvoke v22.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v23;
+label07:
+if v11 == null goto label08;
+v24 = virtualinvoke v1.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v11);
+if v24 == 0 goto label08;
+v25 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getValue()>();
+v26 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v25);
+v27 = interfaceinvoke v26.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v27;
+label08:
+v28 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getKey()>();
+v29 = v28 instanceof java.lang.String;
+if v29 == 0 goto label09;
+v30 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getKey()>();
+v31 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v30);
+v32 = interfaceinvoke v31.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v32;
+label09:
+v33 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getValue()>();
+v34 = v33 instanceof java.lang.String;
+if v34 == 0 goto label10;
+v35 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getValue()>();
+v36 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v35);
+v37 = interfaceinvoke v36.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v37;
+label10:
+v38 = interfaceinvoke v3.<java.util.Map$Entry: java.lang.Object getKey()>();
+v39 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v38);
+v40 = interfaceinvoke v39.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(class "Ljava/lang/String;");
+v41 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v40);
+v42 = interfaceinvoke v41.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v42;
+}
+private java.lang.Object convertToArray(java.lang.Class, java.lang.reflect.Type, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v3;
+org.osgi.util.converter.ConversionException v15;
+org.osgi.util.converter.InternalConverting v12;
+int v6, v8, v9;
+java.lang.String v17;
+boolean v10;
+java.util.Iterator v5;
+ConvertingImpl v0;
+java.util.Collection v4;
+java.lang.Exception v14;
+java.lang.reflect.Type v2;
+java.lang.Class v1, v16;
+java.lang.Object v11, v13, v7;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: java.lang.reflect.Type;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+v4 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Collection collectionView(org.osgi.util.converter.InternalConverter)>(v3);
+v5 = interfaceinvoke v4.<java.util.Collection: java.util.Iterator iterator()>();
+label1:
+v6 = interfaceinvoke v4.<java.util.Collection: int size()>();
+v7 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(v1, v6);
+v8 = 0;
+label2:
+v9 = interfaceinvoke v4.<java.util.Collection: int size()>();
+if v8 >= v9 goto label3;
+v10 = interfaceinvoke v5.<java.util.Iterator: boolean hasNext()>();
+if v10 == 0 goto label3;
+v11 = interfaceinvoke v5.<java.util.Iterator: java.lang.Object next()>();
+v12 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v11);
+v13 = interfaceinvoke v12.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.reflect.Type)>(v2);
+staticinvoke <java.lang.reflect.Array: void set(java.lang.Object,int,java.lang.Object)>(v7, v8, v13);
+v8 = v8 + 1;
+goto label2;
+label3:
+return v7;
+label4:
+v14 := @caughtexception;
+v15 = new org.osgi.util.converter.ConversionException;
+v16 = virtualinvoke v4.<java.lang.Object: java.lang.Class getClass()>();
+v17 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.Class)>(v16) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot iterate over \u0001");
+specialinvoke v15.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String,java.lang.Throwable)>(v17, v14);
+throw v15;
+catch java.lang.Exception from label1 to label3 with label4;
+}
+private java.lang.Object convertToCollectionType(org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+java.util.Collection v2;
+java.lang.Object v3;
+org.osgi.util.converter.InternalConverter v1;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Collection convertToCollectionDelegate(org.osgi.util.converter.InternalConverter)>(v1);
+if v2 == null goto label1;
+return v2;
+label1:
+v3 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToCollection(org.osgi.util.converter.InternalConverter)>(v1);
+return v3;
+}
+private java.util.Collection convertToCollectionDelegate(org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v1;
+boolean v10, v15, v2, v20, v22, v28, v5, v8;
+ConvertingImpl v0;
+java.util.Set v25, v30;
+java.util.List v12, v17, v24;
+java.lang.Class v13, v14, v18, v19, v21, v26, v27, v3, v4, v6, v7, v9;
+java.lang.Object v11, v16, v23, v29;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = v0.<org.osgi.util.converter.ConvertingImpl: boolean liveView>;
+if v2 != 0 goto label1;
+return null;
+label1:
+v3 = class "Ljava/util/List;";
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v5 = virtualinvoke v3.<java.lang.Object: boolean equals(java.lang.Object)>(v4);
+if v5 != 0 goto label2;
+v6 = class "Ljava/util/Collection;";
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v8 = virtualinvoke v6.<java.lang.Object: boolean equals(java.lang.Object)>(v7);
+if v8 == 0 goto label4;
+label2:
+v9 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v10 = virtualinvoke v9.<java.lang.Class: boolean isArray()>();
+if v10 == 0 goto label3;
+v11 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v12 = staticinvoke <org.osgi.util.converter.ListDelegate: java.util.List forArray(java.lang.Object,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v11, v0, v1);
+return v12;
+label3:
+v13 = class "Ljava/util/Collection;";
+v14 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v15 = virtualinvoke v13.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v14);
+if v15 == 0 goto label6;
+v16 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v17 = staticinvoke <org.osgi.util.converter.ListDelegate: java.util.List forCollection(java.util.Collection,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v16, v0, v1);
+return v17;
+label4:
+v18 = class "Ljava/util/Set;";
+v19 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v20 = virtualinvoke v18.<java.lang.Object: boolean equals(java.lang.Object)>(v19);
+if v20 == 0 goto label6;
+v21 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v22 = virtualinvoke v21.<java.lang.Class: boolean isArray()>();
+if v22 == 0 goto label5;
+v23 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v24 = staticinvoke <org.osgi.util.converter.ListDelegate: java.util.List forArray(java.lang.Object,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v23, v0, v1);
+v25 = staticinvoke <org.osgi.util.converter.SetDelegate: java.util.Set forCollection(java.util.Collection,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v24, v0, v1);
+return v25;
+label5:
+v26 = class "Ljava/util/Collection;";
+v27 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v28 = virtualinvoke v26.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v27);
+if v28 == 0 goto label6;
+v29 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v30 = staticinvoke <org.osgi.util.converter.SetDelegate: java.util.Set forCollection(java.util.Collection,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v29, v0, v1);
+return v30;
+label6:
+return null;
+}
+private java.lang.Object convertToCollection(org.osgi.util.converter.InternalConverter)
+{
+java.lang.Throwable v21;
+org.osgi.util.converter.InternalConverter v1;
+java.util.Map v11;
+org.osgi.util.converter.InternalConverting v20;
+int v15, v5;
+boolean v18, v22, v8;
+java.util.Iterator v17;
+ConvertingImpl v0;
+java.util.Collection v2;
+java.lang.reflect.Type v10, v7;
+java.lang.reflect.Type[] v3, v4, v6, v9;
+java.lang.Class v12, v14;
+java.lang.Object v13, v16, v19, v23;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Collection collectionView(org.osgi.util.converter.InternalConverter)>(v1);
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+if v3 == null goto label01;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v5 = lengthof v4;
+if v5 <= 0 goto label01;
+v6 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v7 = v6[0];
+v8 = v7 instanceof java.lang.Class;
+if v8 == 0 goto label01;
+v9 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v10 = v9[0];
+label01:
+v11 = <org.osgi.util.converter.ConvertingImpl: java.util.Map INTERFACE_IMPLS>;
+v12 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v13 = interfaceinvoke v11.<java.util.Map: java.lang.Object get(java.lang.Object)>(v12);
+if v13 == null goto label02;
+v14 = v13;
+goto label03;
+label02:
+v14 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+label03:
+v15 = interfaceinvoke v2.<java.util.Collection: int size()>();
+v16 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.Object createMapOrCollection(java.lang.Class,int)>(v14, v15);
+if v16 != null goto label04;
+return null;
+label04:
+v17 = interfaceinvoke v2.<java.util.Collection: java.util.Iterator iterator()>();
+label05:
+v18 = interfaceinvoke v17.<java.util.Iterator: boolean hasNext()>();
+if v18 == 0 goto label10;
+v19 = interfaceinvoke v17.<java.util.Iterator: java.lang.Object next()>();
+if v10 == null goto label09;
+label06:
+v20 = interfaceinvoke v1.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v19);
+v19 = interfaceinvoke v20.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v10);
+label07:
+goto label09;
+label08:
+v21 := @caughtexception;
+v22 = v0.<org.osgi.util.converter.ConvertingImpl: boolean hasDefault>;
+if v22 == 0 goto label09;
+v23 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object defaultValue>;
+return v23;
+label09:
+interfaceinvoke v16.<java.util.Collection: boolean add(java.lang.Object)>(v19);
+goto label05;
+label10:
+return v16;
+catch org.osgi.util.converter.ConversionException from label06 to label07 with label08;
+}
+private java.lang.Object convertToDTO(java.lang.Class, java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v3;
+java.lang.NoSuchFieldException v19;
+java.util.Map v5;
+boolean v13, v20, v26, v28, v30;
+ConvertingImpl v0;
+java.util.Set v11;
+java.lang.Exception v40;
+java.util.List v10;
+java.lang.reflect.Type v35, v38;
+java.lang.reflect.Type[] v37;
+org.osgi.util.converter.ConversionException v41;
+org.osgi.util.converter.InternalConverting v31, v39;
+int v22, v23;
+java.lang.String v16, v17, v25, v43, v6;
+org.osgi.util.converter.Specifying v32;
+java.util.Iterator v12;
+java.lang.reflect.Field v18, v24;
+java.lang.reflect.Field[] v21;
+java.lang.Class v1, v2, v29, v33, v36, v42, v7, v9;
+java.lang.Object v14, v15, v27, v34, v4, v8;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: java.lang.Class;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v5 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map mapView(java.lang.Object,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v4, v1, v3);
+label01:
+v6 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getPrefix(java.lang.Class)>(v2);
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v8 = virtualinvoke v7.<java.lang.Class: java.lang.Object newInstance()>();
+v9 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v10 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.List getNames(java.lang.Class)>(v9);
+v11 = interfaceinvoke v5.<java.util.Map: java.util.Set entrySet()>();
+v12 = interfaceinvoke v11.<java.util.Set: java.util.Iterator iterator()>();
+label02:
+v13 = interfaceinvoke v12.<java.util.Iterator: boolean hasNext()>();
+if v13 == 0 goto label11;
+v14 = interfaceinvoke v12.<java.util.Iterator: java.lang.Object next()>();
+v15 = interfaceinvoke v14.<java.util.Map$Entry: java.lang.Object getKey()>();
+if v15 == null goto label02;
+v16 = virtualinvoke v15.<java.lang.Object: java.lang.String toString()>();
+v17 = staticinvoke <org.osgi.util.converter.Util: java.lang.String mangleName(java.lang.String,java.lang.String,java.util.List)>(v6, v16, v10);
+if v17 == null goto label02;
+v18 = null;
+label03:
+v18 = virtualinvoke v2.<java.lang.Class: java.lang.reflect.Field getField(java.lang.String)>(v17);
+label04:
+goto label08;
+label05:
+v19 := @caughtexception;
+v20 = v0.<org.osgi.util.converter.ConvertingImpl: boolean keysIgnoreCase>;
+if v20 == 0 goto label08;
+v21 = virtualinvoke v2.<java.lang.Class: java.lang.reflect.Field[] getFields()>();
+v22 = lengthof v21;
+v23 = 0;
+label06:
+if v23 >= v22 goto label08;
+v24 = v21[v23];
+v25 = virtualinvoke v24.<java.lang.reflect.Field: java.lang.String getName()>();
+v26 = virtualinvoke v25.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(v17);
+if v26 == 0 goto label07;
+v18 = v24;
+goto label08;
+label07:
+v23 = v23 + 1;
+goto label06;
+label08:
+if v18 == null goto label02;
+v27 = interfaceinvoke v14.<java.util.Map$Entry: java.lang.Object getValue()>();
+v28 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+if v28 == 0 goto label09;
+v29 = virtualinvoke v18.<java.lang.reflect.Field: java.lang.Class getType()>();
+v30 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v29, 0);
+if v30 == 0 goto label09;
+v31 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v27);
+v32 = interfaceinvoke v31.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying sourceAsDTO()>();
+v33 = virtualinvoke v18.<java.lang.reflect.Field: java.lang.Class getType()>();
+v34 = interfaceinvoke v32.<org.osgi.util.converter.Converting: java.lang.Object 'to'(java.lang.Class)>(v33);
+goto label10;
+label09:
+v35 = virtualinvoke v18.<java.lang.reflect.Field: java.lang.reflect.Type getGenericType()>();
+v36 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v37 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v38 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type reifyType(java.lang.reflect.Type,java.lang.Class,java.lang.reflect.Type[])>(v35, v36, v37);
+v39 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v27);
+v34 = interfaceinvoke v39.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.reflect.Type)>(v38);
+label10:
+virtualinvoke v18.<java.lang.reflect.Field: void set(java.lang.Object,java.lang.Object)>(v8, v34);
+goto label02;
+label11:
+return v8;
+label12:
+v40 := @caughtexception;
+v41 = new org.osgi.util.converter.ConversionException;
+v42 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v43 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.Class)>(v42) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot create DTO \u0001");
+specialinvoke v41.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String,java.lang.Throwable)>(v43, v40);
+throw v41;
+catch java.lang.NoSuchFieldException from label03 to label04 with label05;
+catch java.lang.Exception from label01 to label11 with label12;
+}
+static java.lang.reflect.Type reifyType(java.lang.reflect.Type, java.lang.Class, java.lang.reflect.Type[])
+{
+org.osgi.util.converter.ConvertingImpl$1 v34;
+org.osgi.util.converter.ConvertingImpl$2 v38;
+boolean v11, v14, v15, v16, v18, v21, v23, v3, v30, v33, v35;
+java.lang.reflect.Type v0, v12, v13, v17, v20, v28, v29, v31, v32, v36, v37;
+java.lang.reflect.Type[] v19, v2, v22, v25;
+int v24, v26, v27, v5, v7;
+java.lang.String v10, v4;
+java.lang.reflect.TypeVariable v9;
+java.lang.reflect.TypeVariable[] v6, v8;
+java.lang.Class v1;
+v0 := @parameter0: java.lang.reflect.Type;
+v1 := @parameter1: java.lang.Class;
+v2 := @parameter2: java.lang.reflect.Type[];
+v3 = v0 instanceof java.lang.reflect.TypeVariable;
+if v3 == 0 goto label07;
+v4 = interfaceinvoke v0.<java.lang.reflect.TypeVariable: java.lang.String getName()>();
+v5 = 0;
+label01:
+v6 = virtualinvoke v1.<java.lang.Class: java.lang.reflect.TypeVariable[] getTypeParameters()>();
+v7 = lengthof v6;
+if v5 >= v7 goto label03;
+v8 = virtualinvoke v1.<java.lang.Class: java.lang.reflect.TypeVariable[] getTypeParameters()>();
+v9 = v8[v5];
+v10 = interfaceinvoke v9.<java.lang.reflect.TypeVariable: java.lang.String getName()>();
+v11 = virtualinvoke v10.<java.lang.String: boolean equals(java.lang.Object)>(v4);
+if v11 == 0 goto label02;
+v12 = v2[v5];
+return v12;
+label02:
+v5 = v5 + 1;
+goto label01;
+label03:
+v13 = v1;
+label04:
+if v13 == null goto label13;
+v14 = v13 instanceof java.lang.Class;
+if v14 == 0 goto label05;
+v13 = virtualinvoke v13.<java.lang.Class: java.lang.reflect.Type getGenericSuperclass()>();
+goto label06;
+label05:
+v15 = v13 instanceof java.lang.reflect.ParameterizedType;
+if v15 == 0 goto label06;
+v13 = interfaceinvoke v13.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type getRawType()>();
+label06:
+v16 = v13 instanceof java.lang.reflect.ParameterizedType;
+if v16 == 0 goto label04;
+v17 = interfaceinvoke v13.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type getRawType()>();
+v18 = v17 instanceof java.lang.Class;
+if v18 == 0 goto label04;
+v19 = interfaceinvoke v13.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type[] getActualTypeArguments()>();
+v20 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type reifyType(java.lang.reflect.Type,java.lang.Class,java.lang.reflect.Type[])>(v0, v17, v19);
+return v20;
+label07:
+v21 = v0 instanceof java.lang.reflect.ParameterizedType;
+if v21 == 0 goto label12;
+v22 = interfaceinvoke v0.<java.lang.reflect.ParameterizedType: java.lang.reflect.Type[] getActualTypeArguments()>();
+v23 = 0;
+v24 = lengthof v22;
+v25 = newarray (java.lang.reflect.Type)[v24];
+v26 = 0;
+label08:
+v27 = lengthof v22;
+if v26 >= v27 goto label11;
+v28 = v22[v26];
+v29 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type reifyType(java.lang.reflect.Type,java.lang.Class,java.lang.reflect.Type[])>(v28, v1, v2);
+v25[v26] = v29;
+v30 = v23;
+v31 = v25[v26];
+v32 = v22[v26];
+if v31 == v32 goto label09;
+v33 = 1;
+goto label10;
+label09:
+v33 = 0;
+label10:
+v23 = v30 | v33;
+v26 = v26 + 1;
+goto label08;
+label11:
+if v23 == 0 goto label13;
+v34 = new org.osgi.util.converter.ConvertingImpl$1;
+specialinvoke v34.<org.osgi.util.converter.ConvertingImpl$1: void <init>(java.lang.reflect.ParameterizedType,java.lang.reflect.Type[])>(v0, v25);
+return v34;
+label12:
+v35 = v0 instanceof java.lang.reflect.GenericArrayType;
+if v35 == 0 goto label13;
+v36 = interfaceinvoke v0.<java.lang.reflect.GenericArrayType: java.lang.reflect.Type getGenericComponentType()>();
+v37 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type reifyType(java.lang.reflect.Type,java.lang.Class,java.lang.reflect.Type[])>(v36, v1, v2);
+if v37 == v36 goto label13;
+v38 = new org.osgi.util.converter.ConvertingImpl$2;
+specialinvoke v38.<org.osgi.util.converter.ConvertingImpl$2: void <init>(java.lang.reflect.Type)>(v37);
+return v38;
+label13:
+return v0;
+}
+private java.util.List getNames(java.lang.Class)
+{
+ConvertingImpl v0;
+java.lang.reflect.Field v6;
+java.util.ArrayList v2;
+java.lang.reflect.Field[] v3;
+int v4, v5, v7;
+java.lang.Class v1;
+java.lang.String v9;
+boolean v10, v8;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 = new java.util.ArrayList;
+specialinvoke v2.<java.util.ArrayList: void <init>()>();
+v3 = virtualinvoke v1.<java.lang.Class: java.lang.reflect.Field[] getFields()>();
+v4 = lengthof v3;
+v5 = 0;
+label1:
+if v5 >= v4 goto label3;
+v6 = v3[v5];
+v7 = virtualinvoke v6.<java.lang.reflect.Field: int getModifiers()>();
+v8 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>(v7);
+if v8 != 0 goto label2;
+v9 = virtualinvoke v6.<java.lang.reflect.Field: java.lang.String getName()>();
+v10 = interfaceinvoke v2.<java.util.List: boolean contains(java.lang.Object)>(v9);
+if v10 != 0 goto label2;
+interfaceinvoke v2.<java.util.List: boolean add(java.lang.Object)>(v9);
+label2:
+v5 = v5 + 1;
+goto label1;
+label3:
+return v2;
+}
+private java.util.Map convertToMap(org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v1;
+java.util.Map v4, v5;
+int v8;
+boolean v12;
+java.util.Iterator v11;
+ConvertingImpl v0;
+java.util.Set v10;
+java.lang.Class v3, v6;
+java.lang.Object v13, v14, v15, v16, v17, v2, v7, v9;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v4 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map mapView(java.lang.Object,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v2, v3, v1);
+if v4 != null goto label1;
+return null;
+label1:
+v5 = <org.osgi.util.converter.ConvertingImpl: java.util.Map INTERFACE_IMPLS>;
+v6 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v7 = interfaceinvoke v5.<java.util.Map: java.lang.Object get(java.lang.Object)>(v6);
+if v7 != null goto label2;
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+label2:
+v8 = interfaceinvoke v4.<java.util.Map: int size()>();
+v9 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.Object createMapOrCollection(java.lang.Class,int)>(v7, v8);
+if v9 != null goto label3;
+return null;
+label3:
+v10 = interfaceinvoke v4.<java.util.Map: java.util.Set entrySet()>();
+v11 = interfaceinvoke v10.<java.util.Set: java.util.Iterator iterator()>();
+label4:
+v12 = interfaceinvoke v11.<java.util.Iterator: boolean hasNext()>();
+if v12 == 0 goto label5;
+v13 = interfaceinvoke v11.<java.util.Iterator: java.lang.Object next()>();
+v14 = interfaceinvoke v13.<java.util.Map$Entry: java.lang.Object getKey()>();
+v15 = interfaceinvoke v13.<java.util.Map$Entry: java.lang.Object getValue()>();
+v16 = virtualinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertMapKey(java.lang.Object,org.osgi.util.converter.InternalConverter)>(v14, v1);
+v17 = virtualinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertMapValue(java.lang.Object,org.osgi.util.converter.InternalConverter)>(v15, v1);
+interfaceinvoke v9.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(v16, v17);
+goto label4;
+label5:
+return v9;
+}
+java.lang.Object convertCollectionValue(java.lang.Object, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v2;
+org.osgi.util.converter.InternalConverting v13, v15, v8;
+int v6;
+boolean v10, v11, v12;
+org.osgi.util.converter.Specifying v14;
+ConvertingImpl v0;
+java.lang.reflect.Type v3;
+java.lang.reflect.Type[] v4, v5, v7;
+java.lang.Class v9;
+java.lang.Object v1;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = null;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+if v4 == null goto label1;
+v5 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v6 = lengthof v5;
+if v6 <= 0 goto label1;
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v3 = v7[0];
+label1:
+if v1 == null goto label6;
+if v3 == null goto label2;
+v8 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v1);
+v1 = interfaceinvoke v8.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.reflect.Type)>(v3);
+goto label6;
+label2:
+v9 = virtualinvoke v1.<java.lang.Object: java.lang.Class getClass()>();
+v10 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isCopyRequiredType(java.lang.Class)>(v9);
+if v10 == 0 goto label3;
+v9 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.Class getConstructableType(java.lang.Class)>(v9);
+label3:
+v11 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+if v11 != 0 goto label4;
+v12 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v9, 1);
+if v12 == 0 goto label5;
+label4:
+v13 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v1);
+v14 = interfaceinvoke v13.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying sourceAsDTO()>();
+v1 = interfaceinvoke v14.<org.osgi.util.converter.Converting: java.lang.Object 'to'(java.lang.Class)>(v9);
+goto label6;
+label5:
+v15 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v1);
+v1 = interfaceinvoke v15.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v9);
+label6:
+return v1;
+}
+java.lang.Object convertMapKey(java.lang.Object, org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+java.lang.Object v1, v3;
+org.osgi.util.converter.InternalConverter v2;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertMapElement(java.lang.Object,int,org.osgi.util.converter.InternalConverter)>(v1, 0, v2);
+return v3;
+}
+java.lang.Object convertMapValue(java.lang.Object, org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+java.lang.Object v1, v3;
+org.osgi.util.converter.InternalConverter v2;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertMapElement(java.lang.Object,int,org.osgi.util.converter.InternalConverter)>(v1, 1, v2);
+return v3;
+}
+private java.lang.Object convertMapElement(java.lang.Object, int, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v3;
+org.osgi.util.converter.InternalConverting v14, v16, v9;
+int v2, v7;
+boolean v11, v12, v13;
+org.osgi.util.converter.Specifying v15;
+ConvertingImpl v0;
+java.lang.reflect.Type v4;
+java.lang.reflect.Type[] v5, v6, v8;
+java.lang.Class v10;
+java.lang.Object v1;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: int;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+v4 = null;
+v5 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+if v5 == null goto label1;
+v6 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v7 = lengthof v6;
+if v7 <= v2 goto label1;
+v8 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type[] typeArguments>;
+v4 = v8[v2];
+label1:
+if v1 == null goto label6;
+if v4 == null goto label2;
+v9 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v1);
+v1 = interfaceinvoke v9.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.reflect.Type)>(v4);
+goto label6;
+label2:
+v10 = virtualinvoke v1.<java.lang.Object: java.lang.Class getClass()>();
+v11 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isCopyRequiredType(java.lang.Class)>(v10);
+if v11 == 0 goto label3;
+v10 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.Class getConstructableType(java.lang.Class)>(v10);
+label3:
+v12 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+if v12 != 0 goto label4;
+v13 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v10, 1);
+if v13 == 0 goto label5;
+label4:
+v14 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v1);
+v15 = interfaceinvoke v14.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying sourceAsDTO()>();
+v1 = interfaceinvoke v15.<org.osgi.util.converter.Converting: java.lang.Object 'to'(java.lang.Class)>(v10);
+goto label6;
+label5:
+v16 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v1);
+v1 = interfaceinvoke v16.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v10);
+label6:
+return v1;
+}
+private java.util.Map convertToMapDelegate(org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v1;
+org.osgi.util.converter.MapDelegate v11, v17, v21, v30;
+java.util.Map v6;
+int v26;
+boolean v13, v14, v18, v23, v4, v9;
+java.util.Iterator v28;
+ConvertingImpl v0;
+java.util.Set v25;
+java.lang.Class v12, v16, v2, v20, v22, v24, v3, v7, v8;
+java.lang.Object v10, v15, v19, v27, v29, v5;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = class "Ljava/util/Map;";
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v4 = virtualinvoke v2.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v3);
+if v4 == 0 goto label1;
+v5 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v6 = staticinvoke <org.osgi.util.converter.MapDelegate: java.util.Map forMap(java.util.Map,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v5, v0, v1);
+return v6;
+label1:
+v7 = class "Ljava/util/Dictionary;";
+v8 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v9 = virtualinvoke v7.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v8);
+if v9 == 0 goto label2;
+v10 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v11 = staticinvoke <org.osgi.util.converter.MapDelegate: org.osgi.util.converter.MapDelegate forDictionary(java.util.Dictionary,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v10, v0, v1);
+return v11;
+label2:
+v12 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v13 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v12, 1);
+if v13 != 0 goto label3;
+v14 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+if v14 == 0 goto label4;
+label3:
+v15 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v16 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v17 = staticinvoke <org.osgi.util.converter.MapDelegate: org.osgi.util.converter.MapDelegate forDTO(java.lang.Object,java.lang.Class,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v15, v16, v0, v1);
+return v17;
+label4:
+v18 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsJavaBean>;
+if v18 == 0 goto label5;
+v19 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v20 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v21 = staticinvoke <org.osgi.util.converter.MapDelegate: org.osgi.util.converter.MapDelegate forBean(java.lang.Object,java.lang.Class,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v19, v20, v0, v1);
+return v21;
+label5:
+v22 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v23 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: boolean hasGetProperties(java.lang.Class)>(v22);
+if v23 == 0 goto label6;
+return null;
+label6:
+v24 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v25 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getInterfaces(java.lang.Class)>(v24);
+v26 = interfaceinvoke v25.<java.util.Set: int size()>();
+if v26 <= 0 goto label7;
+v27 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v28 = interfaceinvoke v25.<java.util.Set: java.util.Iterator iterator()>();
+v29 = interfaceinvoke v28.<java.util.Iterator: java.lang.Object next()>();
+v30 = staticinvoke <org.osgi.util.converter.MapDelegate: org.osgi.util.converter.MapDelegate forInterface(java.lang.Object,java.lang.Class,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v27, v29, v0, v1);
+return v30;
+label7:
+return null;
+}
+private java.lang.Object convertToMapType(org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v1;
+java.util.Map v14, v18;
+boolean v12, v13, v17, v21, v23, v25, v3, v30, v34, v4, v5;
+ConvertingImpl v0;
+org.osgi.util.converter.ConversionException v38, v6;
+java.lang.String v41, v9;
+java.lang.Class v10, v11, v15, v16, v19, v2, v20, v24, v26, v27, v29, v31, v32, v35, v36, v40, v8;
+java.lang.Object v22, v28, v33, v37, v39, v7;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsJavaBean>;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+v5 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isMapType(java.lang.Class,boolean,boolean)>(v2, v3, v4);
+if v5 != 0 goto label1;
+v6 = new org.osgi.util.converter.ConversionException;
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v8 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v9 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.Object,java.lang.Class)>(v7, v8) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot convert \u0001 to \u0001");
+specialinvoke v6.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String)>(v9);
+throw v6;
+label1:
+v10 = class "Ljava/util/Map;";
+v11 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v12 = virtualinvoke v10.<java.lang.Object: boolean equals(java.lang.Object)>(v11);
+if v12 == 0 goto label2;
+v13 = v0.<org.osgi.util.converter.ConvertingImpl: boolean liveView>;
+if v13 == 0 goto label2;
+v14 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map convertToMapDelegate(org.osgi.util.converter.InternalConverter)>(v1);
+if v14 == null goto label2;
+return v14;
+label2:
+v15 = class "Ljava/util/Map;";
+v16 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v17 = virtualinvoke v15.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v16);
+if v17 == 0 goto label3;
+v18 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map convertToMap(org.osgi.util.converter.InternalConverter)>(v1);
+return v18;
+label3:
+v19 = class "Ljava/util/Dictionary;";
+v20 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v21 = virtualinvoke v19.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v20);
+if v21 == 0 goto label4;
+v22 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToDictionary(org.osgi.util.converter.InternalConverter)>(v1);
+return v22;
+label4:
+v23 = v0.<org.osgi.util.converter.ConvertingImpl: boolean targetAsDTO>;
+if v23 != 0 goto label5;
+v24 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v25 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v24, 0);
+if v25 == 0 goto label6;
+label5:
+v26 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v27 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v28 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToDTO(java.lang.Class,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v26, v27, v1);
+return v28;
+label6:
+v29 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v30 = virtualinvoke v29.<java.lang.Class: boolean isInterface()>();
+if v30 == 0 goto label7;
+v31 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v32 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v33 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToInterface(java.lang.Class,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v31, v32, v1);
+return v33;
+label7:
+v34 = v0.<org.osgi.util.converter.ConvertingImpl: boolean targetAsJavaBean>;
+if v34 == 0 goto label8;
+v35 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v36 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v37 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object convertToJavaBean(java.lang.Class,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v35, v36, v1);
+return v37;
+label8:
+v38 = new org.osgi.util.converter.ConversionException;
+v39 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v40 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v41 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.Object,java.lang.Class)>(v39, v40) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot convert \u0001 to \u0001");
+specialinvoke v38.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String)>(v41);
+throw v38;
+}
+private java.lang.Object convertToDictionary(org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.ConvertingImpl$3 v5;
+ConvertingImpl v0;
+org.osgi.util.converter.InternalConverting v4;
+java.lang.Object v3, v6;
+org.osgi.util.converter.InternalConverter v1;
+java.util.Hashtable v2;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = new java.util.Hashtable;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v4 = interfaceinvoke v1.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v3);
+v5 = new org.osgi.util.converter.ConvertingImpl$3;
+specialinvoke v5.<org.osgi.util.converter.ConvertingImpl$3: void <init>(org.osgi.util.converter.ConvertingImpl)>(v0);
+v6 = interfaceinvoke v4.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.reflect.Type)>(v5);
+specialinvoke v2.<java.util.Hashtable: void <init>(java.util.Map)>(v6);
+return v2;
+}
+private java.lang.Object convertToJavaBean(java.lang.Class, java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v3;
+java.util.Map v6;
+boolean v11;
+ConvertingImpl v0;
+java.util.Set v9;
+java.lang.Exception v27;
+java.lang.StringBuilder v31;
+java.lang.Object[] v24;
+org.osgi.util.converter.ConversionException v28;
+org.osgi.util.converter.InternalConverting v25;
+int v14, v15;
+java.lang.String v13, v18, v21, v22, v29, v30, v4;
+java.util.Iterator v10;
+java.lang.Class[] v19;
+char v16, v17;
+java.lang.Class v1, v2, v20, v7;
+java.lang.Object v12, v23, v26, v5, v8;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: java.lang.Class;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+v4 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getPrefix(java.lang.Class)>(v2);
+v5 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v6 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map mapView(java.lang.Object,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v5, v1, v3);
+label1:
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v8 = virtualinvoke v7.<java.lang.Class: java.lang.Object newInstance()>();
+v9 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getSetters(java.lang.Class)>(v2);
+v10 = interfaceinvoke v9.<java.util.Set: java.util.Iterator iterator()>();
+label2:
+v11 = interfaceinvoke v10.<java.util.Iterator: boolean hasNext()>();
+if v11 == 0 goto label3;
+v12 = interfaceinvoke v10.<java.util.Iterator: java.lang.Object next()>();
+v13 = virtualinvoke v12.<java.lang.reflect.Method: java.lang.String getName()>();
+v14 = virtualinvoke v13.<java.lang.String: int length()>();
+v15 = v14 - 3;
+specialinvoke v31.<java.lang.StringBuilder: void <init>(int)>(v15);
+v16 = virtualinvoke v13.<java.lang.String: char charAt(int)>(3);
+v17 = staticinvoke <java.lang.Character: char toLowerCase(char)>(v16);
+v18 = virtualinvoke v13.<java.lang.String: java.lang.String substring(int)>(4);
+v19 = virtualinvoke v12.<java.lang.reflect.Method: java.lang.Class[] getParameterTypes()>();
+v20 = v19[0];
+v21 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (char,java.lang.String)>(v17, v18) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("\u0001\u0001");
+v22 = staticinvoke <org.osgi.util.converter.Util: java.lang.String unMangleName(java.lang.String,java.lang.String)>(v4, v21);
+v23 = interfaceinvoke v6.<java.util.Map: java.lang.Object get(java.lang.Object)>(v22);
+v24 = newarray (java.lang.Object)[1];
+v25 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v23);
+v26 = interfaceinvoke v25.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v20);
+v24[0] = v26;
+virtualinvoke v12.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(v8, v24);
+goto label2;
+label3:
+return v8;
+label4:
+v27 := @caughtexception;
+v28 = new org.osgi.util.converter.ConversionException;
+v29 = virtualinvoke v2.<java.lang.Class: java.lang.String getName()>();
+v30 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.String)>(v29) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot convert to class: \u0001. Not a JavaBean with a Zero-arg Constructor.");
+specialinvoke v28.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String,java.lang.Throwable)>(v30, v27);
+throw v28;
+catch java.lang.Exception from label1 to label3 with label4;
+}
+private java.lang.Object convertToInterface(java.lang.Class, java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.Specifying v7;
+ConvertingImpl v0;
+org.osgi.util.converter.InternalConverter v3;
+org.osgi.util.converter.InternalConverting v5;
+java.lang.Class v1, v2, v6;
+java.lang.Object v10, v11, v4;
+boolean v8, v9;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: java.lang.Class;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v5 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v4);
+v6 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceAsClass>;
+v7 = interfaceinvoke v5.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying sourceAs(java.lang.Class)>(v6);
+interfaceinvoke v7.<org.osgi.util.converter.Converting: org.osgi.util.converter.Specifying view()>();
+v8 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+if v8 == 0 goto label1;
+interfaceinvoke v5.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying sourceAsDTO()>();
+label1:
+v9 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsJavaBean>;
+if v9 == 0 goto label2;
+interfaceinvoke v5.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying sourceAsBean()>();
+label2:
+v10 = interfaceinvoke v5.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(class "Ljava/util/Map;");
+v11 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object createProxy(java.lang.Class,java.util.Map,org.osgi.util.converter.InternalConverter)>(v2, v10, v3);
+return v11;
+}
+private java.lang.Object createProxy(java.lang.Class, java.util.Map, org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+java.lang.Class[] v5;
+org.osgi.util.converter.InternalConverter v3;
+java.util.Map v2;
+org.osgi.util.converter.ConvertingImpl$4 v6;
+java.lang.Class v1;
+java.lang.Object v7;
+java.lang.ClassLoader v4;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: java.util.Map;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+v4 = virtualinvoke v1.<java.lang.Class: java.lang.ClassLoader getClassLoader()>();
+v5 = newarray (java.lang.Class)[1];
+v5[0] = v1;
+v6 = new org.osgi.util.converter.ConvertingImpl$4;
+specialinvoke v6.<org.osgi.util.converter.ConvertingImpl$4: void <init>(org.osgi.util.converter.ConvertingImpl,java.lang.Class,java.util.Map,org.osgi.util.converter.InternalConverter)>(v0, v1, v2, v3);
+v7 = staticinvoke <java.lang.reflect.Proxy: java.lang.Object newProxyInstance(java.lang.ClassLoader,java.lang.Class[],java.lang.reflect.InvocationHandler)>(v4, v5, v6);
+return v7;
+}
+private java.lang.Object handleNull(java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v2;
+java.lang.Integer v21;
+int[] v14;
+org.osgi.util.converter.InternalConverting v19, v22, v5;
+int v10;
+boolean v12, v17, v3, v8, v9;
+ConvertingImpl v0;
+java.util.List v18;
+java.lang.Class v1, v11, v16, v7;
+java.lang.Object v13, v15, v20, v23, v4, v6;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: boolean hasDefault>;
+if v3 == 0 goto label1;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object defaultValue>;
+v5 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v4);
+v6 = interfaceinvoke v5.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v6;
+label1:
+v7 = staticinvoke <org.osgi.util.converter.Util: java.lang.Class primitiveToBoxed(java.lang.Class)>(v1);
+v8 = virtualinvoke v7.<java.lang.Object: boolean equals(java.lang.Object)>(v1);
+if v8 == 0 goto label7;
+v9 = virtualinvoke v1.<java.lang.Class: boolean isArray()>();
+if v9 == 0 goto label5;
+v10 = 1;
+v11 = virtualinvoke v1.<java.lang.Class: java.lang.Class getComponentType()>();
+label2:
+v12 = virtualinvoke v11.<java.lang.Class: boolean isArray()>();
+if v12 == 0 goto label3;
+v10 = v10 + 1;
+v11 = virtualinvoke v11.<java.lang.Class: java.lang.Class getComponentType()>();
+goto label2;
+label3:
+if v10 != 1 goto label4;
+v13 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(v11, 0);
+return v13;
+label4:
+v14 = newarray (int)[v10];
+v15 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int[])>(v11, v14);
+return v15;
+label5:
+v16 = class "Ljava/util/Collection;";
+v17 = virtualinvoke v16.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v1);
+if v17 == 0 goto label6;
+v18 = staticinvoke <java.util.Collections: java.util.List emptyList()>();
+v19 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v18);
+v20 = interfaceinvoke v19.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v20;
+label6:
+return null;
+label7:
+v21 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+v22 = interfaceinvoke v2.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v21);
+v23 = interfaceinvoke v22.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(v1);
+return v23;
+}
+private static boolean isMapType(java.lang.Class, boolean, boolean)
+{
+java.util.Set v7;
+int v8;
+java.lang.Class v0, v11, v3, v5;
+boolean v1, v10, v12, v2, v4, v6, v9;
+v0 := @parameter0: java.lang.Class;
+v1 := @parameter1: boolean;
+v2 := @parameter2: boolean;
+if v2 == 0 goto label1;
+return 1;
+label1:
+v3 = class "Ljava/util/Map;";
+v4 = virtualinvoke v3.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v0);
+if v4 == 0 goto label2;
+return 1;
+label2:
+v5 = class "Ljava/lang/annotation/Annotation;";
+v6 = virtualinvoke v5.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v0);
+if v6 == 0 goto label3;
+return 1;
+label3:
+v7 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getInterfaces(java.lang.Class)>(v0);
+v8 = interfaceinvoke v7.<java.util.Set: int size()>();
+if v8 <= 0 goto label4;
+return 1;
+label4:
+v9 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v0, 1);
+if v9 == 0 goto label5;
+return 1;
+label5:
+if v1 == 0 goto label6;
+v10 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isWriteableJavaBean(java.lang.Class)>(v0);
+if v10 == 0 goto label6;
+return 1;
+label6:
+v11 = class "Ljava/util/Dictionary;";
+v12 = virtualinvoke v11.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v0);
+return v12;
+}
+private java.lang.Object trySpecialCases(org.osgi.util.converter.InternalConverter)
+{
+java.lang.Float v44;
+org.osgi.util.converter.InternalConverter v1;
+java.lang.Integer v34;
+org.osgi.util.converter.ConvertingImpl$5 v109;
+byte v23;
+java.lang.Long v39;
+java.util.Map v118, v95;
+ConvertingImpl v0;
+java.lang.Exception v62, v71, v84;
+java.lang.Object[] v57, v67, v75;
+org.osgi.util.converter.Converter v106;
+java.lang.Double v49;
+long v38;
+org.osgi.util.converter.ConversionException v120;
+short v28;
+java.lang.String v113, v114, v123, v69, v80, v82, v93;
+org.osgi.util.converter.Specifying v98;
+java.lang.Class[] v55, v65, v73;
+java.lang.RuntimeException v63, v85;
+java.lang.Short v29;
+java.lang.Byte v24;
+java.lang.reflect.Method v56, v66, v74;
+boolean v103, v105, v116, v12, v14, v16, v18, v22, v27, v32, v37, v4, v42, v47, v51, v53, v6, v83, v88, v90;
+java.lang.reflect.Type v99;
+float v43;
+org.osgi.util.converter.InternalConverting v96;
+int v33, v60, v77, v78, v8;
+java.lang.Boolean v111, v9, v94;
+double v48;
+org.osgi.util.converter.Converting v108;
+java.lang.Class v10, v101, v102, v104, v11, v112, v117, v122, v2, v20, v21, v25, v26, v3, v30, v31, v35, v36, v40, v41, v45, v46, v50, v54, v64, v72, v86, v87, v89, v91, v97;
+java.lang.Object v100, v107, v110, v115, v119, v121, v13, v15, v17, v19, v5, v52, v58, v59, v61, v68, v7, v70, v76, v79, v81, v92;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = class "Ljava/lang/Boolean;";
+v3 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v4 = virtualinvoke v2.<java.lang.Object: boolean equals(java.lang.Object)>(v3);
+if v4 == 0 goto label01;
+v5 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v6 = v5 instanceof java.util.Collection;
+if v6 == 0 goto label26;
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v8 = interfaceinvoke v7.<java.util.Collection: int size()>();
+if v8 != 0 goto label26;
+v9 = <java.lang.Boolean: java.lang.Boolean FALSE>;
+return v9;
+label01:
+v10 = class "Ljava/lang/Number;";
+v11 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v12 = virtualinvoke v10.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v11);
+if v12 == 0 goto label11;
+v13 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v14 = v13 instanceof java.lang.Boolean;
+if v14 == 0 goto label03;
+v15 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v16 = virtualinvoke v15.<java.lang.Boolean: boolean booleanValue()>();
+if v16 == 0 goto label02;
+staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+goto label05;
+label02:
+staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(0);
+goto label05;
+label03:
+v17 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v18 = v17 instanceof java.lang.Number;
+if v18 == 0 goto label04;
+v19 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+goto label05;
+label04:
+v19 = null;
+label05:
+if v19 == null goto label26;
+v20 = class "Ljava/lang/Byte;";
+v21 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v22 = virtualinvoke v20.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v21);
+if v22 == 0 goto label06;
+v23 = virtualinvoke v19.<java.lang.Number: byte byteValue()>();
+v24 = staticinvoke <java.lang.Byte: java.lang.Byte valueOf(byte)>(v23);
+return v24;
+label06:
+v25 = class "Ljava/lang/Short;";
+v26 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v27 = virtualinvoke v25.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v26);
+if v27 == 0 goto label07;
+v28 = virtualinvoke v19.<java.lang.Number: short shortValue()>();
+v29 = staticinvoke <java.lang.Short: java.lang.Short valueOf(short)>(v28);
+return v29;
+label07:
+v30 = class "Ljava/lang/Integer;";
+v31 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v32 = virtualinvoke v30.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v31);
+if v32 == 0 goto label08;
+v33 = virtualinvoke v19.<java.lang.Number: int intValue()>();
+v34 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(v33);
+return v34;
+label08:
+v35 = class "Ljava/lang/Long;";
+v36 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v37 = virtualinvoke v35.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v36);
+if v37 == 0 goto label09;
+v38 = virtualinvoke v19.<java.lang.Number: long longValue()>();
+v39 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>(v38);
+return v39;
+label09:
+v40 = class "Ljava/lang/Float;";
+v41 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v42 = virtualinvoke v40.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v41);
+if v42 == 0 goto label10;
+v43 = virtualinvoke v19.<java.lang.Number: float floatValue()>();
+v44 = staticinvoke <java.lang.Float: java.lang.Float valueOf(float)>(v43);
+return v44;
+label10:
+v45 = class "Ljava/lang/Double;";
+v46 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v47 = virtualinvoke v45.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v46);
+if v47 == 0 goto label26;
+v48 = virtualinvoke v19.<java.lang.Number: double doubleValue()>();
+v49 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(v48);
+return v49;
+label11:
+v50 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v51 = virtualinvoke v50.<java.lang.Class: boolean isEnum()>();
+if v51 == 0 goto label23;
+v52 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v53 = v52 instanceof java.lang.Number;
+if v53 == 0 goto label15;
+label12:
+v54 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v55 = newarray (java.lang.Class)[0];
+v56 = virtualinvoke v54.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("values", v55);
+v57 = newarray (java.lang.Object)[0];
+v58 = virtualinvoke v56.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, v57);
+v59 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v60 = virtualinvoke v59.<java.lang.Number: int intValue()>();
+v61 = v58[v60];
+label13:
+return v61;
+label14:
+v62 := @caughtexception;
+v63 = new java.lang.RuntimeException;
+specialinvoke v63.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>(v62);
+throw v63;
+label15:
+v64 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v65 = newarray (java.lang.Class)[1];
+v65[0] = class "Ljava/lang/String;";
+v66 = virtualinvoke v64.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("valueOf", v65);
+v67 = newarray (java.lang.Object)[1];
+v68 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v69 = virtualinvoke v68.<java.lang.Object: java.lang.String toString()>();
+v67[0] = v69;
+v70 = virtualinvoke v66.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, v67);
+label16:
+return v70;
+label17:
+v71 := @caughtexception;
+label18:
+v72 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v73 = newarray (java.lang.Class)[0];
+v74 = virtualinvoke v72.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("values", v73);
+v75 = newarray (java.lang.Object)[0];
+v76 = virtualinvoke v74.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, v75);
+v77 = lengthof v76;
+v78 = 0;
+label19:
+if v78 >= v77 goto label26;
+v79 = v76[v78];
+v80 = virtualinvoke v79.<java.lang.Object: java.lang.String toString()>();
+v81 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v82 = virtualinvoke v81.<java.lang.Object: java.lang.String toString()>();
+v83 = virtualinvoke v80.<java.lang.String: boolean equalsIgnoreCase(java.lang.String)>(v82);
+if v83 == 0 goto label21;
+label20:
+return v79;
+label21:
+v78 = v78 + 1;
+goto label19;
+label22:
+v84 := @caughtexception;
+v85 = new java.lang.RuntimeException;
+specialinvoke v85.<java.lang.RuntimeException: void <init>(java.lang.Throwable)>(v84);
+throw v85;
+label23:
+v86 = class "Ljava/lang/annotation/Annotation;";
+v87 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v88 = virtualinvoke v86.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v87);
+if v88 == 0 goto label24;
+v89 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v90 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isMarkerAnnotation(java.lang.Class)>(v89);
+if v90 == 0 goto label24;
+v91 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v92 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v93 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getMarkerAnnotationKey(java.lang.Class,java.lang.Object)>(v91, v92);
+v94 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+v95 = staticinvoke <java.util.Collections: java.util.Map singletonMap(java.lang.Object,java.lang.Object)>(v93, v94);
+v96 = interfaceinvoke v1.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v95);
+v97 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v98 = interfaceinvoke v96.<org.osgi.util.converter.InternalConverting: org.osgi.util.converter.Specifying targetAs(java.lang.Class)>(v97);
+v99 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.reflect.Type targetType>;
+v100 = interfaceinvoke v98.<org.osgi.util.converter.Converting: java.lang.Object 'to'(java.lang.reflect.Type)>(v99);
+return v100;
+label24:
+v101 = class "Ljava/lang/annotation/Annotation;";
+v102 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v103 = virtualinvoke v101.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v102);
+if v103 == 0 goto label26;
+v104 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v105 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isMarkerAnnotation(java.lang.Class)>(v104);
+if v105 == 0 goto label26;
+v106 = staticinvoke <org.osgi.util.converter.Converters: org.osgi.util.converter.Converter standardConverter()>();
+v107 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v108 = interfaceinvoke v106.<org.osgi.util.converter.Converter: org.osgi.util.converter.Converting convert(java.lang.Object)>(v107);
+v109 = new org.osgi.util.converter.ConvertingImpl$5;
+specialinvoke v109.<org.osgi.util.converter.ConvertingImpl$5: void <init>(org.osgi.util.converter.ConvertingImpl)>(v0);
+v110 = interfaceinvoke v108.<org.osgi.util.converter.Converting: java.lang.Object 'to'(org.osgi.util.converter.TypeReference)>(v109);
+v111 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+v112 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v113 = virtualinvoke v112.<java.lang.Class: java.lang.String getSimpleName()>();
+v114 = staticinvoke <org.osgi.util.converter.Util: java.lang.String toSingleElementAnnotationKey(java.lang.String)>(v113);
+v115 = interfaceinvoke v110.<java.util.Map: java.lang.Object get(java.lang.Object)>(v114);
+v116 = virtualinvoke v111.<java.lang.Boolean: boolean equals(java.lang.Object)>(v115);
+if v116 == 0 goto label25;
+v117 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetClass>;
+v118 = staticinvoke <java.util.Collections: java.util.Map emptyMap()>();
+v119 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object createProxy(java.lang.Class,java.util.Map,org.osgi.util.converter.InternalConverter)>(v117, v118, v1);
+return v119;
+label25:
+v120 = new org.osgi.util.converter.ConversionException;
+v121 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v122 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v123 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.Object,java.lang.Class)>(v121, v122) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot convert \u0001 to marker annotation \u0001");
+specialinvoke v120.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String)>(v123);
+throw v120;
+label26:
+return null;
+catch java.lang.Exception from label12 to label13 with label14;
+catch java.lang.Exception from label15 to label16 with label17;
+catch java.lang.Exception from label18 to label20 with label22;
+catch java.lang.Exception from label21 to label22 with label22;
+}
+private static boolean isMarkerAnnotation(java.lang.Class)
+{
+int v2, v3;
+java.lang.Class v0, v5;
+java.lang.reflect.Method v4;
+java.lang.reflect.Method[] v1;
+v0 := @parameter0: java.lang.Class;
+v1 = virtualinvoke v0.<java.lang.Class: java.lang.reflect.Method[] getMethods()>();
+v2 = lengthof v1;
+v3 = 0;
+label1:
+if v3 >= v2 goto label3;
+v4 = v1[v3];
+v5 = virtualinvoke v4.<java.lang.reflect.Method: java.lang.Class getDeclaringClass()>();
+if v5 != v0 goto label2;
+return 0;
+label2:
+v3 = v3 + 1;
+goto label1;
+label3:
+return 1;
+}
+private java.lang.Object tryStandardMethods()
+{
+java.lang.Object[] v14, v6;
+java.lang.reflect.Constructor v13;
+int v4;
+java.lang.String v16, v8;
+java.lang.reflect.Method v3;
+boolean v5;
+ConvertingImpl v0;
+java.lang.Class[] v12, v2;
+java.lang.Exception v10, v18;
+java.lang.Class v1, v11;
+java.lang.Object v15, v17, v7, v9;
+v0 := @this: ConvertingImpl;
+label1:
+v1 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v2 = newarray (java.lang.Class)[1];
+v2[0] = class "Ljava/lang/String;";
+v3 = virtualinvoke v1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("valueOf", v2);
+if v3 == null goto label7;
+v4 = virtualinvoke v3.<java.lang.reflect.Method: int getModifiers()>();
+v5 = staticinvoke <java.lang.reflect.Modifier: boolean isStatic(int)>(v4);
+if v5 == 0 goto label7;
+v6 = newarray (java.lang.Object)[1];
+v7 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v8 = virtualinvoke v7.<java.lang.Object: java.lang.String toString()>();
+v6[0] = v8;
+v9 = virtualinvoke v3.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, v6);
+label2:
+return v9;
+label3:
+v10 := @caughtexception;
+label4:
+v11 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class targetAsClass>;
+v12 = newarray (java.lang.Class)[1];
+v12[0] = class "Ljava/lang/String;";
+v13 = virtualinvoke v11.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(v12);
+v14 = newarray (java.lang.Object)[1];
+v15 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v16 = virtualinvoke v15.<java.lang.Object: java.lang.String toString()>();
+v14[0] = v16;
+v17 = virtualinvoke v13.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(v14);
+label5:
+return v17;
+label6:
+v18 := @caughtexception;
+label7:
+return null;
+catch java.lang.Exception from label1 to label2 with label3;
+catch java.lang.Exception from label4 to label5 with label6;
+}
+private java.util.Collection collectionView(org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+java.util.Collection v3;
+java.util.Set v5;
+java.lang.Object v2, v4;
+org.osgi.util.converter.InternalConverter v1;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+if v2 != null goto label1;
+return null;
+label1:
+v3 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Collection asCollection(org.osgi.util.converter.InternalConverter)>(v1);
+if v3 != null goto label2;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v5 = staticinvoke <java.util.Collections: java.util.Set singleton(java.lang.Object)>(v4);
+return v5;
+label2:
+return v3;
+}
+private java.util.Collection asCollection(org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v1;
+java.util.Map v16;
+boolean v11, v12, v13, v3, v7;
+ConvertingImpl v0;
+java.util.Set v17;
+java.util.List v9;
+java.lang.Class v10, v15;
+java.lang.Object v14, v2, v4, v5, v6, v8;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: org.osgi.util.converter.InternalConverter;
+v2 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v3 = v2 instanceof java.util.Collection;
+if v3 == 0 goto label1;
+v4 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+return v4;
+label1:
+v5 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v6 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.lang.Object asBoxedArray(java.lang.Object)>(v5);
+v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object> = v6;
+v7 = v6 instanceof java.lang.Object[];
+if v7 == 0 goto label2;
+v8 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v9 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(v8);
+return v9;
+label2:
+v10 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v11 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsJavaBean>;
+v12 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+v13 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isMapType(java.lang.Class,boolean,boolean)>(v10, v11, v12);
+if v13 == 0 goto label3;
+v14 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v15 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v16 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map mapView(java.lang.Object,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v14, v15, v1);
+v17 = interfaceinvoke v16.<java.util.Map: java.util.Set entrySet()>();
+return v17;
+label3:
+return null;
+}
+private static java.lang.Object asBoxedArray(java.lang.Object)
+{
+int v3, v7;
+java.lang.Class v1, v4, v5;
+java.lang.Object v0, v6, v8;
+boolean v2;
+v0 := @parameter0: java.lang.Object;
+v1 = virtualinvoke v0.<java.lang.Object: java.lang.Class getClass()>();
+v2 = virtualinvoke v1.<java.lang.Class: boolean isArray()>();
+if v2 != 0 goto label1;
+return v0;
+label1:
+v3 = staticinvoke <java.lang.reflect.Array: int getLength(java.lang.Object)>(v0);
+v4 = virtualinvoke v1.<java.lang.Class: java.lang.Class getComponentType()>();
+v5 = staticinvoke <org.osgi.util.converter.Util: java.lang.Class primitiveToBoxed(java.lang.Class)>(v4);
+v6 = staticinvoke <java.lang.reflect.Array: java.lang.Object newInstance(java.lang.Class,int)>(v5, v3);
+v7 = 0;
+label2:
+if v7 >= v3 goto label3;
+v8 = staticinvoke <java.lang.reflect.Array: java.lang.Object get(java.lang.Object,int)>(v0, v7);
+staticinvoke <java.lang.reflect.Array: void set(java.lang.Object,int,java.lang.Object)>(v6, v7, v8);
+v7 = v7 + 1;
+goto label2;
+label3:
+return v6;
+}
+private static java.util.Map createMapFromBeanAccessors(java.lang.Object, java.lang.Class)
+{
+java.util.HashMap v3;
+java.lang.reflect.Method[] v4;
+java.util.HashSet v2;
+int v5, v6;
+java.lang.Class v1;
+java.lang.Object v0;
+java.lang.reflect.Method v7;
+v0 := @parameter0: java.lang.Object;
+v1 := @parameter1: java.lang.Class;
+v2 = new java.util.HashSet;
+specialinvoke v2.<java.util.HashSet: void <init>()>();
+v3 = new java.util.HashMap;
+specialinvoke v3.<java.util.HashMap: void <init>()>();
+v4 = virtualinvoke v1.<java.lang.Class: java.lang.reflect.Method[] getMethods()>();
+v5 = lengthof v4;
+v6 = 0;
+label1:
+if v6 >= v5 goto label2;
+v7 = v4[v6];
+staticinvoke <org.osgi.util.converter.ConvertingImpl: void handleBeanMethod(java.lang.Object,java.lang.reflect.Method,java.util.Set,java.util.Map)>(v0, v7, v2, v3);
+v6 = v6 + 1;
+goto label1;
+label2:
+return v3;
+}
+private java.util.Map createMapFromDTO(java.lang.Object, org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+java.util.HashMap v4;
+org.osgi.util.converter.InternalConverter v2;
+java.lang.reflect.Field v9;
+java.util.HashSet v3;
+java.lang.reflect.Field[] v6;
+int v7, v8;
+java.lang.Class v5;
+java.lang.Object v1;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: org.osgi.util.converter.InternalConverter;
+v3 = new java.util.HashSet;
+specialinvoke v3.<java.util.HashSet: void <init>()>();
+v4 = new java.util.HashMap;
+specialinvoke v4.<java.util.HashMap: void <init>()>();
+v5 = virtualinvoke v1.<java.lang.Object: java.lang.Class getClass()>();
+v6 = virtualinvoke v5.<java.lang.Class: java.lang.reflect.Field[] getFields()>();
+v7 = lengthof v6;
+v8 = 0;
+label1:
+if v8 >= v7 goto label2;
+v9 = v6[v8];
+specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: void handleDTOField(java.lang.Object,java.lang.reflect.Field,java.util.Set,java.util.Map,org.osgi.util.converter.InternalConverter)>(v1, v9, v3, v4, v2);
+v8 = v8 + 1;
+goto label1;
+label2:
+return v4;
+}
+private static java.util.Map createMapFromInterface(java.lang.Object, java.lang.Class)
+{
+java.util.HashMap v2;
+java.lang.reflect.Method[] v14;
+java.util.HashSet v18;
+org.osgi.util.converter.ConversionException v20;
+int v15, v16, v19;
+java.lang.Boolean v9;
+java.lang.String v21, v8;
+java.lang.reflect.Method v17;
+boolean v12, v4, v6;
+java.util.Iterator v11;
+java.util.Set v10;
+java.lang.Class v1, v3, v5, v7;
+java.lang.Object v0, v13;
+v0 := @parameter0: java.lang.Object;
+v1 := @parameter1: java.lang.Class;
+v2 = new java.util.HashMap;
+specialinvoke v2.<java.util.HashMap: void <init>()>();
+v3 = class "Ljava/lang/annotation/Annotation;";
+v4 = virtualinvoke v3.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v1);
+if v4 == 0 goto label1;
+v5 = interfaceinvoke v0.<java.lang.'annotation'.Annotation: java.lang.Class annotationType()>();
+v6 = staticinvoke <org.osgi.util.converter.ConvertingImpl: boolean isMarkerAnnotation(java.lang.Class)>(v5);
+if v6 == 0 goto label1;
+v7 = interfaceinvoke v0.<java.lang.'annotation'.Annotation: java.lang.Class annotationType()>();
+v8 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getMarkerAnnotationKey(java.lang.Class,java.lang.Object)>(v7, v0);
+v9 = <java.lang.Boolean: java.lang.Boolean TRUE>;
+interfaceinvoke v2.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(v8, v9);
+return v2;
+label1:
+v10 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getInterfaces(java.lang.Class)>(v1);
+v11 = interfaceinvoke v10.<java.util.Set: java.util.Iterator iterator()>();
+label2:
+v12 = interfaceinvoke v11.<java.util.Iterator: boolean hasNext()>();
+if v12 == 0 goto label5;
+v13 = interfaceinvoke v11.<java.util.Iterator: java.lang.Object next()>();
+v14 = virtualinvoke v13.<java.lang.Class: java.lang.reflect.Method[] getMethods()>();
+v15 = lengthof v14;
+v16 = 0;
+label3:
+if v16 >= v15 goto label4;
+v17 = v14[v16];
+v18 = new java.util.HashSet;
+specialinvoke v18.<java.util.HashSet: void <init>()>();
+staticinvoke <org.osgi.util.converter.ConvertingImpl: void handleInterfaceMethod(java.lang.Object,java.lang.Class,java.lang.reflect.Method,java.util.Set,java.util.Map)>(v0, v13, v17, v18, v2);
+v16 = v16 + 1;
+goto label3;
+label4:
+v19 = interfaceinvoke v2.<java.util.Map: int size()>();
+if v19 <= 0 goto label2;
+return v2;
+label5:
+v20 = new org.osgi.util.converter.ConversionException;
+v21 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.Object)>(v0) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("Cannot be converted to map: \u0001");
+specialinvoke v20.<org.osgi.util.converter.ConversionException: void <init>(java.lang.String)>(v21);
+throw v20;
+}
+private static java.lang.Object createMapOrCollection(java.lang.Class, int)
+{
+java.lang.Object[] v11, v5;
+java.lang.Class[] v2, v9;
+java.lang.Integer v6;
+java.lang.reflect.Constructor v10, v4;
+java.lang.Exception v13, v8;
+int v1;
+java.lang.Class v0, v3;
+java.lang.Object v12, v7;
+v0 := @parameter0: java.lang.Class;
+v1 := @parameter1: int;
+label1:
+v2 = newarray (java.lang.Class)[1];
+v3 = <java.lang.Integer: java.lang.Class TYPE>;
+v2[0] = v3;
+v4 = virtualinvoke v0.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(v2);
+v5 = newarray (java.lang.Object)[1];
+v6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(v1);
+v5[0] = v6;
+v7 = virtualinvoke v4.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(v5);
+label2:
+return v7;
+label3:
+v8 := @caughtexception;
+label4:
+v9 = newarray (java.lang.Class)[0];
+v10 = virtualinvoke v0.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(v9);
+v11 = newarray (java.lang.Object)[0];
+v12 = virtualinvoke v10.<java.lang.reflect.Constructor: java.lang.Object newInstance(java.lang.Object[])>(v11);
+label5:
+return v12;
+label6:
+v13 := @caughtexception;
+return null;
+catch java.lang.Exception from label1 to label2 with label3;
+catch java.lang.Exception from label4 to label5 with label6;
+}
+private static java.lang.Class getConstructableType(java.lang.Class)
+{
+java.lang.NoSuchMethodException v5, v7;
+java.util.Map v12;
+int v10, v9;
+boolean v1, v15;
+java.lang.Class[] v3, v6, v8;
+java.lang.Class v0, v11, v14, v2, v4;
+java.lang.Object v13;
+v0 := @parameter0: java.lang.Class;
+v1 = virtualinvoke v0.<java.lang.Class: boolean isArray()>();
+if v1 == 0 goto label01;
+return v0;
+label01:
+v2 = v0;
+label02:
+v3 = newarray (java.lang.Class)[1];
+v4 = <java.lang.Integer: java.lang.Class TYPE>;
+v3[0] = v4;
+virtualinvoke v2.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(v3);
+label03:
+return v2;
+label04:
+v5 := @caughtexception;
+label05:
+v6 = newarray (java.lang.Class)[0];
+virtualinvoke v2.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(v6);
+label06:
+return v2;
+label07:
+v7 := @caughtexception;
+v8 = virtualinvoke v2.<java.lang.Class: java.lang.Class[] getInterfaces()>();
+v9 = lengthof v8;
+v10 = 0;
+label08:
+if v10 >= v9 goto label10;
+v11 = v8[v10];
+v12 = <org.osgi.util.converter.ConvertingImpl: java.util.Map INTERFACE_IMPLS>;
+v13 = interfaceinvoke v12.<java.util.Map: java.lang.Object get(java.lang.Object)>(v11);
+if v13 == null goto label09;
+return v13;
+label09:
+v10 = v10 + 1;
+goto label08;
+label10:
+v2 = virtualinvoke v2.<java.lang.Class: java.lang.Class getSuperclass()>();
+v14 = class "Ljava/lang/Object;";
+v15 = virtualinvoke v14.<java.lang.Object: boolean equals(java.lang.Object)>(v2);
+if v15 == 0 goto label02;
+return null;
+catch java.lang.NoSuchMethodException from label02 to label03 with label04;
+catch java.lang.NoSuchMethodException from label05 to label06 with label07;
+}
+private static java.util.Set getInterfaces(java.lang.Class)
+{
+java.util.Iterator v5;
+java.util.Collection v1, v14;
+java.util.Set v3, v4;
+java.lang.reflect.Method[] v8;
+int v10, v13, v9;
+java.lang.Class v0, v12;
+java.lang.Object v7;
+java.lang.reflect.Method v11;
+boolean v2, v6;
+v0 := @parameter0: java.lang.Class;
+v1 = <org.osgi.util.converter.ConvertingImpl: java.util.Collection NO_MAP_VIEW_TYPES>;
+v2 = interfaceinvoke v1.<java.util.Collection: boolean contains(java.lang.Object)>(v0);
+if v2 == 0 goto label1;
+v3 = staticinvoke <java.util.Collections: java.util.Set emptySet()>();
+return v3;
+label1:
+v4 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getInterfaces0(java.lang.Class)>(v0);
+v5 = interfaceinvoke v4.<java.util.Set: java.util.Iterator iterator()>();
+label2:
+v6 = interfaceinvoke v5.<java.util.Iterator: boolean hasNext()>();
+if v6 == 0 goto label6;
+v7 = interfaceinvoke v5.<java.util.Iterator: java.lang.Object next()>();
+v8 = virtualinvoke v7.<java.lang.Class: java.lang.reflect.Method[] getMethods()>();
+v9 = lengthof v8;
+v10 = 0;
+label3:
+if v10 >= v9 goto label4;
+v11 = v8[v10];
+v12 = virtualinvoke v11.<java.lang.reflect.Method: java.lang.Class getDeclaringClass()>();
+if v12 == v7 goto label2;
+v10 = v10 + 1;
+goto label3;
+label4:
+if v7 != v0 goto label5;
+v13 = lengthof v8;
+if v13 == 0 goto label2;
+label5:
+interfaceinvoke v5.<java.util.Iterator: void remove()>();
+goto label2;
+label6:
+v14 = <org.osgi.util.converter.ConvertingImpl: java.util.Collection NO_MAP_VIEW_TYPES>;
+interfaceinvoke v4.<java.util.Set: boolean removeAll(java.util.Collection)>(v14);
+return v4;
+}
+private static java.util.Set getInterfaces0(java.lang.Class)
+{
+java.lang.Class[] v4;
+java.util.Set v1, v10, v8;
+int v5, v6;
+java.lang.Class v0, v7, v9;
+java.util.LinkedHashSet v2;
+boolean v3;
+v0 := @parameter0: java.lang.Class;
+if v0 != null goto label1;
+v1 = staticinvoke <java.util.Collections: java.util.Set emptySet()>();
+return v1;
+label1:
+v2 = new java.util.LinkedHashSet;
+specialinvoke v2.<java.util.LinkedHashSet: void <init>()>();
+v3 = virtualinvoke v0.<java.lang.Class: boolean isInterface()>();
+if v3 == 0 goto label2;
+interfaceinvoke v2.<java.util.Set: boolean add(java.lang.Object)>(v0);
+label2:
+v4 = virtualinvoke v0.<java.lang.Class: java.lang.Class[] getInterfaces()>();
+v5 = lengthof v4;
+v6 = 0;
+label3:
+if v6 >= v5 goto label4;
+v7 = v4[v6];
+v8 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getInterfaces(java.lang.Class)>(v7);
+interfaceinvoke v2.<java.util.Set: boolean addAll(java.util.Collection)>(v8);
+v6 = v6 + 1;
+goto label3;
+label4:
+v9 = virtualinvoke v0.<java.lang.Class: java.lang.Class getSuperclass()>();
+v10 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getInterfaces(java.lang.Class)>(v9);
+interfaceinvoke v2.<java.util.Set: boolean addAll(java.util.Collection)>(v10);
+return v2;
+}
+private void handleDTOField(java.lang.Object, java.lang.reflect.Field, java.util.Set, java.util.Map, org.osgi.util.converter.InternalConverter)
+{
+ConvertingImpl v0;
+java.util.Set v3;
+org.osgi.util.converter.InternalConverter v5;
+java.lang.reflect.Field v2;
+java.lang.Exception v9;
+java.util.Map v4;
+java.lang.Object v1, v8;
+java.lang.String v6;
+boolean v7;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: java.lang.reflect.Field;
+v3 := @parameter2: java.util.Set;
+v4 := @parameter3: java.util.Map;
+v5 := @parameter4: org.osgi.util.converter.InternalConverter;
+v6 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getDTOKey(java.lang.reflect.Field)>(v2);
+if v6 != null goto label1;
+return;
+label1:
+v7 = interfaceinvoke v3.<java.util.Set: boolean contains(java.lang.Object)>(v6);
+if v7 == 0 goto label2;
+return;
+label2:
+v8 = virtualinvoke v2.<java.lang.reflect.Field: java.lang.Object get(java.lang.Object)>(v1);
+interfaceinvoke v4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(v6, v8);
+interfaceinvoke v3.<java.util.Set: boolean add(java.lang.Object)>(v6);
+label3:
+goto label5;
+label4:
+v9 := @caughtexception;
+label5:
+return;
+catch java.lang.Exception from label2 to label3 with label4;
+}
+private static void handleBeanMethod(java.lang.Object, java.lang.reflect.Method, java.util.Set, java.util.Map)
+{
+java.lang.Object[] v6;
+java.util.Set v2;
+java.lang.Exception v8;
+java.util.Map v3;
+java.lang.Object v0, v7;
+java.lang.String v4;
+java.lang.reflect.Method v1;
+boolean v5;
+v0 := @parameter0: java.lang.Object;
+v1 := @parameter1: java.lang.reflect.Method;
+v2 := @parameter2: java.util.Set;
+v3 := @parameter3: java.util.Map;
+v4 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getBeanKey(java.lang.reflect.Method)>(v1);
+if v4 != null goto label1;
+return;
+label1:
+v5 = interfaceinvoke v2.<java.util.Set: boolean contains(java.lang.Object)>(v4);
+if v5 == 0 goto label2;
+return;
+label2:
+v6 = newarray (java.lang.Object)[0];
+v7 = virtualinvoke v1.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(v0, v6);
+interfaceinvoke v3.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(v4, v7);
+interfaceinvoke v2.<java.util.Set: boolean add(java.lang.Object)>(v4);
+label3:
+goto label5;
+label4:
+v8 := @caughtexception;
+label5:
+return;
+catch java.lang.Exception from label2 to label3 with label4;
+}
+private static void handleInterfaceMethod(java.lang.Object, java.lang.Class, java.lang.reflect.Method, java.util.Set, java.util.Map)
+{
+java.util.Set v3;
+java.lang.Exception v10;
+java.util.Map v4;
+java.lang.Class v1;
+java.lang.Object v0, v9;
+java.lang.String v5, v7, v8;
+java.lang.reflect.Method v2;
+boolean v6;
+v0 := @parameter0: java.lang.Object;
+v1 := @parameter1: java.lang.Class;
+v2 := @parameter2: java.lang.reflect.Method;
+v3 := @parameter3: java.util.Set;
+v4 := @parameter4: java.util.Map;
+v5 = virtualinvoke v2.<java.lang.reflect.Method: java.lang.String getName()>();
+v6 = interfaceinvoke v3.<java.util.Set: boolean contains(java.lang.Object)>(v5);
+if v6 == 0 goto label1;
+return;
+label1:
+v7 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getSingleElementAnnotationKey(java.lang.Class,java.lang.Object)>(v1, v0);
+v8 = staticinvoke <org.osgi.util.converter.Util: java.lang.String getInterfacePropertyName(java.lang.reflect.Method,java.lang.String,java.lang.Object)>(v2, v7, v0);
+if v8 != null goto label2;
+return;
+label2:
+v9 = staticinvoke <org.osgi.util.converter.Util: java.lang.Object getInterfaceProperty(java.lang.Object,java.lang.reflect.Method)>(v0, v2);
+if v9 != null goto label4;
+label3:
+return;
+label4:
+interfaceinvoke v4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(v8, v9);
+interfaceinvoke v3.<java.util.Set: boolean add(java.lang.Object)>(v5);
+label5:
+goto label7;
+label6:
+v10 := @caughtexception;
+label7:
+return;
+catch java.lang.Exception from label2 to label3 with label6;
+catch java.lang.Exception from label4 to label5 with label6;
+}
+private java.util.Map mapView(java.lang.Object, java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+org.osgi.util.converter.InternalConverter v3;
+org.osgi.util.converter.MapDelegate v11;
+java.util.Map v14, v16, v19, v21;
+int v17;
+boolean v12, v13, v15, v18, v5, v6, v7, v9;
+ConvertingImpl v0;
+java.lang.Class v2, v20, v4, v8;
+java.lang.Object v1, v10;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: java.lang.Class;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+v4 = class "Ljava/util/Map;";
+v5 = virtualinvoke v4.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v2);
+if v5 != 0 goto label1;
+v6 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v2, 1);
+if v6 == 0 goto label2;
+v7 = v1 instanceof java.util.Map;
+if v7 == 0 goto label2;
+label1:
+return v1;
+label2:
+v8 = class "Ljava/util/Dictionary;";
+v9 = virtualinvoke v8.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v2);
+if v9 == 0 goto label3;
+v10 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Object object>;
+v11 = staticinvoke <org.osgi.util.converter.MapDelegate: org.osgi.util.converter.MapDelegate forDictionary(java.util.Dictionary,org.osgi.util.converter.ConvertingImpl,org.osgi.util.converter.InternalConverter)>(v10, v0, v3);
+return v11;
+label3:
+v12 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v2, 1);
+if v12 != 0 goto label4;
+v13 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsDTO>;
+if v13 == 0 goto label5;
+label4:
+v14 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map createMapFromDTO(java.lang.Object,org.osgi.util.converter.InternalConverter)>(v1, v3);
+return v14;
+label5:
+v15 = v0.<org.osgi.util.converter.ConvertingImpl: boolean sourceAsJavaBean>;
+if v15 == 0 goto label6;
+v16 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Map createMapFromBeanAccessors(java.lang.Object,java.lang.Class)>(v1, v2);
+v17 = interfaceinvoke v16.<java.util.Map: int size()>();
+if v17 <= 0 goto label7;
+return v16;
+label6:
+v18 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: boolean hasGetProperties(java.lang.Class)>(v2);
+if v18 == 0 goto label7;
+v19 = specialinvoke v0.<org.osgi.util.converter.ConvertingImpl: java.util.Map getPropertiesDelegate(java.lang.Object,java.lang.Class,org.osgi.util.converter.InternalConverter)>(v1, v2, v3);
+return v19;
+label7:
+v20 = v0.<org.osgi.util.converter.ConvertingImpl: java.lang.Class sourceClass>;
+v21 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Map createMapFromInterface(java.lang.Object,java.lang.Class)>(v1, v20);
+return v21;
+}
+private boolean hasGetProperties(java.lang.Class)
+{
+ConvertingImpl v0;
+java.lang.Class[] v2;
+java.lang.Class v1;
+java.lang.reflect.Method v3;
+java.lang.Exception v5;
+boolean v4;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Class;
+label1:
+v2 = newarray (java.lang.Class)[0];
+v3 = virtualinvoke v1.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getProperties", v2);
+if v3 == null goto label2;
+v4 = 1;
+goto label3;
+label2:
+v4 = 0;
+label3:
+return v4;
+label4:
+v5 := @caughtexception;
+return 0;
+catch java.lang.Exception from label1 to label3 with label4;
+}
+private java.util.Map getPropertiesDelegate(java.lang.Object, java.lang.Class, org.osgi.util.converter.InternalConverter)
+{
+java.lang.Object[] v6;
+ConvertingImpl v0;
+java.lang.Class[] v4;
+org.osgi.util.converter.InternalConverter v3;
+java.lang.Exception v10;
+java.util.Map v11;
+org.osgi.util.converter.InternalConverting v8;
+java.lang.Class v2;
+java.lang.Object v1, v7, v9;
+java.lang.reflect.Method v5;
+v0 := @this: ConvertingImpl;
+v1 := @parameter0: java.lang.Object;
+v2 := @parameter1: java.lang.Class;
+v3 := @parameter2: org.osgi.util.converter.InternalConverter;
+label1:
+v4 = newarray (java.lang.Class)[0];
+v5 = virtualinvoke v2.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("getProperties", v4);
+v6 = newarray (java.lang.Object)[0];
+v7 = virtualinvoke v5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(v1, v6);
+v8 = interfaceinvoke v3.<org.osgi.util.converter.InternalConverter: org.osgi.util.converter.InternalConverting convert(java.lang.Object)>(v7);
+v9 = interfaceinvoke v8.<org.osgi.util.converter.InternalConverting: java.lang.Object 'to'(java.lang.Class)>(class "Ljava/util/Map;");
+label2:
+return v9;
+label3:
+v10 := @caughtexception;
+v11 = staticinvoke <java.util.Collections: java.util.Map emptyMap()>();
+return v11;
+catch java.lang.Exception from label1 to label2 with label3;
+}
+private static boolean isCopyRequiredType(java.lang.Class)
+{
+java.lang.Class v0, v2, v4;
+boolean v1, v3, v5, v6, v7, v8;
+v0 := @parameter0: java.lang.Class;
+v1 = virtualinvoke v0.<java.lang.Class: boolean isEnum()>();
+if v1 == 0 goto label1;
+return 0;
+label1:
+v2 = class "Ljava/util/Map;";
+v3 = virtualinvoke v2.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v0);
+if v3 != 0 goto label2;
+v4 = class "Ljava/util/Collection;";
+v5 = virtualinvoke v4.<java.lang.Class: boolean isAssignableFrom(java.lang.Class)>(v0);
+if v5 != 0 goto label2;
+v6 = staticinvoke <org.osgi.util.converter.DTOUtil: boolean isDTOType(java.lang.Class,boolean)>(v0, 1);
+if v6 != 0 goto label2;
+v7 = virtualinvoke v0.<java.lang.Class: boolean isArray()>();
+if v7 == 0 goto label3;
+label2:
+v8 = 1;
+goto label4;
+label3:
+v8 = 0;
+label4:
+return v8;
+}
+private static boolean isWriteableJavaBean(java.lang.Class)
+{
+java.lang.Class[] v6;
+java.util.Set v8;
+java.lang.reflect.Constructor v5;
+java.lang.reflect.Constructor[] v2;
+int v3, v4, v7, v9;
+java.lang.Class v0;
+boolean v1, v10;
+v0 := @parameter0: java.lang.Class;
+v1 = 0;
+v2 = virtualinvoke v0.<java.lang.Class: java.lang.reflect.Constructor[] getConstructors()>();
+v3 = lengthof v2;
+v4 = 0;
+label1:
+if v4 >= v3 goto label3;
+v5 = v2[v4];
+v6 = virtualinvoke v5.<java.lang.reflect.Constructor: java.lang.Class[] getParameterTypes()>();
+v7 = lengthof v6;
+if v7 != 0 goto label2;
+v1 = 1;
+label2:
+v4 = v4 + 1;
+goto label1;
+label3:
+if v1 != 0 goto label4;
+return 0;
+label4:
+v8 = staticinvoke <org.osgi.util.converter.ConvertingImpl: java.util.Set getSetters(java.lang.Class)>(v0);
+v9 = interfaceinvoke v8.<java.util.Set: int size()>();
+if v9 <= 0 goto label5;
+v10 = 1;
+goto label6;
+label5:
+v10 = 0;
+label6:
+return v10;
+}
+private static java.util.Set getSetters(java.lang.Class)
+{
+java.lang.reflect.Method[] v5;
+java.util.HashSet v1, v4;
+int v11, v13;
+java.lang.String v12;
+boolean v14, v16, v3, v8;
+java.util.Iterator v7;
+java.lang.Class[] v10;
+char v15;
+java.util.List v6;
+java.lang.Class v0, v2;
+java.lang.Object v9;
+v0 := @parameter0: java.lang.Class;
+v1 = new java.util.HashSet;
+specialinvoke v1.<java.util.HashSet: void <init>()>();
+label1:
+v2 = class "Ljava/lang/Object;";
+v3 = virtualinvoke v2.<java.lang.Object: boolean equals(java.lang.Object)>(v0);
+if v3 != 0 goto label4;
+v4 = new java.util.HashSet;
+specialinvoke v4.<java.util.HashSet: void <init>()>();
+v5 = virtualinvoke v0.<java.lang.Class: java.lang.reflect.Method[] getMethods()>();
+v6 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(v5);
+interfaceinvoke v4.<java.util.Set: boolean addAll(java.util.Collection)>(v6);
+v7 = interfaceinvoke v4.<java.util.Set: java.util.Iterator iterator()>();
+label2:
+v8 = interfaceinvoke v7.<java.util.Iterator: boolean hasNext()>();
+if v8 == 0 goto label3;
+v9 = interfaceinvoke v7.<java.util.Iterator: java.lang.Object next()>();
+v10 = virtualinvoke v9.<java.lang.reflect.Method: java.lang.Class[] getParameterTypes()>();
+v11 = lengthof v10;
+if v11 != 1 goto label2;
+v12 = virtualinvoke v9.<java.lang.reflect.Method: java.lang.String getName()>();
+v13 = virtualinvoke v12.<java.lang.String: int length()>();
+if v13 < 4 goto label2;
+v14 = virtualinvoke v12.<java.lang.String: boolean startsWith(java.lang.String)>("set");
+if v14 == 0 goto label2;
+v15 = virtualinvoke v12.<java.lang.String: char charAt(int)>(3);
+v16 = staticinvoke <java.lang.Character: boolean isUpperCase(char)>(v15);
+if v16 == 0 goto label2;
+interfaceinvoke v1.<java.util.Set: boolean add(java.lang.Object)>(v9);
+goto label2;
+label3:
+v0 = virtualinvoke v0.<java.lang.Class: java.lang.Class getSuperclass()>();
+goto label1;
+label4:
+return v1;
+}
+static void <clinit>()
+{
+java.lang.Class[] v4;
+java.util.Set v3, v7;
+java.util.HashMap v0, v1;
+java.util.HashSet v2;
+java.util.List v5;
+java.util.Map v6;
+v0 = new java.util.HashMap;
+specialinvoke v0.<java.util.HashMap: void <init>()>();
+interfaceinvoke v0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Collection;", class "Ljava/util/ArrayList;");
+interfaceinvoke v0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/List;", class "Ljava/util/ArrayList;");
+interfaceinvoke v0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Set;", class "Ljava/util/LinkedHashSet;");
+interfaceinvoke v0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/NavigableSet;", class "Ljava/util/TreeSet;");
+interfaceinvoke v0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/SortedSet;", class "Ljava/util/TreeSet;");
+interfaceinvoke v0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Queue;", class "Ljava/util/LinkedList;");
+interfaceinvoke v0.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Deque;", class "Ljava/util/LinkedList;");
+v1 = new java.util.HashMap;
+specialinvoke v1.<java.util.HashMap: void <init>(java.util.Map)>(v0);
+interfaceinvoke v1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/Map;", class "Ljava/util/LinkedHashMap;");
+interfaceinvoke v1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/concurrent/ConcurrentMap;", class "Ljava/util/concurrent/ConcurrentHashMap;");
+interfaceinvoke v1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/concurrent/ConcurrentNavigableMap;", class "Ljava/util/concurrent/ConcurrentSkipListMap;");
+interfaceinvoke v1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/NavigableMap;", class "Ljava/util/TreeMap;");
+interfaceinvoke v1.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(class "Ljava/util/SortedMap;", class "Ljava/util/TreeMap;");
+v2 = new java.util.HashSet;
+v3 = interfaceinvoke v0.<java.util.Map: java.util.Set keySet()>();
+specialinvoke v2.<java.util.HashSet: void <init>(java.util.Collection)>(v3);
+v4 = newarray (java.lang.Class)[5];
+v4[0] = class "Ljava/lang/String;";
+v4[1] = class "Ljava/lang/Class;";
+v4[2] = class "Ljava/lang/Comparable;";
+v4[3] = class "Ljava/lang/CharSequence;";
+v4[4] = class "Ljava/util/Map$Entry;";
+v5 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>(v4);
+interfaceinvoke v2.<java.util.Set: boolean addAll(java.util.Collection)>(v5);
+staticinvoke <org.osgi.util.converter.ConvertingImpl: void addClassIfAvailable(java.lang.String,java.util.Collection)>("java.lang.constant.Constable", v2);
+staticinvoke <org.osgi.util.converter.ConvertingImpl: void addClassIfAvailable(java.lang.String,java.util.Collection)>("java.lang.constant.ConstantDesc", v2);
+v6 = staticinvoke <java.util.Collections: java.util.Map unmodifiableMap(java.util.Map)>(v1);
+<org.osgi.util.converter.ConvertingImpl: java.util.Map INTERFACE_IMPLS> = v6;
+v7 = staticinvoke <java.util.Collections: java.util.Set unmodifiableSet(java.util.Set)>(v2);
+<org.osgi.util.converter.ConvertingImpl: java.util.Collection NO_MAP_VIEW_TYPES> = v7;
+return;
+}
+}

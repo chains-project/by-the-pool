@@ -1,0 +1,118 @@
+public class ObjectFactory extends java.lang.Object
+{
+public void <init>()
+{
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+specialinvoke v0.<java.lang.Object: void <init>()>();
+return;
+}
+public org.apache.isis.schema.common.v2.OidsDto createOidsDto()
+{
+ObjectFactory v0;
+org.apache.isis.schema.common.v2.OidsDto v1;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.OidsDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.OidsDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.PeriodDto createPeriodDto()
+{
+org.apache.isis.schema.common.v2.PeriodDto v1;
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.PeriodDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.PeriodDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.ValueDto createValueDto()
+{
+org.apache.isis.schema.common.v2.ValueDto v1;
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.ValueDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.ValueDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.TypedTupleDto createTypedTupleDto()
+{
+org.apache.isis.schema.common.v2.TypedTupleDto v1;
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.TypedTupleDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.TypedTupleDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.OidDto createOidDto()
+{
+org.apache.isis.schema.common.v2.OidDto v1;
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.OidDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.OidDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.CollectionDto createCollectionDto()
+{
+org.apache.isis.schema.common.v2.CollectionDto v1;
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.CollectionDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.CollectionDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.BlobDto createBlobDto()
+{
+org.apache.isis.schema.common.v2.BlobDto v1;
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.BlobDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.BlobDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.ClobDto createClobDto()
+{
+ObjectFactory v0;
+org.apache.isis.schema.common.v2.ClobDto v1;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.ClobDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.ClobDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.EnumDto createEnumDto()
+{
+org.apache.isis.schema.common.v2.EnumDto v1;
+ObjectFactory v0;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.EnumDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.EnumDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.DifferenceDto createDifferenceDto()
+{
+ObjectFactory v0;
+org.apache.isis.schema.common.v2.DifferenceDto v1;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.DifferenceDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.DifferenceDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.ValueWithTypeDto createValueWithTypeDto()
+{
+ObjectFactory v0;
+org.apache.isis.schema.common.v2.ValueWithTypeDto v1;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.ValueWithTypeDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.ValueWithTypeDto: void <init>()>();
+return v1;
+}
+public org.apache.isis.schema.common.v2.NamedValueWithTypeDto createNamedValueWithTypeDto()
+{
+ObjectFactory v0;
+org.apache.isis.schema.common.v2.NamedValueWithTypeDto v1;
+v0 := @this: ObjectFactory;
+v1 = new org.apache.isis.schema.common.v2.NamedValueWithTypeDto;
+specialinvoke v1.<org.apache.isis.schema.common.v2.NamedValueWithTypeDto: void <init>()>();
+return v1;
+}
+}

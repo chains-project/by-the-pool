@@ -1,0 +1,113 @@
+public class EmbeddingModelTextClassifier extends java.lang.Object implements dev.langchain4j.classification.TextClassifier
+{
+private final dev.langchain4j.model.embedding.EmbeddingModel embeddingModel;
+private final java.util.Map exampleEmbeddingsByLabel;
+private final int maxResults;
+private final double minScore;
+private final double meanToMaxScoreRatio;
+public void <init>(dev.langchain4j.model.embedding.EmbeddingModel, java.util.Map)
+{
+EmbeddingModelTextClassifier v0;
+dev.langchain4j.model.embedding.EmbeddingModel v1;
+java.util.Map v2;
+v0 := @this: EmbeddingModelTextClassifier;
+v1 := @parameter0: dev.langchain4j.model.embedding.EmbeddingModel;
+v2 := @parameter1: java.util.Map;
+specialinvoke v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: void <init>(dev.langchain4j.model.embedding.EmbeddingModel,java.util.Map,int,double,double)>(v1, v2, 1, 0.0, 0.5);
+return;
+}
+public void <init>(dev.langchain4j.model.embedding.EmbeddingModel, java.util.Map, int, double, double)
+{
+java.lang.Double v11, v13;
+EmbeddingModelTextClassifier v0;
+java.util.HashMap v7;
+java.lang.Integer v9;
+dev.langchain4j.model.embedding.EmbeddingModel v1;
+java.util.Map v2;
+int v10, v3;
+java.util.function.BiConsumer v8;
+java.lang.Object v6;
+double v12, v14, v4, v5;
+v0 := @this: EmbeddingModelTextClassifier;
+v1 := @parameter0: dev.langchain4j.model.embedding.EmbeddingModel;
+v2 := @parameter1: java.util.Map;
+v3 := @parameter2: int;
+v4 := @parameter3: double;
+v5 := @parameter4: double;
+specialinvoke v0.<java.lang.Object: void <init>()>();
+v6 = staticinvoke <dev.langchain4j.internal.ValidationUtils: java.lang.Object ensureNotNull(java.lang.Object,java.lang.String)>(v1, "embeddingModel");
+v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: dev.langchain4j.model.embedding.EmbeddingModel embeddingModel> = v6;
+staticinvoke <dev.langchain4j.internal.ValidationUtils: java.lang.Object ensureNotNull(java.lang.Object,java.lang.String)>(v2, "examplesByLabel");
+v7 = new java.util.HashMap;
+specialinvoke v7.<java.util.HashMap: void <init>()>();
+v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: java.util.Map exampleEmbeddingsByLabel> = v7;
+v8 = staticinvoke <EmbeddingModelTextClassifier$lambda_new_1__1: java.util.function.BiConsumer bootstrap$(dev.langchain4j.classification.EmbeddingModelTextClassifier,dev.langchain4j.model.embedding.EmbeddingModel)>(v0, v1);
+interfaceinvoke v2.<java.util.Map: void forEach(java.util.function.BiConsumer)>(v8);
+v9 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(v3);
+v10 = staticinvoke <dev.langchain4j.internal.ValidationUtils: int ensureGreaterThanZero(java.lang.Integer,java.lang.String)>(v9, "maxResults");
+v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: int maxResults> = v10;
+v11 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(v4);
+v12 = staticinvoke <dev.langchain4j.internal.ValidationUtils: double ensureBetween(java.lang.Double,double,double,java.lang.String)>(v11, 0.0, 1.0, "minScore");
+v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: double minScore> = v12;
+v13 = staticinvoke <java.lang.Double: java.lang.Double valueOf(double)>(v5);
+v14 = staticinvoke <dev.langchain4j.internal.ValidationUtils: double ensureBetween(java.lang.Double,double,double,java.lang.String)>(v13, 0.0, 1.0, "meanToMaxScoreRatio");
+v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: double meanToMaxScoreRatio> = v14;
+return;
+}
+public java.util.List classify(java.lang.String)
+{
+java.util.function.Function v16;
+java.util.ArrayList v5;
+dev.langchain4j.model.embedding.EmbeddingModel v2;
+java.util.Map v6;
+int v14;
+java.util.function.BiConsumer v7;
+java.lang.String v1;
+java.util.stream.Collector v18;
+java.util.function.Predicate v9;
+EmbeddingModelTextClassifier v0;
+dev.langchain4j.model.output.Response v3;
+java.util.stream.Stream v10, v13, v15, v17, v8;
+java.util.function.ToDoubleFunction v11;
+java.lang.Object v19, v4;
+java.util.Comparator v12;
+v0 := @this: EmbeddingModelTextClassifier;
+v1 := @parameter0: java.lang.String;
+v2 = v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: dev.langchain4j.model.embedding.EmbeddingModel embeddingModel>;
+v3 = interfaceinvoke v2.<dev.langchain4j.model.embedding.EmbeddingModel: dev.langchain4j.model.output.Response embed(java.lang.String)>(v1);
+v4 = virtualinvoke v3.<dev.langchain4j.model.output.Response: java.lang.Object content()>();
+v5 = new java.util.ArrayList;
+specialinvoke v5.<java.util.ArrayList: void <init>()>();
+v6 = v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: java.util.Map exampleEmbeddingsByLabel>;
+v7 = staticinvoke <EmbeddingModelTextClassifier$lambda_classify_2__2: java.util.function.BiConsumer bootstrap$(dev.langchain4j.classification.EmbeddingModelTextClassifier,dev.langchain4j.data.embedding.Embedding,java.util.List)>(v0, v4, v5);
+interfaceinvoke v6.<java.util.Map: void forEach(java.util.function.BiConsumer)>(v7);
+v8 = interfaceinvoke v5.<java.util.List: java.util.stream.Stream stream()>();
+v9 = staticinvoke <EmbeddingModelTextClassifier$lambda_classify_3__3: java.util.function.Predicate bootstrap$(dev.langchain4j.classification.EmbeddingModelTextClassifier)>(v0);
+v10 = interfaceinvoke v8.<java.util.stream.Stream: java.util.stream.Stream filter(java.util.function.Predicate)>(v9);
+v11 = staticinvoke <EmbeddingModelTextClassifier$lambda_classify_4__4: java.util.function.ToDoubleFunction bootstrap$()>();
+v12 = staticinvoke <java.util.Comparator: java.util.Comparator comparingDouble(java.util.function.ToDoubleFunction)>(v11);
+v13 = interfaceinvoke v10.<java.util.stream.Stream: java.util.stream.Stream sorted(java.util.Comparator)>(v12);
+v14 = v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: int maxResults>;
+v15 = interfaceinvoke v13.<java.util.stream.Stream: java.util.stream.Stream limit(long)>(v14);
+v16 = staticinvoke <EmbeddingModelTextClassifier$lambda_classify_5__5: java.util.function.Function bootstrap$()>();
+v17 = interfaceinvoke v15.<java.util.stream.Stream: java.util.stream.Stream map(java.util.function.Function)>(v16);
+v18 = staticinvoke <java.util.stream.Collectors: java.util.stream.Collector toList()>();
+v19 = interfaceinvoke v17.<java.util.stream.Stream: java.lang.Object collect(java.util.stream.Collector)>(v18);
+return v19;
+}
+private double aggregatedScore(double, double)
+{
+EmbeddingModelTextClassifier v0;
+double v1, v2, v3, v4, v5, v6, v7, v8;
+v0 := @this: EmbeddingModelTextClassifier;
+v1 := @parameter0: double;
+v2 := @parameter1: double;
+v3 = v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: double meanToMaxScoreRatio>;
+v4 = v3 * v1;
+v5 = v0.<dev.langchain4j.classification.EmbeddingModelTextClassifier: double meanToMaxScoreRatio>;
+v6 = 1.0 - v5;
+v7 = v6 * v2;
+v8 = v4 + v7;
+return v8;
+}
+}

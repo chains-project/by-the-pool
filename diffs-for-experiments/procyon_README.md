@@ -4091,3 +4091,27 @@ Diffoscope JSON file: [org.apache.sling_org.apache.sling.feature.extension.unpac
 
 ```
 
+### dev.langchain4j:langchain4j:0.27.1
+
+Diffoscope JSON file: [dev.langchain4j_langchain4j_0.27.1.diffoscope.json](langchain4j-infinispan-0.27.1.jar.diffoscope.json)
+
+```diff
+@@ -39,15 +39,15 @@
+     
+     public List<String> getMetadataValues() {
+         return this.metadataValues;
+     }
+     
+     @Override
+     public String toString() {
+-        return "LangchainInfinispanItem{id='" + this.id + "', embedding=" + Arrays.toString(this.embedding) + ", text='" + this.text + "', metadataKeys=" + String.valueOf((Object)this.metadataKeys) + ", metadataValues=" + String.valueOf((Object)this.metadataValues);
++        return "LangchainInfinispanItem{id='" + this.id + "', embedding=" + Arrays.toString(this.embedding) + ", text='" + this.text + "', metadataKeys=" + this.metadataKeys + ", metadataValues=" + this.metadataValues;
+     }
+     
+     @Override
+     public boolean equals(final Object o) {
+         if (this == o) {
+             return true;
+         }
+
+```
