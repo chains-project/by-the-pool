@@ -40,7 +40,7 @@ work
 dataset
 config.properties
 .env
-output
+output*
 dataset.log
 paths.csv
 diffoscope.log
