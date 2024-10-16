@@ -1,0 +1,835 @@
+public class DtoAuthorizationEntry extends java.lang.Object implements org.jvnet.jaxb2_commons.lang.Equals2, org.jvnet.jaxb2_commons.lang.HashCode2, org.jvnet.jaxb2_commons.lang.ToString2
+{
+protected java.util.List adminACLsOrDestinationOrReadACLs;
+protected java.lang.String admin;
+protected java.lang.String destination;
+protected java.lang.String groupClass;
+protected java.lang.String queue;
+protected java.lang.String read;
+protected java.lang.Boolean tempQueue;
+protected java.lang.Boolean tempTopic;
+protected java.lang.String topic;
+protected java.lang.String write;
+protected java.lang.String id;
+private java.util.Map otherAttributes;
+public void <init>()
+{
+java.util.HashMap v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+specialinvoke v0.<java.lang.Object: void <init>()>();
+v1 = new java.util.HashMap;
+specialinvoke v1.<java.util.HashMap: void <init>()>();
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.Map otherAttributes> = v1;
+return;
+}
+public java.util.List getAdminACLsOrDestinationOrReadACLs()
+{
+java.util.List v1, v3;
+DtoAuthorizationEntry v0;
+java.util.ArrayList v2;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v1 != null goto label1;
+v2 = new java.util.ArrayList;
+specialinvoke v2.<java.util.ArrayList: void <init>()>();
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs> = v2;
+label1:
+v3 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+return v3;
+}
+public java.lang.String getAdmin()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String admin>;
+return v1;
+}
+public void setAdmin(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String admin> = v1;
+return;
+}
+public java.lang.String getDestination()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String destination>;
+return v1;
+}
+public void setDestination(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String destination> = v1;
+return;
+}
+public java.lang.String getGroupClass()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String groupClass>;
+return v1;
+}
+public void setGroupClass(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String groupClass> = v1;
+return;
+}
+public java.lang.String getQueue()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String queue>;
+return v1;
+}
+public void setQueue(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String queue> = v1;
+return;
+}
+public java.lang.String getRead()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String read>;
+return v1;
+}
+public void setRead(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String read> = v1;
+return;
+}
+public java.lang.Boolean isTempQueue()
+{
+java.lang.Boolean v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempQueue>;
+return v1;
+}
+public void setTempQueue(java.lang.Boolean)
+{
+java.lang.Boolean v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.Boolean;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempQueue> = v1;
+return;
+}
+public java.lang.Boolean isTempTopic()
+{
+java.lang.Boolean v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempTopic>;
+return v1;
+}
+public void setTempTopic(java.lang.Boolean)
+{
+java.lang.Boolean v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.Boolean;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempTopic> = v1;
+return;
+}
+public java.lang.String getTopic()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String topic>;
+return v1;
+}
+public void setTopic(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String topic> = v1;
+return;
+}
+public java.lang.String getWrite()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String write>;
+return v1;
+}
+public void setWrite(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String write> = v1;
+return;
+}
+public java.lang.String getId()
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String id>;
+return v1;
+}
+public void setId(java.lang.String)
+{
+java.lang.String v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.String;
+v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String id> = v1;
+return;
+}
+public java.util.Map getOtherAttributes()
+{
+DtoAuthorizationEntry v0;
+java.util.Map v1;
+v0 := @this: DtoAuthorizationEntry;
+v1 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.Map otherAttributes>;
+return v1;
+}
+public java.lang.String toString()
+{
+java.lang.StringBuilder v2;
+java.lang.String v3;
+org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = <org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy: org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy INSTANCE2>;
+v2 = new java.lang.StringBuilder;
+specialinvoke v2.<java.lang.StringBuilder: void <init>()>();
+virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.StringBuilder append(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.StringBuilder,org.jvnet.jaxb2_commons.lang.ToStringStrategy2)>(null, v2, v1);
+v3 = virtualinvoke v2.<java.lang.StringBuilder: java.lang.String toString()>();
+return v3;
+}
+public java.lang.StringBuilder append(org.jvnet.jaxb2_commons.locator.ObjectLocator, java.lang.StringBuilder, org.jvnet.jaxb2_commons.lang.ToStringStrategy2)
+{
+org.jvnet.jaxb2_commons.lang.ToStringStrategy2 v3;
+java.lang.StringBuilder v2;
+org.jvnet.jaxb2_commons.locator.ObjectLocator v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: org.jvnet.jaxb2_commons.locator.ObjectLocator;
+v2 := @parameter1: java.lang.StringBuilder;
+v3 := @parameter2: org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendStart(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.StringBuilder)>(v1, v0, v2);
+virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.StringBuilder appendFields(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.StringBuilder,org.jvnet.jaxb2_commons.lang.ToStringStrategy2)>(v1, v2, v3);
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendEnd(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.StringBuilder)>(v1, v0, v2);
+return v2;
+}
+public java.lang.StringBuilder appendFields(org.jvnet.jaxb2_commons.locator.ObjectLocator, java.lang.StringBuilder, org.jvnet.jaxb2_commons.lang.ToStringStrategy2)
+{
+boolean v11, v12, v15, v18, v21, v24, v27, v30, v33, v36, v39, v42, v6;
+org.jvnet.jaxb2_commons.lang.ToStringStrategy2 v3;
+java.util.List v10, v4, v5, v7, v8, v9;
+java.lang.StringBuilder v2;
+DtoAuthorizationEntry v0;
+java.lang.Boolean v28, v29, v31, v32;
+java.lang.String v13, v14, v16, v17, v19, v20, v22, v23, v25, v26, v34, v35, v37, v38, v40, v41;
+org.jvnet.jaxb2_commons.locator.ObjectLocator v1;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: org.jvnet.jaxb2_commons.locator.ObjectLocator;
+v2 := @parameter1: java.lang.StringBuilder;
+v3 := @parameter2: org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
+v4 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v4 == null goto label01;
+v5 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v6 = interfaceinvoke v5.<java.util.List: boolean isEmpty()>();
+if v6 != 0 goto label01;
+v7 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List getAdminACLsOrDestinationOrReadACLs()>();
+goto label02;
+label01:
+v7 = null;
+label02:
+v8 = v7;
+v9 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v9 == null goto label03;
+v10 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v11 = interfaceinvoke v10.<java.util.List: boolean isEmpty()>();
+if v11 != 0 goto label03;
+v12 = 1;
+goto label04;
+label03:
+v12 = 0;
+label04:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "adminACLsOrDestinationOrReadACLs", v2, v8, v12);
+v13 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getAdmin()>();
+v14 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String admin>;
+if v14 == null goto label05;
+v15 = 1;
+goto label06;
+label05:
+v15 = 0;
+label06:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "admin", v2, v13, v15);
+v16 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getDestination()>();
+v17 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String destination>;
+if v17 == null goto label07;
+v18 = 1;
+goto label08;
+label07:
+v18 = 0;
+label08:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "destination", v2, v16, v18);
+v19 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getGroupClass()>();
+v20 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String groupClass>;
+if v20 == null goto label09;
+v21 = 1;
+goto label10;
+label09:
+v21 = 0;
+label10:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "groupClass", v2, v19, v21);
+v22 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getQueue()>();
+v23 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String queue>;
+if v23 == null goto label11;
+v24 = 1;
+goto label12;
+label11:
+v24 = 0;
+label12:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "queue", v2, v22, v24);
+v25 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getRead()>();
+v26 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String read>;
+if v26 == null goto label13;
+v27 = 1;
+goto label14;
+label13:
+v27 = 0;
+label14:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "read", v2, v25, v27);
+v28 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempQueue()>();
+v29 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempQueue>;
+if v29 == null goto label15;
+v30 = 1;
+goto label16;
+label15:
+v30 = 0;
+label16:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "tempQueue", v2, v28, v30);
+v31 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempTopic()>();
+v32 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempTopic>;
+if v32 == null goto label17;
+v33 = 1;
+goto label18;
+label17:
+v33 = 0;
+label18:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "tempTopic", v2, v31, v33);
+v34 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getTopic()>();
+v35 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String topic>;
+if v35 == null goto label19;
+v36 = 1;
+goto label20;
+label19:
+v36 = 0;
+label20:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "topic", v2, v34, v36);
+v37 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getWrite()>();
+v38 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String write>;
+if v38 == null goto label21;
+v39 = 1;
+goto label22;
+label21:
+v39 = 0;
+label22:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "write", v2, v37, v39);
+v40 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getId()>();
+v41 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String id>;
+if v41 == null goto label23;
+v42 = 1;
+goto label24;
+label23:
+v42 = 0;
+label24:
+interfaceinvoke v3.<org.jvnet.jaxb2_commons.lang.ToStringStrategy2: java.lang.StringBuilder appendField(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.String,java.lang.StringBuilder,java.lang.Object,boolean)>(v1, v0, "id", v2, v40, v42);
+return v2;
+}
+public int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator, org.jvnet.jaxb2_commons.lang.HashCodeStrategy2)
+{
+DtoAuthorizationEntry v0;
+java.lang.String v14, v16, v19, v21, v24, v26, v29, v31, v34, v36, v49, v51, v54, v56, v59, v61;
+org.jvnet.jaxb2_commons.locator.ObjectLocator v1;
+org.jvnet.jaxb2_commons.locator.PropertyObjectLocator v15, v20, v25, v30, v35, v40, v45, v50, v55, v60, v8;
+boolean v11, v12, v17, v22, v27, v32, v37, v42, v47, v5, v52, v57, v62;
+java.util.List v10, v3, v4, v6, v7, v9;
+int v13, v18, v23, v28, v33, v38, v43, v48, v53, v58, v63;
+java.lang.Boolean v39, v41, v44, v46;
+org.jvnet.jaxb2_commons.lang.HashCodeStrategy2 v2;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: org.jvnet.jaxb2_commons.locator.ObjectLocator;
+v2 := @parameter1: org.jvnet.jaxb2_commons.lang.HashCodeStrategy2;
+v3 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v3 == null goto label01;
+v4 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v5 = interfaceinvoke v4.<java.util.List: boolean isEmpty()>();
+if v5 != 0 goto label01;
+v6 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List getAdminACLsOrDestinationOrReadACLs()>();
+goto label02;
+label01:
+v6 = null;
+label02:
+v7 = v6;
+v8 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "adminACLsOrDestinationOrReadACLs", v6);
+v9 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v9 == null goto label03;
+v10 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v11 = interfaceinvoke v10.<java.util.List: boolean isEmpty()>();
+if v11 != 0 goto label03;
+v12 = 1;
+goto label04;
+label03:
+v12 = 0;
+label04:
+v13 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v8, 1, v7, v12);
+v14 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getAdmin()>();
+v15 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "admin", v14);
+v16 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String admin>;
+if v16 == null goto label05;
+v17 = 1;
+goto label06;
+label05:
+v17 = 0;
+label06:
+v18 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v15, v13, v14, v17);
+v19 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getDestination()>();
+v20 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "destination", v19);
+v21 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String destination>;
+if v21 == null goto label07;
+v22 = 1;
+goto label08;
+label07:
+v22 = 0;
+label08:
+v23 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v20, v18, v19, v22);
+v24 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getGroupClass()>();
+v25 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "groupClass", v24);
+v26 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String groupClass>;
+if v26 == null goto label09;
+v27 = 1;
+goto label10;
+label09:
+v27 = 0;
+label10:
+v28 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v25, v23, v24, v27);
+v29 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getQueue()>();
+v30 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "queue", v29);
+v31 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String queue>;
+if v31 == null goto label11;
+v32 = 1;
+goto label12;
+label11:
+v32 = 0;
+label12:
+v33 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v30, v28, v29, v32);
+v34 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getRead()>();
+v35 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "read", v34);
+v36 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String read>;
+if v36 == null goto label13;
+v37 = 1;
+goto label14;
+label13:
+v37 = 0;
+label14:
+v38 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v35, v33, v34, v37);
+v39 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempQueue()>();
+v40 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "tempQueue", v39);
+v41 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempQueue>;
+if v41 == null goto label15;
+v42 = 1;
+goto label16;
+label15:
+v42 = 0;
+label16:
+v43 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v40, v38, v39, v42);
+v44 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempTopic()>();
+v45 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "tempTopic", v44);
+v46 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempTopic>;
+if v46 == null goto label17;
+v47 = 1;
+goto label18;
+label17:
+v47 = 0;
+label18:
+v48 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v45, v43, v44, v47);
+v49 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getTopic()>();
+v50 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "topic", v49);
+v51 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String topic>;
+if v51 == null goto label19;
+v52 = 1;
+goto label20;
+label19:
+v52 = 0;
+label20:
+v53 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v50, v48, v49, v52);
+v54 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getWrite()>();
+v55 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "write", v54);
+v56 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String write>;
+if v56 == null goto label21;
+v57 = 1;
+goto label22;
+label21:
+v57 = 0;
+label22:
+v58 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v55, v53, v54, v57);
+v59 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getId()>();
+v60 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "id", v59);
+v61 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String id>;
+if v61 == null goto label23;
+v62 = 1;
+goto label24;
+label23:
+v62 = 0;
+label24:
+v63 = interfaceinvoke v2.<org.jvnet.jaxb2_commons.lang.HashCodeStrategy2: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,int,java.lang.Object,boolean)>(v60, v58, v59, v62);
+return v63;
+}
+public int hashCode()
+{
+int v2;
+org.jvnet.jaxb2_commons.lang.JAXBHashCodeStrategy v1;
+DtoAuthorizationEntry v0;
+v0 := @this: DtoAuthorizationEntry;
+v1 = <org.jvnet.jaxb2_commons.lang.JAXBHashCodeStrategy: org.jvnet.jaxb2_commons.lang.JAXBHashCodeStrategy INSTANCE2>;
+v2 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: int hashCode(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.lang.HashCodeStrategy2)>(null, v1);
+return v2;
+}
+public boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator, org.jvnet.jaxb2_commons.locator.ObjectLocator, java.lang.Object, org.jvnet.jaxb2_commons.lang.EqualsStrategy2)
+{
+DtoAuthorizationEntry v0;
+org.jvnet.jaxb2_commons.lang.EqualsStrategy2 v4;
+java.lang.String v100, v101, v104, v106, v109, v110, v113, v115, v28, v29, v32, v34, v37, v38, v41, v43, v46, v47, v50, v52, v55, v56, v59, v61, v64, v65, v68, v70, v91, v92, v95, v97;
+org.jvnet.jaxb2_commons.locator.ObjectLocator v1, v2;
+org.jvnet.jaxb2_commons.locator.PropertyObjectLocator v102, v103, v111, v112, v17, v18, v30, v31, v39, v40, v48, v49, v57, v58, v66, v67, v75, v76, v84, v85, v93, v94;
+boolean v105, v107, v108, v114, v116, v117, v14, v21, v22, v25, v26, v27, v33, v35, v36, v42, v44, v45, v51, v53, v54, v60, v62, v63, v69, v71, v72, v78, v80, v81, v87, v89, v9, v90, v96, v98, v99;
+java.util.List v10, v11, v12, v13, v15, v16, v19, v20, v23, v24, v7, v8;
+java.lang.Boolean v73, v74, v77, v79, v82, v83, v86, v88;
+java.lang.Class v5, v6;
+java.lang.Object v3;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: org.jvnet.jaxb2_commons.locator.ObjectLocator;
+v2 := @parameter1: org.jvnet.jaxb2_commons.locator.ObjectLocator;
+v3 := @parameter2: java.lang.Object;
+v4 := @parameter3: org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
+if v3 == null goto label01;
+v5 = virtualinvoke v0.<java.lang.Object: java.lang.Class getClass()>();
+v6 = virtualinvoke v3.<java.lang.Object: java.lang.Class getClass()>();
+if v5 == v6 goto label02;
+label01:
+return 0;
+label02:
+if v0 != v3 goto label03;
+return 1;
+label03:
+v7 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v7 == null goto label04;
+v8 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v9 = interfaceinvoke v8.<java.util.List: boolean isEmpty()>();
+if v9 != 0 goto label04;
+v10 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List getAdminACLsOrDestinationOrReadACLs()>();
+goto label05;
+label04:
+v10 = null;
+label05:
+v11 = v10;
+v12 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v12 == null goto label06;
+v13 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v14 = interfaceinvoke v13.<java.util.List: boolean isEmpty()>();
+if v14 != 0 goto label06;
+v15 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List getAdminACLsOrDestinationOrReadACLs()>();
+goto label07;
+label06:
+v15 = null;
+label07:
+v16 = v15;
+v17 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "adminACLsOrDestinationOrReadACLs", v11);
+v18 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "adminACLsOrDestinationOrReadACLs", v15);
+v19 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v19 == null goto label08;
+v20 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v21 = interfaceinvoke v20.<java.util.List: boolean isEmpty()>();
+if v21 != 0 goto label08;
+v22 = 1;
+goto label09;
+label08:
+v22 = 0;
+label09:
+v23 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+if v23 == null goto label10;
+v24 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.util.List adminACLsOrDestinationOrReadACLs>;
+v25 = interfaceinvoke v24.<java.util.List: boolean isEmpty()>();
+if v25 != 0 goto label10;
+v26 = 1;
+goto label11;
+label10:
+v26 = 0;
+label11:
+v27 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v17, v18, v11, v16, v22, v26);
+if v27 != 0 goto label12;
+return 0;
+label12:
+v28 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getAdmin()>();
+v29 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getAdmin()>();
+v30 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "admin", v28);
+v31 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "admin", v29);
+v32 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String admin>;
+if v32 == null goto label13;
+v33 = 1;
+goto label14;
+label13:
+v33 = 0;
+label14:
+v34 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String admin>;
+if v34 == null goto label15;
+v35 = 1;
+goto label16;
+label15:
+v35 = 0;
+label16:
+v36 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v30, v31, v28, v29, v33, v35);
+if v36 != 0 goto label17;
+return 0;
+label17:
+v37 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getDestination()>();
+v38 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getDestination()>();
+v39 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "destination", v37);
+v40 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "destination", v38);
+v41 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String destination>;
+if v41 == null goto label18;
+v42 = 1;
+goto label19;
+label18:
+v42 = 0;
+label19:
+v43 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String destination>;
+if v43 == null goto label20;
+v44 = 1;
+goto label21;
+label20:
+v44 = 0;
+label21:
+v45 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v39, v40, v37, v38, v42, v44);
+if v45 != 0 goto label22;
+return 0;
+label22:
+v46 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getGroupClass()>();
+v47 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getGroupClass()>();
+v48 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "groupClass", v46);
+v49 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "groupClass", v47);
+v50 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String groupClass>;
+if v50 == null goto label23;
+v51 = 1;
+goto label24;
+label23:
+v51 = 0;
+label24:
+v52 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String groupClass>;
+if v52 == null goto label25;
+v53 = 1;
+goto label26;
+label25:
+v53 = 0;
+label26:
+v54 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v48, v49, v46, v47, v51, v53);
+if v54 != 0 goto label27;
+return 0;
+label27:
+v55 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getQueue()>();
+v56 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getQueue()>();
+v57 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "queue", v55);
+v58 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "queue", v56);
+v59 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String queue>;
+if v59 == null goto label28;
+v60 = 1;
+goto label29;
+label28:
+v60 = 0;
+label29:
+v61 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String queue>;
+if v61 == null goto label30;
+v62 = 1;
+goto label31;
+label30:
+v62 = 0;
+label31:
+v63 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v57, v58, v55, v56, v60, v62);
+if v63 != 0 goto label32;
+return 0;
+label32:
+v64 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getRead()>();
+v65 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getRead()>();
+v66 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "read", v64);
+v67 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "read", v65);
+v68 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String read>;
+if v68 == null goto label33;
+v69 = 1;
+goto label34;
+label33:
+v69 = 0;
+label34:
+v70 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String read>;
+if v70 == null goto label35;
+v71 = 1;
+goto label36;
+label35:
+v71 = 0;
+label36:
+v72 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v66, v67, v64, v65, v69, v71);
+if v72 != 0 goto label37;
+return 0;
+label37:
+v73 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempQueue()>();
+v74 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempQueue()>();
+v75 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "tempQueue", v73);
+v76 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "tempQueue", v74);
+v77 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempQueue>;
+if v77 == null goto label38;
+v78 = 1;
+goto label39;
+label38:
+v78 = 0;
+label39:
+v79 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempQueue>;
+if v79 == null goto label40;
+v80 = 1;
+goto label41;
+label40:
+v80 = 0;
+label41:
+v81 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v75, v76, v73, v74, v78, v80);
+if v81 != 0 goto label42;
+return 0;
+label42:
+v82 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempTopic()>();
+v83 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean isTempTopic()>();
+v84 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "tempTopic", v82);
+v85 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "tempTopic", v83);
+v86 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempTopic>;
+if v86 == null goto label43;
+v87 = 1;
+goto label44;
+label43:
+v87 = 0;
+label44:
+v88 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.Boolean tempTopic>;
+if v88 == null goto label45;
+v89 = 1;
+goto label46;
+label45:
+v89 = 0;
+label46:
+v90 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v84, v85, v82, v83, v87, v89);
+if v90 != 0 goto label47;
+return 0;
+label47:
+v91 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getTopic()>();
+v92 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getTopic()>();
+v93 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "topic", v91);
+v94 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "topic", v92);
+v95 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String topic>;
+if v95 == null goto label48;
+v96 = 1;
+goto label49;
+label48:
+v96 = 0;
+label49:
+v97 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String topic>;
+if v97 == null goto label50;
+v98 = 1;
+goto label51;
+label50:
+v98 = 0;
+label51:
+v99 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v93, v94, v91, v92, v96, v98);
+if v99 != 0 goto label52;
+return 0;
+label52:
+v100 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getWrite()>();
+v101 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getWrite()>();
+v102 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "write", v100);
+v103 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "write", v101);
+v104 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String write>;
+if v104 == null goto label53;
+v105 = 1;
+goto label54;
+label53:
+v105 = 0;
+label54:
+v106 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String write>;
+if v106 == null goto label55;
+v107 = 1;
+goto label56;
+label55:
+v107 = 0;
+label56:
+v108 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v102, v103, v100, v101, v105, v107);
+if v108 != 0 goto label57;
+return 0;
+label57:
+v109 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getId()>();
+v110 = virtualinvoke v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String getId()>();
+v111 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v1, "id", v109);
+v112 = staticinvoke <org.jvnet.jaxb2_commons.locator.util.LocatorUtils: org.jvnet.jaxb2_commons.locator.PropertyObjectLocator property(org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.String,java.lang.Object)>(v2, "id", v110);
+v113 = v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String id>;
+if v113 == null goto label58;
+v114 = 1;
+goto label59;
+label58:
+v114 = 0;
+label59:
+v115 = v3.<org.apache.activemq.schema.core.DtoAuthorizationEntry: java.lang.String id>;
+if v115 == null goto label60;
+v116 = 1;
+goto label61;
+label60:
+v116 = 0;
+label61:
+v117 = interfaceinvoke v4.<org.jvnet.jaxb2_commons.lang.EqualsStrategy2: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,java.lang.Object,boolean,boolean)>(v111, v112, v109, v110, v114, v116);
+if v117 != 0 goto label62;
+return 0;
+label62:
+return 1;
+}
+public boolean equals(java.lang.Object)
+{
+org.apache.activemq.plugin.jaxb2_commons.ElementAwareEqualsStrategy v2;
+java.lang.Object v1;
+DtoAuthorizationEntry v0;
+boolean v3;
+v0 := @this: DtoAuthorizationEntry;
+v1 := @parameter0: java.lang.Object;
+v2 = new org.apache.activemq.plugin.jaxb2_commons.ElementAwareEqualsStrategy;
+specialinvoke v2.<org.apache.activemq.plugin.jaxb2_commons.ElementAwareEqualsStrategy: void <init>()>();
+v3 = virtualinvoke v0.<org.apache.activemq.schema.core.DtoAuthorizationEntry: boolean equals(org.jvnet.jaxb2_commons.locator.ObjectLocator,org.jvnet.jaxb2_commons.locator.ObjectLocator,java.lang.Object,org.jvnet.jaxb2_commons.lang.EqualsStrategy2)>(null, null, v1, v2);
+return v3;
+}
+}

@@ -1,0 +1,30 @@
+public class SWAP extends java.lang.Object
+{
+public void <init>()
+{
+SWAP v0;
+v0 := @this: SWAP;
+specialinvoke v0.<java.lang.Object: void <init>()>();
+return;
+}
+public static java.lang.reflect.Constructor getTestConstructor(java.lang.Class) throws java.lang.NoSuchMethodException
+{
+java.lang.NoSuchMethodException v3;
+java.lang.Class[] v1, v4;
+java.lang.Class v0;
+java.lang.reflect.Constructor v2, v5;
+v0 := @parameter0: java.lang.Class;
+v1 = newarray (java.lang.Class)[1];
+v1[0] = class "Ljava/lang/String;";
+label1:
+v2 = virtualinvoke v0.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(v1);
+label2:
+return v2;
+label3:
+v3 := @caughtexception;
+v4 = newarray (java.lang.Class)[0];
+v5 = virtualinvoke v0.<java.lang.Class: java.lang.reflect.Constructor getConstructor(java.lang.Class[])>(v4);
+return v5;
+catch java.lang.NoSuchMethodException from label1 to label2 with label3;
+}
+}
