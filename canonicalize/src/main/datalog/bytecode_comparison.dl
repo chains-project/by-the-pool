@@ -1,55 +1,24 @@
 #include "bytecode_schema.dl"
 
 // Facts for ClassA
-name_of("ClassA", "com.example.ClassA").
-parent_of_list("ClassA", ["MethodA1", ["MethodA2", ["MethodA3", nil]]], "methods").
+Class("reference", "org.example.A", ["m1", ["m2", nil]]).
+Method("m1", "m1", ["m1_aload_0", ["m1_invokevirtual", ["m1_return", nil]]]).
+Method("m2", "m2", ["m2_iconst1", ["m2_ireturn", nil]]).
+Instruction("m1_aload_0", "aload_0").
+Instruction("m1_invokevirtual", "invokevirtual").
+Instruction("m1_return", "return").
+Instruction("m2_iconst1", "iconst1").
+Instruction("m2_ireturn", "ireturn").
 
-name_of("MethodA1", "methodA1").
-parent_of_list("MethodA1", ["InstrA1_1", ["InstrA1_2", ["InstrA1_3", nil]]], "instructions").
 
-name_of("MethodA2", "methodA2").
-parent_of_list("MethodA2", ["InstrA2_1", ["InstrA2_2", nil]], "instructions").
-
-name_of("MethodA3", "methodA3").
-parent_of_list("MethodA3", ["InstrA3_1", ["InstrA3_2", ["InstrA3_3", ["InstrA3_4", nil]]]], "instructions").
-
-name_of("InstrA1_1", "aload_0").
-name_of("InstrA1_2", "invokevirtual").
-name_of("InstrA1_3", "return").
-
-name_of("InstrA2_1", "iconst_1").
-name_of("InstrA2_2", "ireturn").
-
-name_of("InstrA3_1", "aload_0").
-name_of("InstrA3_2", "aload_1").
-name_of("InstrA3_3", "invokevirtual").
-name_of("InstrA3_4", "return").
-
-// Facts for ClassB
-name_of("ClassB", "com.example.ClassB").
-parent_of_list("ClassB", ["MethodB1", ["MethodB2", ["MethodB3", nil]]], "methods").
-
-name_of("MethodB1", "methodA1").
-parent_of_list("MethodB1", ["InstrB1_1", ["InstrB1_2", ["InstrB1_3", nil]]], "instructions").
-
-name_of("MethodB2", "methodA2").
-parent_of_list("MethodB2", ["InstrB2_1", ["InstrB2_2", ["InstrB2_3", nil]]], "instructions").
-
-name_of("MethodB3", "methodA3").
-parent_of_list("MethodB3", ["InstrB3_1", ["InstrB3_2", ["InstrB3_3", ["InstrB3_4", nil]]]], "instructions").
-
-name_of("InstrB1_1", "aload_0").
-name_of("InstrB1_2", "invokevirtual").
-name_of("InstrB1_3", "return").
-
-name_of("InstrB2_1", "aload_0").
-name_of("InstrB2_2", "aload_1").
-name_of("InstrB2_3", "ireturn").
-
-name_of("InstrB3_1", "aload_0").
-name_of("InstrB3_2", "aload_1").
-name_of("InstrB3_3", "invokevirtual").
-name_of("InstrB3_4", "return").
+Class("rebuild", "org.example.A", ["m1", ["m2", nil]]).
+Method("m1", "m1", ["m1_aload_1", ["m1_invokevirtual", ["m1_return", nil]]]).
+Method("m2", "m2", ["m2_iconst1", ["m2_ireturn", nil]]).
+Instruction("m1_aload_1", "aload_1").
+Instruction("m1_invokevirtual", "invokevirtual").
+Instruction("m1_return", "return").
+Instruction("m2_iconst1", "iconst1").
+Instruction("m2_ireturn", "ireturn").
 
 .decl head_of(head: NodeId, tail: NodeId_List)
 head_of(head, tail) :-
@@ -57,7 +26,6 @@ head_of(head, tail) :-
 head_of(head, tail) :-
     head_of(_, [head, tail]).
 
-/* is x at the position just before y in a list? */
 .decl predecessor_of(x: NodeId, y: NodeId)
 predecessor_of(x, y) :-
     head_of(x, [y, _]).
@@ -70,30 +38,31 @@ list_contains(list, b) :-
     list_contains(list, a),
     predecessor_of(a, b).
 
+.decl MethodOfClass(class_name: symbol, method_name: symbol)
+MethodOfClass(class_name, method_name) :-
+    Method(method_id, method_name, _),
+    Class(_, class_name, methods),
+    list_contains(methods, method_id).
 
-// Define a relation for methods in each class
-.decl ClassMethod(class: NodeId, method: NodeId, method_name: symbol)
-ClassMethod(class, method, method_name) :-
-    Class(class, _, methods),
-    list_contains(methods, method),
-    Method(method, method_name, _).
+.decl MatchedMethods(method1: symbol, method2: symbol)
+MatchedMethods(method1, method2) :-
+    MethodOfClass(_, method1),
+    MethodOfClass(_, method2),
+    method1 = method2.
 
-// Define a relation for matching methods between classes
-.decl MatchingMethods(class1: NodeId, class2: NodeId, method_name: symbol)
-MatchingMethods(class1, class2, method_name) :-
-    ClassMethod(class1, _, method_name),
-    ClassMethod(class2, _, method_name),
-    class1 != class2.
+.decl MismatchInstructions(method1: symbol, method2: symbol, instruction: NodeId)
+.output MismatchInstructions
+MismatchInstructions(method1, method2, instruction) :-
+    MatchedMethods(method1, method2),
+    MethodOfClass(class1, _),
+    MethodOfClass(class2, _),
+    class1 = class2,
+    Method(method1, _, instructions1),
+    Method(method2, _, instructions2),
+    method1 = method2,
+    list_contains(instructions1, instruction),
+    !list_contains(instructions2, instruction).
 
-// Define a relation for methods unique to each class
-.decl UniqueMethods(class: NodeId, method_name: symbol)
-UniqueMethods(class, method_name) :-
-    ClassMethod(class, _, method_name),
-    Class(other_class, _, _),
-    class != other_class,
-    !ClassMethod(other_class, _, method_name).
 
-// Output relations
-.output MatchingMethods
-.output UniqueMethods
+
 

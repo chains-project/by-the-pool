@@ -4,18 +4,13 @@
 .decl name_of(id: NodeId, name: symbol)
 .decl parent_of(parent: NodeId, child: NodeId, relation: symbol)
 .decl parent_of_list(parent: NodeId, children: NodeId_List, relation: symbol)
+parent_of_list(parent, [first, rest], "methods") :-
+    Class(parent, _, [first, rest]).
+parent_of_list(parent, [first, rest], "instructions") :-
+    Method(parent, _, [first, rest]).
 
 .decl Instruction(id: NodeId, opcode: symbol)
-.input Instruction
-Instruction(id, opcode) :-
-    name_of(id, opcode).
 
 .decl Method(id: NodeId, name: symbol, instructions: NodeId_List)
-Method(id, name, instructions) :-
-    name_of(id, name),
-    parent_of_list(id, instructions, "instructions").
 
 .decl Class(id: NodeId, name: symbol, methods: NodeId_List)
-Class(id, name, methods) :-
-    name_of(id, name),
-    parent_of_list(id, methods, "methods").
